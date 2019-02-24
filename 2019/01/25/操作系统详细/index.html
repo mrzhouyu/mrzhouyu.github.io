@@ -5,20 +5,18 @@
   
   <title>操作系统详细 | YuChou</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="其实很早就接触过操作系统这块，为此还专门去考了国家计算机三级(嵌入式操作系统)这块，考的还算可以，不过当初全部是为了应付考试。真的没有好好去静下心理解里面的一些概念，更没有抽象出一个完整的模型在脑子里。现在的水平，只停留在基本名词和概念的字面解释上，其他的遗忘的差不多了。工作后发现无论是走CS也好，EE也好，这块的知识点工作中接触的频率相当高。 一直都想着查缺补漏，巩固知识，但是互联网这块要跟进的">
+  <meta name="description" content="1、什么是操作系统？ 用户角度，操作系统是一个控制软件 管理应用程序 为应用程序提高服务 杀死应用程序 资源管理 管理外设、分配资源2、抽象概念 CPU抽象成进程 磁盘抽象成文件 内存抽象成地址空间3、操作系统架层次结构 硬件之上 应用程序之下  4、kernel组成 CPU调度器 物理内存管理 虚拟内存管理 文件系统管理 文件处理与设备驱动(I/O)5、OS kernel特征 并发：一段时间内多">
 <meta name="keywords" content="操作系统,底层">
 <meta property="og:type" content="article">
 <meta property="og:title" content="操作系统详细">
 <meta property="og:url" content="http://yoursite.com/2019/01/25/操作系统详细/index.html">
 <meta property="og:site_name" content="YuChou">
-<meta property="og:description" content="其实很早就接触过操作系统这块，为此还专门去考了国家计算机三级(嵌入式操作系统)这块，考的还算可以，不过当初全部是为了应付考试。真的没有好好去静下心理解里面的一些概念，更没有抽象出一个完整的模型在脑子里。现在的水平，只停留在基本名词和概念的字面解释上，其他的遗忘的差不多了。工作后发现无论是走CS也好，EE也好，这块的知识点工作中接触的频率相当高。 一直都想着查缺补漏，巩固知识，但是互联网这块要跟进的">
+<meta property="og:description" content="1、什么是操作系统？ 用户角度，操作系统是一个控制软件 管理应用程序 为应用程序提高服务 杀死应用程序 资源管理 管理外设、分配资源2、抽象概念 CPU抽象成进程 磁盘抽象成文件 内存抽象成地址空间3、操作系统架层次结构 硬件之上 应用程序之下  4、kernel组成 CPU调度器 物理内存管理 虚拟内存管理 文件系统管理 文件处理与设备驱动(I/O)5、OS kernel特征 并发：一段时间内多">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:image" content="http://149.248.3.74/Photos/chapter1/chapter1_1.jpg">
-<meta property="og:updated_time" content="2019-01-25T12:00:25.298Z">
+<meta property="og:updated_time" content="2019-02-24T08:12:22.394Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="操作系统详细">
-<meta name="twitter:description" content="其实很早就接触过操作系统这块，为此还专门去考了国家计算机三级(嵌入式操作系统)这块，考的还算可以，不过当初全部是为了应付考试。真的没有好好去静下心理解里面的一些概念，更没有抽象出一个完整的模型在脑子里。现在的水平，只停留在基本名词和概念的字面解释上，其他的遗忘的差不多了。工作后发现无论是走CS也好，EE也好，这块的知识点工作中接触的频率相当高。 一直都想着查缺补漏，巩固知识，但是互联网这块要跟进的">
-<meta name="twitter:image" content="http://149.248.3.74/Photos/chapter1/chapter1_1.jpg">
+<meta name="twitter:description" content="1、什么是操作系统？ 用户角度，操作系统是一个控制软件 管理应用程序 为应用程序提高服务 杀死应用程序 资源管理 管理外设、分配资源2、抽象概念 CPU抽象成进程 磁盘抽象成文件 内存抽象成地址空间3、操作系统架层次结构 硬件之上 应用程序之下  4、kernel组成 CPU调度器 物理内存管理 虚拟内存管理 文件系统管理 文件处理与设备驱动(I/O)5、OS kernel特征 并发：一段时间内多">
   
     <link rel="alternate" href="/atom.xml" title="YuChou" type="application/atom+xml">
   
@@ -45,9 +43,9 @@
     <h2 class="author">YuChou</h2>
     <h3 class="description"></h3>
     <div class="count-box">
-      <a href="/archives"><div><strong>1</strong><br>文章</div></a>
-      <a href="/categories"><div><strong>1</strong><br>分类</div></a>
-      <a href="/tags"><div><strong>2</strong><br>标签</div></a>
+      <a href="/archives"><div><strong>2</strong><br>文章</div></a>
+      <a href="/categories"><div><strong>2</strong><br>分类</div></a>
+      <a href="/tags"><div><strong>3</strong><br>标签</div></a>
     </div>
     <ul class="blog-link">
      
@@ -107,15 +105,36 @@
     
     <div class="article-entry" itemprop="articleBody">
       
-        <p>其实很早就接触过操作系统这块，为此还专门去考了国家计算机三级(嵌入式操作系统)这块，考的还算可以，不过当初全部是为了应付考试。<br>真的没有好好去静下心理解里面的一些概念，更没有抽象出一个完整的模型在脑子里。<br>现在的水平，只停留在基本名词和概念的字面解释上，其他的遗忘的差不多了。工作后发现无论是走<br>CS也好，EE也好，这块的知识点工作中接触的频率相当高。</p>
-<p>一直都想着查缺补漏，巩固知识，但是互联网这块要跟进的知识实在太多了，没有什么时间<br>放在基础知识上，更偏向于应用。最近看到某位考研的哥们的一篇<a href="https://wizardforcel.gitbooks.io/wangdaokaoyan-os/content/2.html" target="_blank" rel="noopener">gitbooks笔记</a><br>画的都是重点，不需要看太过于繁杂的书本，决定好好在巩固一下这块的知识点，加深点印象，为此希望用这篇博客做点笔记，敦促自己好好地看下去。</p>
-<p>PS ：记得是如下这本书入门的，哈哈，消息邮箱记忆犹新。</p>
-<p><img src="http://149.248.3.74/Photos/chapter1/chapter1_1.jpg" alt=""></p>
-<h2 id="1-第一章-操作系统概述"><a href="#1-第一章-操作系统概述" class="headerlink" title="1.第一章 操作系统概述"></a>1.第一章 操作系统概述</h2><h4 id="1-1-操作系统的概念、特征、功能、结构"><a href="#1-1-操作系统的概念、特征、功能、结构" class="headerlink" title="1.1 操作系统的概念、特征、功能、结构"></a>1.1 操作系统的概念、特征、功能、结构</h4><h5 id="1-概念"><a href="#1-概念" class="headerlink" title="1. 概念"></a>1. 概念</h5>
+        <h3 id="1、什么是操作系统？"><a href="#1、什么是操作系统？" class="headerlink" title="1、什么是操作系统？"></a>1、什么是操作系统？</h3><ul>
+<li>用户角度，操作系统是一个控制软件</li>
+<li>管理应用程序</li>
+<li>为应用程序提高服务</li>
+<li>杀死应用程序</li>
+<li>资源管理</li>
+<li>管理外设、分配资源<h3 id="2、抽象概念"><a href="#2、抽象概念" class="headerlink" title="2、抽象概念"></a>2、抽象概念</h3></li>
+<li>CPU抽象成进程</li>
+<li>磁盘抽象成文件</li>
+<li>内存抽象成地址空间<h3 id="3、操作系统架层次结构"><a href="#3、操作系统架层次结构" class="headerlink" title="3、操作系统架层次结构"></a>3、操作系统架层次结构</h3></li>
+<li>硬件之上</li>
+<li>应用程序之下</li>
+</ul>
+<h3 id="4、kernel组成"><a href="#4、kernel组成" class="headerlink" title="4、kernel组成"></a>4、kernel组成</h3><ul>
+<li>CPU调度器</li>
+<li>物理内存管理</li>
+<li>虚拟内存管理</li>
+<li>文件系统管理</li>
+<li>文件处理与设备驱动(I/O)<h3 id="5、OS-kernel特征"><a href="#5、OS-kernel特征" class="headerlink" title="5、OS kernel特征"></a>5、OS kernel特征</h3></li>
+<li>并发：一段时间内多个程序运行</li>
+<li><strong>并行： 一个时间点有多个程序运行</strong></li>
+<li>共享：”同时“”访问,互斥共享</li>
+<li>虚拟：利用多道程序设计技术，让每个用户觉得都有一个计算机为他服务</li>
+<li>异步： 程序不是一直执行，而是走走停停，速度推进不可知，但是只要运行环境相同，运行结果也要相同</li>
+</ul>
+
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2019/01/25/操作系统详细/" data-id="cjrbzzmad000100hzecaytfzy" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2019/01/25/操作系统详细/" data-id="cjsj00y4z00002whz5v3t7236" class="article-share-link">Share</a>
       
       
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/底层/">底层</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/操作系统/">操作系统</a></li></ul>
@@ -124,6 +143,20 @@
   </div>
   
     
+<nav id="article-nav">
+  
+    <a href="/2019/02/24/软件测试/" id="article-nav-newer" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Newer</strong>
+      <div class="article-nav-title">
+        
+          软件测试
+        
+      </div>
+    </a>
+  
+  
+</nav>
+
   
 </article>
 
@@ -168,9 +201,9 @@
     <h2 class="author">YuChou</h2>
     <h3 class="description"></h3>
     <div class="count-box">
-      <a href="/archives"><div><strong>1</strong><br>文章</div></a>
-      <a href="/categories"><div><strong>1</strong><br>分类</div></a>
-      <a href="/tags"><div><strong>2</strong><br>标签</div></a>
+      <a href="/archives"><div><strong>2</strong><br>文章</div></a>
+      <a href="/categories"><div><strong>2</strong><br>分类</div></a>
+      <a href="/tags"><div><strong>3</strong><br>标签</div></a>
     </div>
 
 
