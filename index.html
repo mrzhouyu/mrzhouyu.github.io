@@ -38,9 +38,9 @@
     <h2 class="author">YuChou</h2>
     <h3 class="description"></h3>
     <div class="count-box">
-      <a href="/archives"><div><strong>2</strong><br>文章</div></a>
-      <a href="/categories"><div><strong>2</strong><br>分类</div></a>
-      <a href="/tags"><div><strong>3</strong><br>标签</div></a>
+      <a href="/archives"><div><strong>4</strong><br>文章</div></a>
+      <a href="/categories"><div><strong>4</strong><br>分类</div></a>
+      <a href="/tags"><div><strong>5</strong><br>标签</div></a>
     </div>
     <ul class="blog-link">
      
@@ -65,6 +65,185 @@
 </div>
 
         <section id="main">
+  
+    <article id="title-各种协议" class="wow slideInRight article article-type-title" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2019/03/11/各种协议/" class="article-date">
+  <time class="post-time" datetime="2019-03-11T12:50:06.000Z" itemprop="datePublished">
+    <span class="post-month">3月</span><br/>
+    <span class="post-day">11</span>
+  </time>
+</a>
+   
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2019/03/11/各种协议/">各种协议</a>
+    </h1>
+  
+
+        <div>
+          
+  <div class="article-category">
+    <a class="article-category-link" href="/categories/协议/">协议</a>
+  </div>
+
+          
+        </div>
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h3 id="TCP协议"><a href="#TCP协议" class="headerlink" title="TCP协议"></a>TCP协议</h3><p>TCP是面向连接的通讯协议，通过三次握手建立连接，通讯完成时要拆除连接，由于TCP是面向连接的所以只能用于端到端的通讯。<br>TCP提供的是一种可靠地数据流服务，采用带重传的”肯定确定”技术来实现传输的可靠性。TCP还采用一种称为”窗口滑动”的方式进行流量控制。<br>所谓窗口实际表示接收能力，用以限制发送方的发送速度。如果IP数据包中已经有封装好的数据包，那么IP将把他们向上传送到TCP层。TCP将包排序并进行错误检查，<br>同时实现虚电路之间的连接。TCP数据包中包括序号和确认，所有未按照顺序收到的包可以被排序，而损坏的包可以重传。TCP将他的信息送到更高层的应用程序，例如TelNet<br>的服务程序和客户程序，应用程序轮流将信息送回TCP层，TCP层便将他们向下传送到IP层，设备驱动程序和物理介质，最后到接收方。<br>面向连接服务需要高度的可靠性，所以他们使用了TCP。DNS在某些情况下使用TCP(发送和接收域名数据库)，但使用UDP传送有关单个主机的信息。</p>
+<h3 id="UDP协议"><a href="#UDP协议" class="headerlink" title="UDP协议"></a>UDP协议</h3><p>UDP是面向无连接的通讯协议，UDP数据包括目的端口号和源端口号信息，由于通讯不需要连接，所以可以实现广播发送。<br>UDP通讯时不需要接收方确认，属于不可靠的传输，可能会出现丢包现象，实际应用中要求程序员编码验证。<br>UDP与TCP位于同一层，但他不管数据包的顺序、错误或者重发。因此，UDP不被应用于那些使用虚电路的面向连接的服务，<br>UDP主要用于那些面向查询、应答的服务，例如NFS。相对于FTP和Telnet，这些服务需要交换的信息量较小。使用UDP的服务包括NTP(网络时间协议)和DNS(DNS也使用TCP)。<br>欺骗UDP包比欺骗TCP包更容易，因为UDP没有建立初始化连接，也就是与UDP相关的服务面领着更大的危险。</p>
+<h3 id="HTTP协议"><a href="#HTTP协议" class="headerlink" title="HTTP协议"></a>HTTP协议</h3><h4 id="特点"><a href="#特点" class="headerlink" title="特点"></a>特点</h4><ul>
+<li>支持C/S</li>
+<li>简单快速</li>
+<li>灵活</li>
+<li>无状态</li>
+<li>无连接<h4 id="组成"><a href="#组成" class="headerlink" title="组成"></a>组成</h4></li>
+<li>请求行</li>
+<li>消息报头</li>
+<li>请求正文<h3 id="常见的请求方法"><a href="#常见的请求方法" class="headerlink" title="常见的请求方法"></a>常见的请求方法</h3></li>
+<li>GET、POST、HEAD、PUT、</li>
+</ul>
+<hr>
+<p><strong><em>马克马克马克</em></strong></p>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://yoursite.com/2019/03/11/各种协议/" data-id="cjt4dis8w0000bchzw4222vio" class="article-share-link">Share</a>
+      
+      
+  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/协议/">协议</a></li></ul>
+
+    </footer>
+  </div>
+  
+</article>
+
+
+
+
+  
+    <article id="post-数据结构" class="wow slideInRight article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2019/03/11/数据结构/" class="article-date">
+  <time class="post-time" datetime="2019-03-11T12:43:34.000Z" itemprop="datePublished">
+    <span class="post-month">3月</span><br/>
+    <span class="post-day">11</span>
+  </time>
+</a>
+   
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2019/03/11/数据结构/">数据结构</a>
+    </h1>
+  
+
+        <div>
+          
+  <div class="article-category">
+    <a class="article-category-link" href="/categories/数据结构/">数据结构</a>
+  </div>
+
+          
+              
+
+          
+        </div>
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h3 id="数据结构"><a href="#数据结构" class="headerlink" title="数据结构"></a>数据结构</h3><p>数据：所有能够输入到计算机中，并且能被计算机处理的符号的集合。</p>
+<h4 id="ADT：抽象数据类型"><a href="#ADT：抽象数据类型" class="headerlink" title="ADT：抽象数据类型"></a>ADT：抽象数据类型</h4><h4 id="线性表"><a href="#线性表" class="headerlink" title="线性表"></a>线性表</h4><ul>
+<li>特征：所有元素属于同一数据类型</li>
+<li>有限：数据元素个数是有限的</li>
+<li>序列：数据元素由逻辑符号唯一确定，一个线性表中允许有相同值元素</li>
+<li>线性表基本运算：<ul>
+<li>初始化线性表InitList(&amp;L):构造空的线性表L</li>
+<li>销毁线性表DestoryList(&amp;L): 释放线性表L占用的空间</li>
+<li>判断线性表是否为空值ListEmpty(L): L为真返回空，否，返回假</li>
+<li>求线性表长度ListLength：返回L中元素n</li>
+<li>…</li>
+</ul>
+</li>
+<li><p>定义：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">typedef struct&#123;</span><br><span class="line">     ElemType data[MAXSIZE];</span><br><span class="line">     int length;</span><br><span class="line">&#125;SqList;</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>逻辑位序和物理位序正好相差1</p>
+</li>
+<li>输出型参数 都在前面加上&amp;</li>
+<li><p>初始化</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">void InitList(SqList *L)&#123;</span><br><span class="line">L=(*SqList)malloc(sizeof(SqList));</span><br><span class="line">L-&gt;length=0;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>销毁</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">vold DestoryList(SqList *L)&#123;&#125;</span><br><span class="line">free(L);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>是否为空</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">bool ListEmpty(SqList *L)&#123;</span><br><span class="line"> return(L-&gt;length==0);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>长度</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">int ListLength(Sqlist *L)&#123;</span><br><span class="line">return L-&gt;length; </span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>输出线性表</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">void DispList(SqList *L)&#123;</span><br><span class="line">int i=0;</span><br><span class="line">if(L-&gt;length==0) return;</span><br><span class="line">for(i;i&lt;L-&gt;length;i++)&#123;</span><br><span class="line"> printf(&quot;%c&quot;,L-&gt;data[i]);</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+</li>
+</ul>
+<h3 id="顺序表"><a href="#顺序表" class="headerlink" title="顺序表"></a>顺序表</h3><p>1、实现删除顺序表中所有为x的元素</p>
+<ul>
+<li><p>方法1：利用旧的顺序表里新建顺序表</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">void Func(SqList *&amp;A,ElemType x)&#123;</span><br><span class="line"> int k=0,i=0;</span><br><span class="line"> for(i;i&lt;A-&gt;length;i++)&#123;</span><br><span class="line"> if(A-&gt;data[i]!=x)&#123;</span><br><span class="line"> A-&gt;data[k]=A-&gt;data[i];</span><br><span class="line"> k++;</span><br><span class="line"> &#125;</span><br><span class="line"> &#125;</span><br><span class="line"> A-&gt;length=k;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>方法2：将不为x的元素迁移K个位置，最后修改A的长度</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line">void Func(SqList *&amp;A,ElemType x)&#123;</span><br><span class="line">int k=0,i=0;</span><br><span class="line">while(i&lt;A-&gt;length)&#123;</span><br><span class="line">if(A-&gt;length==x)</span><br><span class="line">    k++;</span><br><span class="line">else</span><br><span class="line">    A-&gt;data[i-k]=A-&gt;data[i];</span><br><span class="line">i++;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">A-&gt;length=A-&gt;length-k;</span><br><span class="line"></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+</li>
+</ul>
+<p>2、实现长度为10的顺序表，以第一个元素为分界线，将小于他的元素移到该基准前面，大于的放在后面。</p>
+<ul>
+<li>方法1：拿出基准，i从左往右扫描，j从右往左，找到合适的元素交换顺序，直到i=j，将基准放入i=j位置<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br></pre></td><td class="code"><pre><span class="line">void move(SqList *&amp;L)&#123;</span><br><span class="line">int i=0,j=L-&gt;length;</span><br><span class="line">ElemType tmp;</span><br><span class="line">ElemType pivot=L-&gt;data[0]);</span><br><span class="line">while(i&lt;j)&#123;</span><br><span class="line">     while(i&lt;j&amp;&amp;L-&gt;data[j]&gt;pivot)</span><br><span class="line">     j--;</span><br><span class="line">     </span><br><span class="line">     while(i&lt;j&amp;&amp;L-&gt;data[i]&lt;=pivot)</span><br><span class="line">     i++;</span><br><span class="line">     if(i&lt;j)&#123;</span><br><span class="line">     tmp=L-&gt;data[i];</span><br><span class="line">     L-&gt;data[i]=L-&gt;data[j];</span><br><span class="line">     L-&gt;data[j]=tmp;</span><br><span class="line">     &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">tmp=L-&gt;data[0];</span><br><span class="line">L-&gt;data[0]=L-&gt;data[j];</span><br><span class="line">L-&gt;data[j]=tmp;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+</li>
+</ul>
+<h5 id="线性表和链表的区别"><a href="#线性表和链表的区别" class="headerlink" title="线性表和链表的区别"></a>线性表和链表的区别</h5><ul>
+<li>顺序表具有随机存储的特性，存储密度大，但是插入和删除需要移动大量的数据，初始化分配空间难以确定</li>
+<li>链表采用动态分配内存的方法，具有良好的适应性，插入删除只需要修改相关的指针域，不需要移动元素，但是存储密度小，需要有额外的<br>存储空间，指针域，不具有随机存储特性<h3 id="双链表"><a href="#双链表" class="headerlink" title="双链表"></a>双链表</h3>优点：从任一节点出发可以 找到其前驱节点和后继节点，从任一点出发可以访问其他节点。<h3 id="循环单链表"><a href="#循环单链表" class="headerlink" title="循环单链表"></a>循环单链表</h3></li>
+<li>链表没有空指针域</li>
+<li><h3 id="栈"><a href="#栈" class="headerlink" title="栈"></a>栈</h3></li>
+<li>定义：栈是一种只能在同一段插入或删除的线性表，栈只能选取同一个短点进行插入或删除操作(栈顶)，另一端为栈底</li>
+<li>后进先出</li>
+</ul>
+<hr>
+<p><strong><em>马克  马克 马克</em></strong></p>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://yoursite.com/2019/03/11/数据结构/" data-id="cjt4dis940002bchzn9hbmbcn" class="article-share-link">Share</a>
+      
+      
+  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/数据结构/">数据结构</a></li></ul>
+
+    </footer>
+  </div>
+  
+</article>
+
+
+
+
   
     <article id="post-软件测试" class="wow slideInRight article article-type-post" itemscope itemprop="blogPost">
   <div class="article-meta">
@@ -304,11 +483,44 @@
 <li>指一个新版本进行系统大规模的测试之前，先验证一下基本功能是否实现，是否具备可测性。也叫可测性测试。<h3 id="随机测试"><a href="#随机测试" class="headerlink" title="随机测试"></a>随机测试</h3></li>
 <li>随意性测试，指测试人员基于经验和直觉的探索性测试，目的是模拟用户的真实操作，并发现一些边缘性错误</li>
 </ul>
+<h2 id="测试原则"><a href="#测试原则" class="headerlink" title="测试原则"></a>测试原则</h2><ul>
+<li>所有测试标准都建立在用户需求之上</li>
+<li>软件测试必须基于””质量第一”，当时间和质量冲突，时间要服从质量</li>
+<li>实现定义好产品质量标准，只有有了质量标准，才能根据测试结果，对产品质量进行分析评估</li>
+<li>软件项目启动，软件测试开始</li>
+<li>穷举测试时不可能的</li>
+<li>第三方测试更有效，更客观</li>
+<li>软件测试计划是软件测试的前提</li>
+<li>测试用例是设计出来的，不是写出来的，所以要根据测试的目的，采用相应的方法去设计测试用例，从而提高测试效率，<br>更多发现错误，提高程序可靠性</li>
+<li>对发现错误更多的程序段，应该进行更深入的测试，一般来说，一段程序中已经发现的错误数越多，其中存在错误的概率也越大</li>
+<li>重试文档，妥善保存一切测试文档(测试计划、测试用例、测试报告)</li>
+<li>应该把“””尽早和不断测试”作为座右铭</li>
+<li>回归测试的关联性一定要引起充分注意，修改一个错误而引发更多错误现象很常见</li>
+<li>测试应该从小规模到大规模</li>
+<li>不可将测试用例置之度外，排除随意性</li>
+<li>必须彻底检查每一个测试结果</li>
+<li>一定要注意测试中的错误集发生现象，这和程序员的编程水平和习惯有很大关系</li>
+<li>对测试错误结果一定要有一个确认的过程</li>
+</ul>
+<h2 id="测试计划编写-5W1H"><a href="#测试计划编写-5W1H" class="headerlink" title="测试计划编写(5W1H)"></a>测试计划编写(5W1H)</h2><ul>
+<li>what、why、who、where、when、how<h3 id="制定测试目标从以下几个方面着手"><a href="#制定测试目标从以下几个方面着手" class="headerlink" title="制定测试目标从以下几个方面着手"></a>制定测试目标从以下几个方面着手</h3></li>
+<li>理解系统</li>
+<li>及早介入</li>
+<li>理解企业文化和过程</li>
+<li>测试期望</li>
+<li>吸取教训</li>
+<li>工作量大小</li>
+<li>解决方案的类型</li>
+<li>技术选择</li>
+<li>预算</li>
+<li>时间表</li>
+<li>分阶段解决方案</li>
+</ul>
 
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2019/02/24/软件测试/" data-id="cjsj00y5800022whzotdl4cnx" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2019/02/24/软件测试/" data-id="cjt4dis9b0006bchzyqsgize0" class="article-share-link">Share</a>
       
       
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/技术/">技术</a></li></ul>
@@ -387,7 +599,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2019/01/25/操作系统详细/" data-id="cjsj00y4z00002whz5v3t7236" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2019/01/25/操作系统详细/" data-id="cjt4dis980005bchzse611lg9" class="article-share-link">Share</a>
       
       
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/底层/">底层</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/操作系统/">操作系统</a></li></ul>
@@ -441,9 +653,9 @@
     <h2 class="author">YuChou</h2>
     <h3 class="description"></h3>
     <div class="count-box">
-      <a href="/archives"><div><strong>2</strong><br>文章</div></a>
-      <a href="/categories"><div><strong>2</strong><br>分类</div></a>
-      <a href="/tags"><div><strong>3</strong><br>标签</div></a>
+      <a href="/archives"><div><strong>4</strong><br>文章</div></a>
+      <a href="/categories"><div><strong>4</strong><br>分类</div></a>
+      <a href="/tags"><div><strong>5</strong><br>标签</div></a>
     </div>
 
 
