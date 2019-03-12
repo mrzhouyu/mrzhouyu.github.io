@@ -38,9 +38,9 @@
     <h2 class="author">YuChou</h2>
     <h3 class="description"></h3>
     <div class="count-box">
-      <a href="/archives"><div><strong>4</strong><br>文章</div></a>
-      <a href="/categories"><div><strong>4</strong><br>分类</div></a>
-      <a href="/tags"><div><strong>5</strong><br>标签</div></a>
+      <a href="/archives"><div><strong>5</strong><br>文章</div></a>
+      <a href="/categories"><div><strong>5</strong><br>分类</div></a>
+      <a href="/tags"><div><strong>6</strong><br>标签</div></a>
     </div>
     <ul class="blog-link">
      
@@ -65,6 +65,116 @@
 </div>
 
         <section id="main">
+  
+    <article id="title-Selenium一些API整理" class="wow slideInRight article article-type-title" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2019/03/11/Selenium一些API整理/" class="article-date">
+  <time class="post-time" datetime="2019-03-11T13:32:09.000Z" itemprop="datePublished">
+    <span class="post-month">3月</span><br/>
+    <span class="post-day">11</span>
+  </time>
+</a>
+   
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2019/03/11/Selenium一些API整理/">Selenium一些API整理</a>
+    </h1>
+  
+
+        <div>
+          
+  <div class="article-category">
+    <a class="article-category-link" href="/categories/自动化测试/">自动化测试</a>
+  </div>
+
+          
+        </div>
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h3 id="关于一些前提准备条件和说明"><a href="#关于一些前提准备条件和说明" class="headerlink" title="关于一些前提准备条件和说明"></a>关于一些前提准备条件和说明</h3><ul>
+<li><p>支持Chrome、Firefox、IE、Phantomjs等浏览器</p>
+</li>
+<li><p>需要下载对应浏览器的webDriver,其中Phantomjs无头浏览器不需要下载webdriver，其优点是不需要加载网页，速度比较快，Firefox有些条件下可以不用driver</p>
+</li>
+<li>这里引入常见的driver下载地址，<a href="http://chromedriver.storage.googleapis.com/index.html" target="_blank" rel="noopener">Chrome webdriver下载地址一…</a><br>为防止官方下载地址失效，这里备份到文件服务器70.0~73.0 Chrome版本(同一大版本，基本兼容小版本) <a href="http://149.248.3.74/WebDriver/" target="_blank" rel="noopener">Chrome webDrive下载地址二…</a><br>火狐浏览器<a href="https://github.com/mozilla/geckodriver/releases/" target="_blank" rel="noopener">Firefox WebDriver</a> IE浏览器<a href="http://selenium-release.storage.googleapis.com/index.html" target="_blank" rel="noopener">IE webDriver</a></li>
+<li>方法1：webDriver需要放在浏览器安装目录下(执行文件同级目录，并且加入环境变量)。 方法2：直接将webDriver拷贝到脚本同级目录下执行。方法3：<br>导入os包，将脚本执行目录切换到webDriver的目录下(os.chdir(path))</li>
+<li>Phantomjs浏览器安装，<a href="http://phantomjs.org/download.html" target="_blank" rel="noopener">下载地址</a>，win下解压zip包，将bin目录加到系统环境变量，在命令行输入phantomjs，既可看到。<br><a href="http://javascript.ruanyifeng.com/tool/phantomjs.html" target="_blank" rel="noopener">Phantomjs使用教程</a></li>
+<li><p>安装selenium，基于Python的selenium安装，<figure class="highlight plain"><figcaption><span>install selenium```,查看版本 ```pip show selenium```</span></figcaption><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line">+ 最新Firefox和Seleniu兼容有问题，相关解决方案：</span><br><span class="line">   - 安装旧版本Firefox47，同时安装插件firebug和firepath(写爬虫很有用)，这里需要关闭火狐浏览器的自动更新功能(百度查找方法)，</span><br><span class="line">   [Firefox下载地址](http://ftp.mozilla.org/pub/firefox/releases/)</span><br><span class="line">   - Selenium3以前的版本，使用firefox不需要webdriver，3.x后的版本需要安装webdriver，下载地址上有说明</span><br><span class="line">+ 结合的测试框架(基于Python):</span><br><span class="line">   - unittest: 一般python环境自带，示例代码:</span><br><span class="line">   ``` </span><br><span class="line">   import unittest</span><br><span class="line">   </span><br><span class="line">   def fun(x):</span><br><span class="line">       return x + 1</span><br><span class="line">   </span><br><span class="line">   class MyTest(unittest.TestCase):</span><br><span class="line">       def test(self):</span><br><span class="line">           self.assertEqual(fun(3), 4)</span><br></pre></td></tr></table></figure></p>
+<p> <a href="https://blog.csdn.net/baby_hua/article/details/80571109" target="_blank" rel="noopener">使用说明详细</a><br> <br><br> 常见断言：</p>
+ <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line">#msg：判断不成立时需要反馈的字符串</span><br><span class="line">assertEqual(self, first, second, msg=None)</span><br><span class="line">--判断两个参数相等：first == second</span><br><span class="line">assertNotEqual(self, first, second, msg=None)</span><br><span class="line">--判断两个参数不相等：first ！= second</span><br><span class="line">assertIn(self, member, container, msg=None)</span><br><span class="line">--判断是字符串是否包含：member in container</span><br><span class="line">assertNotIn(self, member, container, msg=None)</span><br><span class="line">--判断是字符串是否不包含：member not in container</span><br><span class="line">assertTrue(self, expr, msg=None)</span><br><span class="line">--判断是否为真：expr is True</span><br><span class="line">assertFalse(self, expr, msg=None)</span><br><span class="line">--判断是否为假：expr is False</span><br><span class="line">assertIsNone(self, obj, msg=None)</span><br><span class="line">--判断是否为None：obj is None</span><br><span class="line">assertIsNotNone(self, obj, msg=None)</span><br><span class="line">--判断是否不为None：obj is not None</span><br></pre></td></tr></table></figure>
+<ul>
+<li>unittest2: unittest升级版，详细文档 <a href="https://pypi.org/project/unittest2/" target="_blank" rel="noopener">https://pypi.org/project/unittest2/</a></li>
+<li>py.test:<br><br><br><a href="https://www.jianshu.com/p/6e6275018b7e" target="_blank" rel="noopener">Selenium + Pytest + Allure</a><br><br><br><a href="https://www.jianshu.com/p/15b319ff6cd5?mType=Group" target="_blank" rel="noopener">pytest+allure2+jenkins</a><br><br><br><a href="https://www.cnblogs.com/davieyang/p/10095980.html" target="_blank" rel="noopener">Python&amp;Selenium&amp;pytest借助allure生成自动化测试报告</a></li>
+<li>Nose: Nose是对unittest的扩展，使得python的测试更加简单。nose自动发现测试代码并执行，nose提供了大量的插件，比如测试输出的xUnitcompatible，覆盖报表等等<br><br><br>nose的详细文档：<a href="https://nose.readthedocs.org/en/latest/" target="_blank" rel="noopener">https://nose.readthedocs.org/en/latest/</a><br><br><br>注意：nose本身是支持python3的，但是很多它的插件不支持</li>
+<li>tox:<br><br><br>最大的特色，是自动最测试环境的管理以及使用多个解析器配置进行测试。<br><br><br>tox的详细文档：<a href="http://testrun.org/tox/latest/" target="_blank" rel="noopener">http://testrun.org/tox/latest/</a></li>
+</ul>
+</li>
+</ul>
+<h3 id="Selenium介绍，来源-selenium中文文档"><a href="#Selenium介绍，来源-selenium中文文档" class="headerlink" title="Selenium介绍，来源: selenium中文文档"></a>Selenium介绍，来源: <a href="https://selenium-python-zh.readthedocs.io/en/latest/navigating.html" target="_blank" rel="noopener">selenium中文文档</a></h3><h4 id="注意！！！如果使用远程webDriver，需要安装selenium服务器："><a href="#注意！！！如果使用远程webDriver，需要安装selenium服务器：" class="headerlink" title="注意！！！如果使用远程webDriver，需要安装selenium服务器："></a>注意！！！如果使用远程webDriver，需要安装selenium服务器：</h4><ol>
+<li>需要Java Runtime Environment (JRE) 1.6或者更高的版本是推荐的运行环境。</li>
+<li>server下载地址：<a href="https://www.seleniumhq.org/download/" target="_blank" rel="noopener">下载地址1</a>,我的服务器<a href="http://149.248.3.74/seleniumServer/" target="_blank" rel="noopener">下载地址2</a></li>
+<li>针对以及装好java环境和下载好了server的win系统，命令行运行:<figure class="highlight java"><figcaption><span>-jar selenium-server-standalone-2.x.x.jar```(这里我没有成功，可能是java环境没装好,什么时候用得到远程再来折腾)</span></figcaption><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">&lt;br&gt; linux下```/path/to/java -jar /path/to/selenium-server-standalone-<span class="number">2</span>.x.x.jar</span><br></pre></td></tr></table></figure></li>
+</ol>
+<h4 id="1-打开一个页面"><a href="#1-打开一个页面" class="headerlink" title="1. 打开一个页面"></a>1. 打开一个页面</h4><ul>
+<li><p>导入selenium包后绑定对应浏览器的webdriver<br></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">+ 页面元素查找</span><br><span class="line">   - ```find_element_by_name()</span><br></pre></td></tr></table></figure>
+<ul>
+<li><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">- ```find_element_by_xpath() ```这种定位方式参考 [xpath语法](http://www.w3school.com.cn/xpath/xpath_syntax.asp)一般浏览器自带的源代码检查可以copy xpath格式</span><br><span class="line">- ```find_element_by_css_selector()```参考CSS语法 [selector语法](https://blog.csdn.net/qq_33472765/article/details/80740097)一般浏览器自带的源代码检查可以copy selector格式</span><br><span class="line">- ```find_element_by_tag_name ()``` 标签名定位</span><br><span class="line">- ```find_element_by_link_text()``` ```find_element_by_partial_link_text()```  二者都是点位超链接，第一种需要定位完整的超链接字段，第二种可以匹配部分超链接字段</span><br><span class="line">- ```find_element(By.ID,&quot;kw&quot;)</span><br></pre></td></tr></table></figure>
+</li>
+<li><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">- ```find_element(By.CLASS_NAME,&quot;s_ipt&quot;)</span><br></pre></td></tr></table></figure>
+</li>
+<li><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">- ```find_element(By.LINK_TEXT,u&quot;新闻&quot;)</span><br></pre></td></tr></table></figure>
+</li>
+<li><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">- ```find_element(By.XPATH,&quot;//*[@class=&apos;bg s_btn&apos;]&quot;)</span><br></pre></td></tr></table></figure>
+</li>
+<li><figure class="highlight plain"><figcaption><span>s_btn_wr>input#su") ```</span></figcaption><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">- ```find_elements_by_id()</span><br></pre></td></tr></table></figure>
+</li>
+<li><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">- ```find_elements_by_class_name()</span><br></pre></td></tr></table></figure>
+</li>
+<li><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">- ```find_elements_by_link_text()</span><br></pre></td></tr></table></figure>
+</li>
+<li><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">- ```find_elements_by_xpath()</span><br></pre></td></tr></table></figure>
+</li>
+<li><p><code>find_elements_by_css_selector()</code></p>
+</li>
+</ul>
+</li>
+</ul>
+<ul>
+<li>页面交互<ul>
+<li><code>element.send_keys(&quot;some text&quot;)</code>发送关键词到input</li>
+<li><code>element.send_keys(&quot; and some&quot;, Keys.ARROW_DOWN)</code> 自带的键盘模拟类执行enter</li>
+<li><code>.click</code> 选择</li>
+<li><code>.submit</code>提交表单</li>
+</ul>
+</li>
+</ul>
+<hr>
+<h3 id="更多关于selenium-API参考-中文文档"><a href="#更多关于selenium-API参考-中文文档" class="headerlink" title="更多关于selenium API参考 中文文档"></a>更多关于selenium API参考 <a href="https://selenium-python-zh.readthedocs.io/en/latest/navigating.html#id5" target="_blank" rel="noopener">中文文档</a></h3>
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://yoursite.com/2019/03/11/Selenium一些API整理/" data-id="cjt5tm0hk0006k8hzxpy13af3" class="article-share-link">Share</a>
+      
+      
+  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Selenium/">Selenium</a></li></ul>
+
+    </footer>
+  </div>
+  
+</article>
+
+
+
+
   
     <article id="title-各种协议" class="wow slideInRight article article-type-title" itemscope itemprop="blogPost">
   <div class="article-meta">
@@ -118,7 +228,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2019/03/11/各种协议/" data-id="cjt4dis8w0000bchzw4222vio" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2019/03/11/各种协议/" data-id="cjt5tm0h70000k8hzzx8h4ub7" class="article-share-link">Share</a>
       
       
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/协议/">协议</a></li></ul>
@@ -231,7 +341,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2019/03/11/数据结构/" data-id="cjt4dis940002bchzn9hbmbcn" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2019/03/11/数据结构/" data-id="cjt5tm0hf0002k8hzp1aqxhb2" class="article-share-link">Share</a>
       
       
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/数据结构/">数据结构</a></li></ul>
@@ -520,7 +630,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2019/02/24/软件测试/" data-id="cjt4dis9b0006bchzyqsgize0" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2019/02/24/软件测试/" data-id="cjt5tm0hm0007k8hzbb9vmzde" class="article-share-link">Share</a>
       
       
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/技术/">技术</a></li></ul>
@@ -599,7 +709,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2019/01/25/操作系统详细/" data-id="cjt4dis980005bchzse611lg9" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2019/01/25/操作系统详细/" data-id="cjt5tm0ho0008k8hza6x77fce" class="article-share-link">Share</a>
       
       
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/底层/">底层</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/操作系统/">操作系统</a></li></ul>
@@ -653,9 +763,9 @@
     <h2 class="author">YuChou</h2>
     <h3 class="description"></h3>
     <div class="count-box">
-      <a href="/archives"><div><strong>4</strong><br>文章</div></a>
-      <a href="/categories"><div><strong>4</strong><br>分类</div></a>
-      <a href="/tags"><div><strong>5</strong><br>标签</div></a>
+      <a href="/archives"><div><strong>5</strong><br>文章</div></a>
+      <a href="/categories"><div><strong>5</strong><br>分类</div></a>
+      <a href="/tags"><div><strong>6</strong><br>标签</div></a>
     </div>
 
 
