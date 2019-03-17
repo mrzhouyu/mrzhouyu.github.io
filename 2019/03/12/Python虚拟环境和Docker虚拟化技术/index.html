@@ -18,7 +18,7 @@
 <meta property="og:image" content="http://149.248.3.74/bg/3.12/1552400421(1">
 <meta property="og:image" content="http://149.248.3.74/bg/3.12/1552400853(1">
 <meta property="og:image" content="http://149.248.3.74/bg/3.12/1552402101(1">
-<meta property="og:updated_time" content="2019-03-17T08:07:18.643Z">
+<meta property="og:updated_time" content="2019-03-17T10:23:47.596Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Python虚拟环境和Docker虚拟化技术">
 <meta name="twitter:description" content="一、Python虚拟环境搭建注意： pip freeze &amp;gt; requirements.txt将环境里的依赖包写入文件，pip install -r requirements.txt将文件里的依赖包统一安装确保部署环境包版本一致 1.virtualenvwindow下搭建 安装python环境，将bin文件夹加入到系统环境变量，确保命令行下能显示pip版本 pip -V 安装virtuale">
@@ -115,7 +115,7 @@
 <h3 id="1-virtualenv"><a href="#1-virtualenv" class="headerlink" title="1.virtualenv"></a>1.virtualenv</h3><h4 id="window下搭建"><a href="#window下搭建" class="headerlink" title="window下搭建"></a>window下搭建</h4><ul>
 <li>安装python环境，将bin文件夹加入到系统环境变量，确保命令行下能显示pip版本 <code>pip -V</code></li>
 <li>安装virtualenv: <br><br><img src="http://149.248.3.74/bg/3.12/%e5%ae%89%e8%a3%85virtualenv.jpg" alt="安装"></li>
-<li>查看是否安装成功: <code>virtualenv --version</code><br><br><img src="http://149.248.3.74/bg/3.12/1552400124(1" alt="">.png)</li>
+<li>查看是否安装成功: <code>virtualenv --version</code><br><br><img src="http://149.248.3.74/bg/3.12/1552400124(1" alt="aa">.png)</li>
 <li><p>创建第一个虚拟环境：</p>
 <ul>
 <li>切换到需要的目录下</li>
@@ -125,7 +125,7 @@
 </li>
 <li><p>进入虚拟环境:</p>
 <ul>
-<li>进入Scripts文件夹命令行执行activate.bat文件进入虚拟环境</li>
+<li>进入Scripts文件夹命令行执行<code>activate.bat</code>文件进入虚拟环境</li>
 <li>有图可见pip list是干净的，没有太多库</li>
 <li>至此就可以安装需要在开发项目用到的库了如: <code>pip install -U django</code>来开发单独的django项目</li>
 <li>注意进入虚拟环境可以看到前面括号的内容</li>
@@ -142,79 +142,111 @@
 <li>Ubuntu Precise 12.04[LTS]</li>
 </ul>
 <h4 id="2-内核版本"><a href="#2-内核版本" class="headerlink" title="2.内核版本"></a>2.内核版本</h4><ul>
-<li><p>Docker需要64位操作系统，kernel版本需要3.10以上 查看系统内核版本 <figure class="highlight plain"><figcaption><span>-r```</span></figcaption><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">#### 3.安装方式 ubuntu16.04</span><br><span class="line">   </span><br><span class="line">   + 安装之前先卸载旧版本</span><br></pre></td></tr></table></figure></p>
-<p>sudo apt-get remove docker docker-engine dockre.io containerd runc</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">+ 安装方法一：使用脚本安装</span><br><span class="line">   - ```sudo apt install curl</span><br></pre></td></tr></table></figure>
+<li>Docker需要64位操作系统，kernel版本需要3.10以上 查看系统内核版本 <code>uname -r</code></li>
+</ul>
+<h4 id="3-安装方式-ubuntu16-04"><a href="#3-安装方式-ubuntu16-04" class="headerlink" title="3.安装方式 ubuntu16.04"></a>3.安装方式 ubuntu16.04</h4><ul>
+<li>安装之前先卸载旧版本: <code>sudo apt-get remove docker docker-engine dockre.io containerd runc</code></li>
+<li><p>安装方法一：使用脚本安装</p>
 <ul>
-<li><figure class="highlight plain"><figcaption><span>-fsSL get.docker.com -o get-docker.sh```</span></figcaption><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">- ```sudo sh get-docker.sh --mirror Aliyun</span><br></pre></td></tr></table></figure>
-</li>
-<li><p>至此所有工作准备好，Docker CE 的Edge版本也安装在系统中</p>
-</li>
+<li><code>sudo apt install curl</code></li>
+<li><code>curl -fsSL get.docker.com -o get-docker.sh</code></li>
+<li><code>sudo sh get-docker.sh --mirror Aliyun</code></li>
+<li>至此所有工作准备好，Docker CE 的Edge版本也安装在系统中</li>
 </ul>
 </li>
 <li><p>安装方法二：使用APT安装</p>
 <ul>
-<li><p>由于 apt 源使用 HTTPS 以确保软件下载过程中不被篡改。因此，我们首先需要添加使用 HTTPS 传输的软件包以及 CA 证书。<br><br> <figure class="highlight plain"><figcaption><span>apt-get install </span></figcaption><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">apt-transport-https </span><br><span class="line">ca-certificates </span><br><span class="line">curl </span><br><span class="line">software-properties-common</span><br></pre></td></tr></table></figure></p>
-</li>
-<li><p>使用国内源：需要添加软件源的 GPG 密钥。<br></p>
-<figure class="highlight plain"><figcaption><span>-fsSL</span><a href="https://mirrors.ustc.edu.cn/docker-ce/linux/ubuntu/gpg" target="_blank" rel="noopener">| sudo apt-key add -```</a></figcaption><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">&lt;br&gt;或&lt;br&gt;```curl -fsSL https://download.docker.com/linux/ubuntu/gpg | sudo apt-key add -</span><br></pre></td></tr></table></figure>
-</li>
-<li><p>向souece.list添加docke软件源<br><br></p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">sudo add-apt-repository </span><br><span class="line">    &quot;deb [arch=amd64] https://mirrors.ustc.edu.cn/docker-ce/linux/ubuntu $(lsb_release -cs) </span><br><span class="line">    stable&quot;</span><br></pre></td></tr></table></figure>
-<p><br><strong>以上命令会添加稳定版本的 Docker CE APT 镜像源，如果需要测试或每日构建版本的 Docker CE 请将 stable 改为 test 或者 nightly</strong></p>
-</li>
-<li><p>安装Docker CE</p>
-<figure class="highlight plain"><figcaption><span>apt-get update```   ```sudo apt-get install docker-ce```</span></figcaption><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">   - 参考[https://yeasy.gitbooks.io/docker_practice/install/ubuntu.html](https://yeasy.gitbooks.io/docker_practice/install/ubuntu.html)</span><br><span class="line">+ 启动Docker CE</span><br><span class="line">   - ```sudo systemctl enable docker``` ```sudo systemctl start docker</span><br></pre></td></tr></table></figure>
-</li>
-<li><p>ubuntu14.04使用  <figure class="highlight plain"><figcaption><span>service docker start```启动</span></figcaption><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">#### 4.建立 docker 用户组</span><br><span class="line">   + *默认情况下，docker 命令会使用 Unix socket 与 Docker 引擎通讯。而只有 root 用户和 docker 组的用户才可以访问 Docker 引擎的 Unix socket。出于安全考虑，一般 Linux 系统上不会直接使用 root 用户。因此，更好地做法是将需要使用 docker 的用户加入 docker 用户组*</span><br><span class="line">   + 建立docker组：```sudo groupadd docker</span><br></pre></td></tr></table></figure></p>
-</li>
+<li>由于 apt 源使用 HTTPS 以确保软件下载过程中不被篡改。因此，我们首先需要添加使用 HTTPS 传输的软件包以及 CA 证书。<br>`sudo apt-get install <pre><code>apt-transport-https 
+ca-certificates 
+curl 
+software-properties-common`
+</code></pre></li>
+<li>使用国内源：需要添加软件源的 GPG 密钥。<br><br><code>curl -fsSL https://mirrors.ustc.edu.cn/docker-ce/linux/ubuntu/gpg | sudo apt-key add -</code><br><code>curl -fsSL https://download.docker.com/linux/ubuntu/gpg | sudo apt-key add -</code></li>
+<li>向souece.list添加docke软件源<br><br><br><code>sudo add-apt-repository 
+  &quot;deb [arch=amd64] https://mirrors.ustc.edu.cn/docker-ce/linux/ubuntu $(lsb_release -cs) 
+  stable&quot;</code><br><br><strong>以上命令会添加稳定版本的 Docker CE APT 镜像源，如果需要测试或每日构建版本的 Docker CE 请将 stable 改为 test 或者 nightly</strong></li>
+<li>安装Docker CE<br><code>sudo apt-get update</code>   <code>sudo apt-get install docker-ce</code></li>
+<li>参考<a href="https://yeasy.gitbooks.io/docker_practice/install/ubuntu.html" target="_blank" rel="noopener">https://yeasy.gitbooks.io/docker_practice/install/ubuntu=.html</a></li>
 </ul>
 </li>
-<li><p>当前用户加入docker组：<figure class="highlight plain"><figcaption><span>usermod -aG docker $USER```</span></figcaption><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">#### 5.测试docker是否安装正确</span><br><span class="line">   + ```docker run hello-world</span><br></pre></td></tr></table></figure></p>
-</li>
+<li>启动Docker CE<ul>
+<li><code>sudo systemctl enable docker</code> ,<code>sudo systemctl start docker</code></li>
+<li>ubuntu14.04使用  <code>sudo service docker start</code>启动<h4 id="4-建立-docker-用户组"><a href="#4-建立-docker-用户组" class="headerlink" title="4.建立 docker 用户组"></a>4.建立 docker 用户组</h4></li>
 </ul>
-<h4 id="6-镜像加速"><a href="#6-镜像加速" class="headerlink" title="6.镜像加速"></a>6.镜像加速</h4><ul>
-<li>Dokcer官方中国镜像地址：<a href="https://registry.docker-cn.com" target="_blank" rel="noopener">https://registry.docker-cn.com</a></li>
-<li>阿里云加速器：<a href="https://cr.console.aliyun.com/cn-hangzhou/mirrors" target="_blank" rel="noopener">https://cr.console.aliyun.com/cn-hangzhou/mirrors</a></li>
-<li>七牛云加速器：<a href="https://kirk-enterprise.github.io/hub-docs/#/user-guide/mirror" target="_blank" rel="noopener">https://kirk-enterprise.github.io/hub-docs/#/user-guide/mirror</a></li>
+</li>
+<li>默认情况下，docker 命令会使用 Unix socket 与 Docker 引擎通讯。而只有 root 用户和 docker 组的用户才可以访问 Docker 引擎的 Unix socket。出于安全考虑，一般 Linux 系统上不会直接使用 root 用户。因此，更好地做法是将需要使用 docker 的用户加入 docker 用户组。</li>
+<li>建立docker组：<code>sudo groupadd docker</code></li>
+<li>当前用户加入docker组：<code>sudo usermod -aG docker $USER</code><h4 id="5-测试docker是否安装正确"><a href="#5-测试docker是否安装正确" class="headerlink" title="5.测试docker是否安装正确"></a>5.测试docker是否安装正确</h4></li>
+<li><code>docker run hello-world</code><h4 id="6-镜像加速"><a href="#6-镜像加速" class="headerlink" title="6.镜像加速"></a>6.镜像加速</h4></li>
+<li><a href="https://registry.docker-cn.com" target="_blank" rel="noopener">Dokcer官方中国镜像地址</a></li>
+<li><a href="https://cr.console.aliyun.com/cn-hangzhou/mirrors" target="_blank" rel="noopener">阿里云加速器</a></li>
+<li><a href="[https://kirk-enterprise.github.io/hub-docs/#/user-guide/mirror">七牛云加速器</a></li>
 <li><p>添加：对于使用 systemd 的系统，请在 /etc/docker/daemon.json 中写入如下内容（如果文件不存在请新建该文件<br><br> <strong>注意保证json规范</strong></p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">&#123;</span><br><span class="line">  &quot;registry-mirrors&quot;: [</span><br><span class="line">    &quot;https://registry.docker-cn.com&quot;</span><br><span class="line">  ]</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 </li>
-<li><p>重启服务：<figure class="highlight plain"><figcaption><span>systemctl daemon-reload``` ```sudo systemctl restart docker```</span></figcaption><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">+ 检查加速器是否生效：```docker info```出现如下：</span><br><span class="line">&lt;br&gt;</span><br></pre></td></tr></table></figure></p>
-<p>Registry Mirrors:<br><a href="https://registry.docker-cn.com/" target="_blank" rel="noopener">https://registry.docker-cn.com/</a></p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">#### 7.下载运行</span><br><span class="line">   + 默认下载地址  Docker Hub</span><br><span class="line">   + 下载 ```docker pull [选项] [Docker Registry 地址[:端口号]/]仓库名[:标签]``` </span><br><span class="line">      - Docker 镜像仓库地址：地址的格式一般是 &lt;域名/IP&gt;[:端口号]。默认地址是 Docker Hub。</span><br><span class="line">        仓库名：如之前所说，这里的仓库名是两段式名称，即 &lt;用户名&gt;/&lt;软件名&gt;。对于 Docker Hub，如果不给出用户名，则默认为 library，也就是官方镜像</span><br><span class="line">   + 运行某个镜像：</span><br></pre></td></tr></table></figure>
-<p>docker run -it –rm \</p>
-<pre><code>ubuntu:18.04 \
+<li><p>重启服务：<code>sudo systemctl daemon-reload</code> <code>sudo systemctl restart docker</code></p>
+</li>
+<li>检查加速器是否生效：<code>docker info</code>出现如下：<br><br><br><code>Registry Mirrors:
+https://registry.docker-cn.com/</code><h4 id="7-下载运行"><a href="#7-下载运行" class="headerlink" title="7.下载运行"></a>7.下载运行</h4></li>
+<li>默认下载地址  Docker Hub</li>
+<li>下载 <code>docker pull [选项] [Docker Registry 地址[:端口号]/]仓库名[:标签]</code><ul>
+<li>Docker 镜像仓库地址：地址的格式一般是 &lt;域名/IP&gt;[:端口号]。默认地址是 Docker Hub。<br>仓库名：如之前所说，这里的仓库名是两段式名称，即 &lt;用户名&gt;/&lt;软件名&gt;。对于 Docker Hub，如果不给出用户名，则默认为 library，也就是官方镜像</li>
+</ul>
+</li>
+<li>运行某个镜像：<br>`<br>docker run -it –rm \<pre><code>ubuntu:18.04 \
 bash
-</code></pre><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">   + -it：这是两个参数，一个是 -i：交互式操作，一个是 -t 终端。我们这里打算进入 bash 执行一些命令并查看返回结果，因此我们需要交互式终端。</span><br><span class="line">     --rm：这个参数是说容器退出后随之将其删除。默认情况下，为了排障需求，退出的容器并不会立即删除，除非手动 docker rm。我们这里只是随便执行个命令，看看结果，不需要排障和保留结果，因此使用 --rm 可以避免浪费空间。</span><br><span class="line">     ubuntu:18.04：这是指用 ubuntu:18.04 镜像为基础来启动容器。</span><br><span class="line">     bash：放在镜像名后的是命令，这里我们希望有个交互式 Shell，因此用的是 bash</span><br><span class="line">   + 一般的命令提示可以 ```docker command --help``` 来查看帮助使用</span><br><span class="line">#### 8.列出与删除</span><br><span class="line">   + 列出：```docker image ls</span><br></pre></td></tr></table></figure>
-</li>
-<li><p>便捷的查看镜像、容器、数据卷所占用的空间：<figure class="highlight docker"><figcaption><span>system df```</span></figcaption><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">+ 虚悬镜像(dangling image)：镜像既没有仓库名，也没有标签，均为 &lt;none&gt;，可以使用```docker image ls -f dangling=true```列出 ， 使用```docker image prune```删除</span><br><span class="line">+ 中间层镜像查看：```docker image ls -a</span><br></pre></td></tr></table></figure></p>
-</li>
-<li><p>支持查询过滤：<figure class="highlight docker"><figcaption><span>image ls -f since</span></figcaption><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">+ 安装id列出：```docker image ls -q</span><br></pre></td></tr></table></figure></p>
-</li>
-<li><p>go模板语法：<figure class="highlight docker"><figcaption><span>image ls --format "&#123;&#123;.ID&#125;&#125;: &#123;&#123;.Repository&#125;&#125;```</span></figcaption><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">+ 删除:```docker image rm [选项] &lt;镜像<span class="number">1</span>&gt; [&lt;镜像<span class="number">2</span>&gt; ...]```&lt;br&gt;</span><br><span class="line">*其中，&lt;镜像&gt; 可以是 镜像短 ID、镜像长 ID、镜像名 或者 镜像摘要*</span><br><span class="line">+ 显示镜像摘要：```docker image ls --digests</span><br></pre></td></tr></table></figure></p>
-</li>
-<li><p>所以并非所有的 docker image rm 都会产生删除镜像的行为，有可能仅仅是取消了某个标签而已</p>
-</li>
+</code></pre>`</li>
+<li>-it：这是两个参数，一个是 -i：交互式操作，一个是 -t 终端。我们这里打算进入 bash 执行一些命令并查看返回结果，因此我们需要交互式终端。<br>–rm：这个参数是说容器退出后随之将其删除。默认情况下，为了排障需求，退出的容器并不会立即删除，除非手动 docker rm。我们这里只是随便执行个命令，看看结果，不需要排障和保留结果，因此使用 –rm 可以避免浪费空间。<br>ubuntu:18.04：这是指用 ubuntu:18.04 镜像为基础来启动容器。<br>bash：放在镜像名后的是命令，这里我们希望有个交互式 Shell，因此用的是 bash</li>
+<li>一般的命令提示可以 <code>docker command --help</code> 来查看帮助使用<h4 id="8-列出与删除"><a href="#8-列出与删除" class="headerlink" title="8.列出与删除"></a>8.列出与删除</h4></li>
+<li>列出：<code>docker image ls</code></li>
+<li>便捷的查看镜像、容器、数据卷所占用的空间：<code>docker system df</code></li>
+<li>虚悬镜像(dangling image)：镜像既没有仓库名，也没有标签，均为 <none>，可以使用<code>docker image ls -f dangling=true</code>列出 ， 使用<code>docker image prune</code>删除</none></li>
+<li>中间层镜像查看：<code>docker image ls -a</code></li>
+<li>支持查询过滤：<code>docker image ls -f since=ubuntu</code>表示查询该镜像创建以来的所有镜像。其他的过滤规则：before、label。。。</li>
+<li>安装id列出：<code>docker image ls -q</code></li>
+<li>go模板语法：<code>docker image ls --format &quot;: &quot;</code></li>
+<li>删除:<code>docker image rm [选项] &lt;镜像1&gt; [&lt;镜像2&gt; ...]</code><br><br><em>其中，&lt;镜像&gt; 可以是 镜像短 ID、镜像长 ID、镜像名 或者 镜像摘要</em></li>
+<li>显示镜像摘要：<code>docker image ls --digests</code></li>
+<li>所以并非所有的 docker image rm 都会产生删除镜像的行为，有可能仅仅是取消了某个标签而已</li>
 <li>当该镜像所有的标签都被取消了，该镜像很可能会失去了存在的意义，因此会触发删除行为</li>
-<li><p>命令的配合使用：如：<figure class="highlight docker"><figcaption><span>image rm $(docker image ls -q redis)```</span></figcaption><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">#### 9.利用 commit 理解镜像构成</span></span><br><span class="line">   + docker commit 命令除了学习之外，还有一些特殊的应用场合，比如被入侵后保存现场等。但是，不要使用 docker commit 定制镜像，定制镜像应该使用 Dockerfile 来完成</span><br><span class="line">   + 镜像是多层存储，每一层是在前一层的基础上进行的修改；而容器同样也是多层存储，是在以镜像为基础层，在其基础上加一层作为容器运行时的存储层&lt;br&gt;</span><br><span class="line">   + ```docker <span class="keyword">run</span> --name webserver -d -p 80:80 nginx``` 这条命令会用 nginx 镜像启动一个容器，命名为 webserver，并且映射了 80 端口，这样我们可以用浏览器去访问这个 nginx 服务器</span><br><span class="line">   **不建议使用commit来提交在原有镜像基础上构造出来的新的镜像，而是用Dockerfile来build来构建**</span><br><span class="line">#### 10.使用Dockerfile定制自己的镜像</span><br><span class="line">   + 大概就是通过一个类似写一个"脚本"(dockerfile)来通过已有容器上创建或者定制新的镜像，并且保存记录</span><br><span class="line">   + 准备：</span><br><span class="line">      - 当前环境下创建空目录 ```mkdir nginx_dockerfile</span><br></pre></td></tr></table></figure></p>
-<ul>
-<li>进入目录 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line">      - 创建文件 ```touch Dockerfile``` 这一行必须一模一样，大写</span><br><span class="line">      - 编辑 ```vim Dockerfile``` 可以按照Dockerfile的 ”语法来写“(FROM、RUN...)</span><br><span class="line">         - FROM: 必不可少的命令，从某个镜像作为基。如 FROM &lt;image_name&gt; ，或者 FROM &lt;image_name&gt;:&lt;tag&gt;. 如果不加tag，默认为latest。先从本地镜像仓库去搜索基镜像，如过本地没有，在去网上docker registry去寻找。</span><br><span class="line">         - MAINTAINER：标明该Dockerfile作者及联系方式，可忽略不写</span><br><span class="line">         - RUN：建立新的镜像时，可以执行在系统里的命令，如安装特定的软件以及设置环境变量</span><br><span class="line">         - ENV：设置系统环境变量（注意：写在/etc/profile里的命令在dockerfile这里会不生效，所以为改成ENV的方式）</span><br><span class="line">         - 开放容器内的端口，但不和宿主机进行映射。方便在宿主机上进行开发测试。（如需映射到宿主机端口，可在运行容器时使用 -p host_port:container_port）</span><br><span class="line">         - CMD：设置执行的命令，经常用于容器启动时指定的某个操作。如执行自定义脚本服务，或者是执行系统命令。CMD 只能存在一条，如在Dockerfile中有多条CMD的话，只有最后一条CMD生效</span><br><span class="line">         - ......</span><br><span class="line">   + 创建镜像：在当前目录下执行```docker build -t new_image_name .```，注意后面的```.```表示当前目录，因为当前工作环境就在这个目录下，也可以指定Dockerfile所在的目录</span><br><span class="line">   + 可以在已经创建的镜像上创建新的容器：```docker run -d -it --name new_image_name2 new_image_name``</span><br><span class="line"></span><br><span class="line">#### 11.容器操作</span><br><span class="line">   + 创建容器：```docker run -dit ubuntu``` ，d参数：守护运行(后台),i参数：分配一个伪终端（pseudo-tty）并绑定到容器的标准输入上，-i 则让容器的标准输入保持打开。</span><br><span class="line">   + 列出容器：```docker container ls</span><br></pre></td></tr></table></figure></li>
+<li>命令的配合使用：如：<code>docker image rm $(docker image ls -q redis)</code><h4 id="9-利用-commit-理解镜像构成"><a href="#9-利用-commit-理解镜像构成" class="headerlink" title="9.利用 commit 理解镜像构成"></a>9.利用 commit 理解镜像构成</h4></li>
+<li>docker commit 命令除了学习之外，还有一些特殊的应用场合，比如被入侵后保存现场等。但是，不要使用 docker commit 定制镜像，定制镜像应该使用 Dockerfile 来完成</li>
+<li>镜像是多层存储，每一层是在前一层的基础上进行的修改；而容器同样也是多层存储，是在以镜像为基础层，在其基础上加一层作为容器运行时的存储层<br></li>
+<li><code>docker run --name webserver -d -p 80:80 nginx</code> 这条命令会用 nginx 镜像启动一个容器，命名为 webserver，并且映射了 80 端口，这样我们可以用浏览器去访问这个 nginx 服务器<br><strong>不建议使用commit来提交在原有镜像基础上构造出来的新的镜像，而是用Dockerfile来build来构建</strong><h4 id="10-使用Dockerfile定制自己的镜像"><a href="#10-使用Dockerfile定制自己的镜像" class="headerlink" title="10.使用Dockerfile定制自己的镜像"></a>10.使用Dockerfile定制自己的镜像</h4></li>
+<li>大概就是通过一个类似写一个”脚本”(dockerfile)来通过已有容器上创建或者定制新的镜像，并且保存记录</li>
+<li>准备：<ul>
+<li>当前环境下创建空目录 <code>mkdir nginx_dockerfile</code></li>
+<li>进入目录 <code>nginx_dockerfile</code></li>
+<li>创建文件 <code>touch Dockerfile</code>这一行必须一模一样，大写</li>
+<li>编辑 <code>vim Dockerfile</code> 可以按照Dockerfile的 “语法来写”(FROM、RUN…)<ul>
+<li>FROM: 必不可少的命令，从某个镜像作为基。如 <code>FROM &lt;image_name&gt;</code> ，或者 <code>FROM &lt;image_name&gt;:&lt;tag&gt;.</code> 如果不加tag，默认为latest。先从本地镜像仓库去搜索基镜像，如过本地没有，在去网上docker registry去寻找。</li>
+<li>MAINTAINER：标明该Dockerfile作者及联系方式，可忽略不写</li>
+<li>RUN：建立新的镜像时，可以执行在系统里的命令，如安装特定的软件以及设置环境变量</li>
+<li>ENV：设置系统环境变量（注意：写在/etc/profile里的命令在dockerfile这里会不生效，所以为改成ENV的方式）</li>
+<li>开放容器内的端口，但不和宿主机进行映射。方便在宿主机上进行开发测试。（如需映射到宿主机端口，可在运行容器时使用 -p host_port:container_port）</li>
+<li>CMD：设置执行的命令，经常用于容器启动时指定的某个操作。如执行自定义脚本服务，或者是执行系统命令。CMD 只能存在一条，如在Dockerfile中有多条CMD的话，只有最后一条CMD生效</li>
+<li>。。。。。。</li>
 </ul>
 </li>
-<li><p>进入容器1：<figure class="highlight docker"><figcaption><span>attach ID```  退出：```exit```容器终止</span></figcaption><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">+ 进入容器<span class="number">2</span>：``` docker exec -it ID bash``` 退出： ```exit``` 容器不会终止  帮助：```docker exec --help</span><br></pre></td></tr></table></figure></p>
-</li>
-<li><p>启动已经停止的容器： <figure class="highlight docker"><figcaption><span>container start```</span></figcaption><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">+ 导出容器：```docker export ID &gt; name.tar</span><br></pre></td></tr></table></figure></p>
-</li>
-<li><p>导入容器：<figure class="highlight plain"><figcaption><span>name.tar | docker import - test/ubuntu:v1.0```.  也可以通过url或者路径导入：```docker import</span><a href="http://example.com/exampleimage.tgz" target="_blank" rel="noopener">example/imagerepo```</a></figcaption><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">+ 删除终止状态容器：```docker container rm  trusting_newton``` 。删除运行中的容器：加 -f 参数</span><br><span class="line">+ 清理所有终止状态的容器： ```docker container prune</span><br></pre></td></tr></table></figure></p>
-</li>
 </ul>
-<h4 id="12-访问远程仓库"><a href="#12-访问远程仓库" class="headerlink" title="12.访问远程仓库"></a>12.访问远程仓库</h4><ul>
+</li>
+<li>创建镜像：在当前目录下执行<code>docker build -t new_image_name .</code>，注意后面的<code>.</code>表示当前目录，因为当前工作环境就在这个目录下，也可以指定Dockerfile所在的目录</li>
+<li>可以在已经创建的镜像上创建新的容器：<code>docker run -d -it --name new_image_name2 new_image_name</code></li>
+</ul>
+<h4 id="11-容器操作"><a href="#11-容器操作" class="headerlink" title="11.容器操作"></a>11.容器操作</h4><ul>
+<li>创建容器：<code>docker run -dit ubuntu</code> ，d参数：守护运行(后台),i参数：分配一个伪终端（pseudo-tty）并绑定到容器的标准输入上，-i 则让容器的标准输入保持打开。</li>
+<li>列出容器：<code>docker container ls</code></li>
+<li>进入容器1：<code>docker attach ID</code>  退出：<code>exit</code>容器终止</li>
+<li>进入容器2：<code>docker exec -it ID bash</code> 退出： <code>exit</code> 容器不会终止  帮助：<code>docker exec --help</code></li>
+<li>启动已经停止的容器： <code>docker container start</code></li>
+<li>导出容器：<code>docker export ID &gt; name.tar</code></li>
+<li>导入容器：<code>cat name.tar | docker import - test/ubuntu:v10</code>。  也可以通过url或者路径导入：<code>docker import http://example.com/exampleimage.tgz example/imagerepo</code></li>
+<li>删除终止状态容器：<code>docker container rm  trusting_newton</code> 。删除运行中的容器：加 -f 参数</li>
+<li>清理所有终止状态的容器： <code>docker container prune</code><h4 id="12-访问远程仓库"><a href="#12-访问远程仓库" class="headerlink" title="12.访问远程仓库"></a>12.访问远程仓库</h4></li>
 <li><a href="https://hub.docker.com/" target="_blank" rel="noopener">注册</a></li>
-<li><p>宿主机登录: <figure class="highlight docker"><figcaption><span>login```</span></figcaption><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">+ 宿主机退出登录：```logout</span><br></pre></td></tr></table></figure></p>
-</li>
-<li><p>搜索： <code>docker search YouImageName</code></p>
-</li>
+<li>宿主机登录: <code>docker login</code></li>
+<li>宿主机退出登录：<code>logout</code></li>
+<li>搜索： <code>docker search YouImageName</code></li>
 </ul>
 <hr>
 <p>2019/3/17 15:53:53 </p>
@@ -222,7 +254,7 @@ bash
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2019/03/12/Python虚拟环境和Docker虚拟化技术/" data-id="cjtcn0dgp0001uwhz6uy4xo0x" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2019/03/12/Python虚拟环境和Docker虚拟化技术/" data-id="cjtcqbd540002s4hzbkkude1d" class="article-share-link">Share</a>
       
       
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/环境/">环境</a></li></ul>
