@@ -1,0 +1,363 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  
+  <title>robotframework初窥 | YuChou</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  <meta name="description" content="1.环境准备###  Python环境，利用Anaconda安装集成环境(pip、conda等也一并安装)我这里用默认的Python3.7,确保Scripts、lib、Anaconda等等文件夹加到了环境变量下。 下载地址 安装robotframwork，python -m pip install -U robotframework 安装图形界面：pip install robotframewor">
+<meta name="keywords" content="robotframework">
+<meta property="og:type" content="article">
+<meta property="og:title" content="robotframework初窥">
+<meta property="og:url" content="http://yoursite.com/2019/03/18/robotframework学习/index.html">
+<meta property="og:site_name" content="YuChou">
+<meta property="og:description" content="1.环境准备###  Python环境，利用Anaconda安装集成环境(pip、conda等也一并安装)我这里用默认的Python3.7,确保Scripts、lib、Anaconda等等文件夹加到了环境变量下。 下载地址 安装robotframwork，python -m pip install -U robotframework 安装图形界面：pip install robotframewor">
+<meta property="og:locale" content="zh-Hans">
+<meta property="og:image" content="http://149.248.3.74/robotframework/1.png">
+<meta property="og:image" content="http://149.248.3.74/robotframework/2.png">
+<meta property="og:image" content="http://149.248.3.74/robotframework/3.png">
+<meta property="og:image" content="http://149.248.3.74/robotframework/4.png">
+<meta property="og:image" content="http://149.248.3.74/robotframework/5.png">
+<meta property="og:image" content="http://149.248.3.74/robotframework/6.png">
+<meta property="og:image" content="http://149.248.3.74/robotframework/7.png">
+<meta property="og:image" content="http://149.248.3.74/robotframework/8.png">
+<meta property="og:image" content="http://149.248.3.74/robotframework/9.png">
+<meta property="og:image" content="http://149.248.3.74/robotframework/10.png">
+<meta property="og:updated_time" content="2019-03-22T14:24:27.162Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="robotframework初窥">
+<meta name="twitter:description" content="1.环境准备###  Python环境，利用Anaconda安装集成环境(pip、conda等也一并安装)我这里用默认的Python3.7,确保Scripts、lib、Anaconda等等文件夹加到了环境变量下。 下载地址 安装robotframwork，python -m pip install -U robotframework 安装图形界面：pip install robotframewor">
+<meta name="twitter:image" content="http://149.248.3.74/robotframework/1.png">
+  
+    <link rel="alternate" href="/atom.xml" title="YuChou" type="application/atom+xml">
+  
+  
+    <link rel="icon" href="/favicon.png">
+  
+  
+    <link href="//fonts.googleapis.com/css?family=Source+Code+Pro" rel="stylesheet" type="text/css">
+  
+  <link rel="stylesheet" href="/css/style.css">
+  <link rel="stylesheet" href="/plugin/bganimation/bg.css">
+  
+
+</head>
+
+<body>
+  <div id="container">
+    <div id="wrap">
+      <div class="outer">
+        <div class="widget-wrap mobile-header">
+  <h3 class="widget-title"></h3>
+  <div class="widget">
+    <img class="avatar" src="http://149.248.3.74/Photos/titleImage/AF359E06C1819F0FA30D32DA9F0E8EB6.png">
+    <h2 class="author">YuChou</h2>
+    <h3 class="description"></h3>
+    <div class="count-box">
+      <a href="/archives"><div><strong>8</strong><br>文章</div></a>
+      <a href="/categories"><div><strong>6</strong><br>分类</div></a>
+      <a href="/tags"><div><strong>9</strong><br>标签</div></a>
+    </div>
+    <ul class="blog-link">
+     
+          <a href="/" title="Home">
+            <li>主页</li>
+          </a>
+        
+          <a href="/archives/" title="Archives">
+            <li>归档</li>
+          </a>
+        
+          <a href="/categories/" title="Categories">
+            <li>分类</li>
+          </a>
+        
+          <a href="/tags/" title="Tags">
+            <li>标签</li>
+          </a>
+        
+    </ul>
+  </div>
+</div>
+
+        <section id="main"><article id="post-robotframework学习" class="wow slideInRight article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2019/03/18/robotframework学习/" class="article-date">
+  <time class="post-time" datetime="2019-03-18T14:38:07.000Z" itemprop="datePublished">
+    <span class="post-month">3月</span><br/>
+    <span class="post-day">18</span>
+  </time>
+</a>
+   
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 class="article-title" itemprop="name">
+      robotframework初窥
+    </h1>
+  
+
+        <div>
+          
+  <div class="article-category">
+    <a class="article-category-link" href="/categories/自动化测试/">自动化测试</a>
+  </div>
+
+          
+              
+
+          
+        </div>
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h2 id="1-环境准备"><a href="#1-环境准备" class="headerlink" title="1.环境准备"></a>1.环境准备</h2><p>###</p>
+<ol>
+<li>Python环境，利用Anaconda安装集成环境(pip、conda等也一并安装)我这里用默认的Python3.7,确保Scripts、lib、Anaconda等等文件夹加到了环境变量下。 <a href="https://mirrors.tuna.tsinghua.edu.cn/" target="_blank" rel="noopener">下载地址</a></li>
+<li>安装robotframwork，<code>python -m pip install -U robotframework</code></li>
+<li>安装图形界面：<code>pip install robotframework-ride</code></li>
+<li>由于ride是基于用wxPython库开发，这里安装该库 <code>pip install wxPython</code></li>
+<li>安装完成，启动：到Anaconda安装目录下的Scripts找到ride.py文件，在此打开cmd控制台，运行<code>python ride.py</code>就可以开启图形界面</li>
+<li>步骤5方法启动比较麻烦，可以用一个.bat脚本来减少步骤：任意目录下创建脚本文件夹，该目录下创建两个脚本：rideStart.bat, ride.bat。其中ride.bat内容：<code>python ride.py_path\Scripts\ride.py</code>,rideStart.bat内容：<code>start ride.bat_path\ride.bat</code>。如果是填的是绝对路径，两个脚本随便放哪里都可以。执行rideStart.bat脚本就可以启动。</li>
+<li>也可以直接建一个runride.bat到桌面: <code>python -c &quot;from robotide import main; main()&quot;</code>,点击运行即可。</li>
+<li>Library安装，因为测试需要用到许多的其他模块，这里需要安装一些库：<code>robotframework-selenium2library</code>、<a href="https://github.com/bulkan/robotframework-requests" target="_blank" rel="noopener">robotframework-requests</a>、<a href="https://github.com/serhatbolsu/robotframework-appiumlibrary" target="_blank" rel="noopener">robotframework-appiumlibrary</a>、<a href="https://github.com/peritus/robotframework-httplibrary" target="_blank" rel="noopener">robotframework-httplibrary</a>、<a href="https://github.com/franz-see/Robotframework-Database-Library" target="_blank" rel="noopener">Robotframework-Database-Library</a>。  pip安装即可，更多参考<a href="https://blog.csdn.net/u013961875/article/details/78670249" target="_blank" rel="noopener">Robot Framework 常用的第三方库</a></li>
+<li>浏览器驱动：常见的谷歌、火狐、IE。参考 <a href="https://www.zhoujiayu.top/2019/03/11/Selenium%E4%B8%80%E4%BA%9BAPI%E6%95%B4%E7%90%86/" target="_blank" rel="noopener">Selenium一些API整理</a></li>
+</ol>
+<h2 id="2-初窥"><a href="#2-初窥" class="headerlink" title="2.初窥"></a>2.初窥</h2><ol>
+<li><strong>运行开启脚本创建工程</strong><br><img src="http://149.248.3.74/robotframework/1.png" alt="1"><br></li>
+<li><strong>创建测试套件</strong> <br><br><img src="http://149.248.3.74/robotframework/2.png" alt="2"><br><br><img src="http://149.248.3.74/robotframework/3.png" alt="3"><br></li>
+<li><strong>创建测试用例</strong><br><br><img src="http://149.248.3.74/robotframework/4.png" alt="4"><br><br>4.<strong>导入需要用到的库</strong><br><br><img src="http://149.248.3.74/robotframework/5.png" alt="5"><br>5.<strong>f5查看关键词</strong><br><br><img src="http://149.248.3.74/robotframework/6.png" alt="6"> </li>
+<li><strong>怎么写测试用例</strong>  蓝色部分为关键字，可以ctr+shift+空格提示补全，如果某个cell显示红色，表示必填选项没有填写。主要流程：打开了浏览器–找到输入框输入”测试”–点击提交–等待2s–截屏并取名到当前目录(library需要导入Sreenshot包)–关闭浏览器–设置变量–调用并打印变量<br><br><img src="http://149.248.3.74/robotframework/7.png" alt="7"><br>7.<strong>脚本形式</strong> <br><br><img src="http://149.248.3.74/robotframework/8.png" alt="8"><br><br>8.<strong>执行过程</strong> <br><br><img src="http://149.248.3.74/robotframework/9.png" alt="9"><br><br>9.<strong>生成目录</strong><br><br><img src="http://149.248.3.74/robotframework/10.png" alt="10"></li>
+</ol>
+<h2 id="3-快捷键"><a href="#3-快捷键" class="headerlink" title="3.快捷键"></a>3.快捷键</h2><ul>
+<li>重命名——》F2</li>
+<li>搜索关键字——》F5</li>
+<li>执行用例——》F8</li>
+<li>创建新工程——》ctrl+n</li>
+<li>创建新测试套——》ctrl+shift+f</li>
+<li>创建新用例——》ctrl+shift+t</li>
+<li>创建新关键字——》ctrl+shift+k</li>
+<li>向上移动用例——》ctrl+↑</li>
+<li>向下移动用例——》ctrl+↓</li>
+<li>显示关键字信息——》 ctrl+鼠标悬浮（鼠标悬浮于关键字上</li>
+<li>自动补全关键字——》ctrl+shift+空格</li>
+<li>删除行——》ctrl+d</li>
+<li>删除单元格——》ctrl+shift+d</li>
+<li>插入单元格——》ctrl+shift+i</li>
+<li>插入行——》ctrl+i</li>
+<li>屏蔽代码——》ctrl+#</li>
+<li>取消屏蔽——》ctrl+$</li>
+<li>保存整个工程——》ctrl+shit+s</li>
+<li>局部保存，保存鼠标点击的部分——》ctrl+s</li>
+<li>查看log——》ctrl+L</li>
+<li>查看report——》ctrl+r</li>
+</ul>
+<h2 id="4-其他支持"><a href="#4-其他支持" class="headerlink" title="4.其他支持"></a>4.其他支持</h2><ol>
+<li>支持生产HTML类型文件</li>
+<li>支持自定义全局变量和变量</li>
+<li>支持选择不同的执行方式：pybot、robot、jybot等等</li>
+<li>支持自定义关封装键字 <strong>TestLib</strong></li>
+<li>Suite Teardown：每个Test Suite结束的时候执行的动作，用法同测试用例中的关键字</li>
+<li>Test Setup：每个Test Case启动时执行的动作，用法同测试用例中的关键字。如果在某个具体的Test case中指定了Setup则执行case里的setup而不执行setting里的Test Setup</li>
+<li>Test Teardown：每个Test Case结束的时候执行的动作，用法同测试用例中的关键字。同样case里的Teardown会将setting里Test Teardown覆写。</li>
+<li>Test Timeout：用例超时时间，超过该时间还未执行完毕的用例将被强制退出</li>
+<li>Tags：Tags作为用例的标记，在robot中是非常常用的。在setting中可配置Force Tags和Default Tags，也可在用例中配置Tag，Tag的作用在后面描述</li>
+<li>Library：指定TestLib，系统自带的或者已经安装的TestLib可直接输入名字，自己编写的TestLib就需要加入路径，相对路径绝对路径均可，相对的是该html文件的路径</li>
+<li>Resource：引入一个资源文件。通常一份比较好的robot用例中包含就是跟该用例相关的关键字，用例和一些基本配置等等，如果需要用到很多公共的模块，公共的关键字，这些公共资源通常会编辑成一个独立的html，这样业务相关的html便可引用</li>
+<li>支持if和for循环</li>
+<li>支持自定义脚本编写</li>
+</ol>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://yoursite.com/2019/03/18/robotframework学习/" data-id="cjtk5tn5u0008ochzq0bkr413" class="article-share-link">Share</a>
+      
+      
+  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/robotframework/">robotframework</a></li></ul>
+
+    </footer>
+  </div>
+  
+    
+<nav id="article-nav">
+  
+    <a href="/2019/03/22/常见的视频传输协议：RTSP-RTMP-HLS/" id="article-nav-newer" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Newer</strong>
+      <div class="article-nav-title">
+        
+          常见的视频传输协议：RTSP/RTMP/HLS
+        
+      </div>
+    </a>
+  
+  
+    <a href="/2019/03/12/Python虚拟环境和Docker虚拟化技术/" id="article-nav-older" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Older</strong>
+      <div class="article-nav-title">Python虚拟环境和Docker虚拟化技术</div>
+    </a>
+  
+</nav>
+
+  
+</article>
+
+
+
+</section>
+        
+          <aside id="sidebar">
+  
+    <div class="widget-wrap">
+  <h3 class="widget-title"></h3>
+  <div class="widget">
+    <h1 class="blog-title">YuChou</h1>
+    <h2 class="blog-subtitle">Dream of walking the world with techbology</h2>
+    <ul class="blog-link">
+     
+          <a href="/" title="Home">
+            <li>主页</li>
+          </a>
+        
+          <a href="/archives/" title="Archives">
+            <li>归档</li>
+          </a>
+        
+          <a href="/categories/" title="Categories">
+            <li>分类</li>
+          </a>
+        
+          <a href="/tags/" title="Tags">
+            <li>标签</li>
+          </a>
+        
+    </ul>
+  </div>
+</div>
+
+  
+    <div class="widget-wrap">
+  <h3 class="widget-title"></h3>
+  <div class="widget">
+    <img class="avatar" src="http://149.248.3.74/Photos/titleImage/AF359E06C1819F0FA30D32DA9F0E8EB6.png">
+    <h2 class="author">YuChou</h2>
+    <h3 class="description"></h3>
+    <div class="count-box">
+      <a href="/archives"><div><strong>8</strong><br>文章</div></a>
+      <a href="/categories"><div><strong>6</strong><br>分类</div></a>
+      <a href="/tags"><div><strong>9</strong><br>标签</div></a>
+    </div>
+
+
+
+    <div class="social-link">
+      
+        <a class="hvr-bounce-in" href="https://github.com/mrzhouyu" target="_blank" title="Github">
+          Github
+        </a>
+      
+    </div>
+
+    <div class="friend-link">
+      <h2>SomeLink</h2>
+      
+        <a class="hvr-bounce-in" href="https://www.zhihu.com" target="_blank" title="Zhihu">
+          Zhihu
+        </a>
+      
+    </div>
+  </div>
+</div>
+
+  
+</aside>
+        
+      </div>
+      <footer id="footer">
+  
+  <div class="outer">
+    <div id="footer-info" class="inner">
+      &copy;2018 - 2019 YuChou<br>
+      由<a href="http://hexo.io/" target="_blank">Hexo</a>强力驱动 | 
+      主题-<a href="https://github.com/ShanaMaid/hexo-theme-shana">Shana</a>
+      
+    </div>
+    
+  </div>
+</footer>
+    </div>
+    
+
+<script src="//apps.bdimg.com/libs/jquery/2.1.4/jquery.min.js"></script>
+<script src="//apps.bdimg.com/libs/wow/0.1.6/wow.min.js"></script>
+<script>
+new WOW().init();
+</script>   
+
+
+  <link rel="stylesheet" href="/plugin/fancybox/jquery.fancybox.css">
+  <script src="/plugin/fancybox/jquery.fancybox.pack.js"></script>
+
+
+
+  <link rel="stylesheet" href="/plugin/galmenu/GalMenu.css">
+  <script src="/plugin/galmenu/GalMenu.js"></script>
+  <div class="GalMenu GalDropDown">
+      <div class="circle" id="gal">
+        <div class="ring">
+          
+            <a href="/" title="" class="menuItem">首页</a>
+          
+            <a href="/tags" title="" class="menuItem">标签</a>
+          
+            <a href="/categories" title="" class="menuItem">分类</a>
+          
+            <a href="/archives" title="" class="menuItem">归档</a>
+          
+            <a href="/xxxxxxxxx" title="" class="menuItem">xxx</a>
+          
+            <a href="/xxxxxxx" title="" class="menuItem">xxxx</a>
+          
+        </div>
+        
+          <audio id="audio" src="#"></audio>
+        
+      </div> 
+</div>
+<div id="overlay" style="opacity: 1; cursor: pointer;"></div>
+  <script type="text/javascript">var items = document.querySelectorAll('.menuItem');
+    for (var i = 0,
+    l = items.length; i < l; i++) {
+      items[i].style.left = (50 - 35 * Math.cos( - 0.5 * Math.PI - 2 * (1 / l) * i * Math.PI)).toFixed(4) + "%";
+      items[i].style.top = (50 + 35 * Math.sin( - 0.5 * Math.PI - 2 * (1 / l) * i * Math.PI)).toFixed(4) + "%"
+    }</script>
+<script type="text/javascript">
+  $(document).ready(function() {
+    $('body').GalMenu({
+      'menu': 'GalDropDown'
+    })
+  });
+</script>
+
+  <section class="hidden-xs"> 
+  <ul class="cb-slideshow"> 
+    <li><span>苟利</span></li> 
+    <li><span>国家</span></li> 
+    <li><span>生死以</span></li> 
+    <li><span>岂能</span></li> 
+    <li><span>祸福</span></li> 
+    <li><span>趋避之</span></li> 
+  </ul>
+</section>
+<script src="/js/script.js"></script>
+
+
+
+  </div>
+</body>
+</html>
