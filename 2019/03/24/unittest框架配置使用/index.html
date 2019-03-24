@@ -1,0 +1,382 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  
+  <title>unittest框架配置使用 | YuChou</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  <meta name="description" content="环境准备版本 Python3.7 Unittest 自带版本 HtmlTestRunner 优化版(开源)HtmlTestRunner安装方法 pip install html-testRunner 安装完直接可以调用 优化版本：手动下载地址，如果是利用Anaconda安装python的需要将下载的HTMLTestReportCN.py和HTMLTestReportEN.py文放在\anacond">
+<meta name="keywords" content="测试框架">
+<meta property="og:type" content="article">
+<meta property="og:title" content="unittest框架配置使用">
+<meta property="og:url" content="http://yoursite.com/2019/03/24/unittest框架配置使用/index.html">
+<meta property="og:site_name" content="YuChou">
+<meta property="og:description" content="环境准备版本 Python3.7 Unittest 自带版本 HtmlTestRunner 优化版(开源)HtmlTestRunner安装方法 pip install html-testRunner 安装完直接可以调用 优化版本：手动下载地址，如果是利用Anaconda安装python的需要将下载的HTMLTestReportCN.py和HTMLTestReportEN.py文放在\anacond">
+<meta property="og:locale" content="zh-Hans">
+<meta property="og:image" content="http://149.248.3.74/unittest/%e8%be%93%e5%87%ba1.png">
+<meta property="og:image" content="http://149.248.3.74/unittest/pytest%e8%be%93%e5%87%ba.jpg">
+<meta property="og:image" content="http://149.248.3.74/unittest/pytest%e7%8e%af%e5%a2%83.jpg">
+<meta property="og:image" content="http://149.248.3.74/unittest/%e6%96%b9%e6%b3%952.jpg">
+<meta property="og:image" content="http://149.248.3.74/unittest/step2%20(2">
+<meta property="og:image" content="http://149.248.3.74/unittest/step3.jpg">
+<meta property="og:image" content="http://149.248.3.74/unittest/step4.jpg">
+<meta property="og:image" content="http://149.248.3.74/unittest/step5.jpg">
+<meta property="og:image" content="http://149.248.3.74/unittest/step6.jpg">
+<meta property="og:image" content="http://149.248.3.74/unittest/%e8%be%93%e5%87%ba2.jpg">
+<meta property="og:image" content="http://149.248.3.74/unittest/out.jpg">
+<meta property="og:image" content="http://149.248.3.74/unittest/report.jpg">
+<meta property="og:image" content="http://149.248.3.74/unittest/html.jpg">
+<meta property="og:updated_time" content="2019-03-24T03:05:21.825Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="unittest框架配置使用">
+<meta name="twitter:description" content="环境准备版本 Python3.7 Unittest 自带版本 HtmlTestRunner 优化版(开源)HtmlTestRunner安装方法 pip install html-testRunner 安装完直接可以调用 优化版本：手动下载地址，如果是利用Anaconda安装python的需要将下载的HTMLTestReportCN.py和HTMLTestReportEN.py文放在\anacond">
+<meta name="twitter:image" content="http://149.248.3.74/unittest/%e8%be%93%e5%87%ba1.png">
+  
+    <link rel="alternate" href="/atom.xml" title="YuChou" type="application/atom+xml">
+  
+  
+    <link rel="icon" href="/favicon.png">
+  
+  
+    <link href="//fonts.googleapis.com/css?family=Source+Code+Pro" rel="stylesheet" type="text/css">
+  
+  <link rel="stylesheet" href="/css/style.css">
+  <link rel="stylesheet" href="/plugin/bganimation/bg.css">
+  
+
+</head>
+
+<body>
+  <div id="container">
+    <div id="wrap">
+      <div class="outer">
+        <div class="widget-wrap mobile-header">
+  <h3 class="widget-title"></h3>
+  <div class="widget">
+    <img class="avatar" src="http://149.248.3.74/Photos/titleImage/AF359E06C1819F0FA30D32DA9F0E8EB6.png">
+    <h2 class="author">YuChou</h2>
+    <h3 class="description"></h3>
+    <div class="count-box">
+      <a href="/archives"><div><strong>9</strong><br>文章</div></a>
+      <a href="/categories"><div><strong>7</strong><br>分类</div></a>
+      <a href="/tags"><div><strong>10</strong><br>标签</div></a>
+    </div>
+    <ul class="blog-link">
+     
+          <a href="/" title="Home">
+            <li>主页</li>
+          </a>
+        
+          <a href="/archives/" title="Archives">
+            <li>归档</li>
+          </a>
+        
+          <a href="/categories/" title="Categories">
+            <li>分类</li>
+          </a>
+        
+          <a href="/tags/" title="Tags">
+            <li>标签</li>
+          </a>
+        
+    </ul>
+  </div>
+</div>
+
+        <section id="main"><article id="post-unittest框架配置使用" class="wow slideInRight article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2019/03/24/unittest框架配置使用/" class="article-date">
+  <time class="post-time" datetime="2019-03-24T03:03:29.000Z" itemprop="datePublished">
+    <span class="post-month">3月</span><br/>
+    <span class="post-day">24</span>
+  </time>
+</a>
+   
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 class="article-title" itemprop="name">
+      unittest框架配置使用
+    </h1>
+  
+
+        <div>
+          
+  <div class="article-category">
+    <a class="article-category-link" href="/categories/测试/">测试</a>
+  </div>
+
+          
+              
+
+          
+        </div>
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h2 id="环境准备"><a href="#环境准备" class="headerlink" title="环境准备"></a>环境准备</h2><h5 id="版本"><a href="#版本" class="headerlink" title="版本"></a>版本</h5><ul>
+<li>Python3.7</li>
+<li>Unittest 自带版本</li>
+<li>HtmlTestRunner 优化版(开源)<h5 id="HtmlTestRunner安装方法"><a href="#HtmlTestRunner安装方法" class="headerlink" title="HtmlTestRunner安装方法"></a>HtmlTestRunner安装方法</h5></li>
+<li><code>pip install html-testRunner</code> 安装完直接可以调用</li>
+<li>优化版本：<a href="https://github.com/findyou/HTMLTestRunnerCN.git" target="_blank" rel="noopener">手动下载地址</a>，如果是利用Anaconda安装python的需要将下载的HTMLTestReportCN.py和HTMLTestReportEN.py文放在\anaconda\Lib\下供调用。<a href="https://www.cnblogs.com/myal/p/9337392.html" target="_blank" rel="noopener">参考博客</a></li>
+</ul>
+<h2 id="实际操作"><a href="#实际操作" class="headerlink" title="实际操作"></a>实际操作</h2><h4 id="Pycharm环境下使用"><a href="#Pycharm环境下使用" class="headerlink" title="Pycharm环境下使用"></a>Pycharm环境下使用</h4><ul>
+<li>创建project，选择系统的env</li>
+<li>创建API文件夹，在此文件夹下创建CaseOne.py文件</li>
+<li>选择 <code>http://httpbin.org/</code>网站作为测试网站(任打任挨的网站)</li>
+<li><p>程序: <br></p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> unittest</span><br><span class="line"><span class="keyword">import</span> requests</span><br><span class="line"><span class="keyword">from</span> requests <span class="keyword">import</span> exceptions</span><br><span class="line"><span class="keyword">from</span> HTMLTestReportCN <span class="keyword">import</span> HTMLTestRunner <span class="comment">#1.导入第三方报表库</span></span><br><span class="line"><span class="keyword">import</span> sys</span><br><span class="line"></span><br><span class="line"><span class="comment">#2.继承unittest.TestCase类  --》同时 继承了其断言和setUpClass、setUp、tearDownClass、tearDown</span></span><br><span class="line"></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">MyTest</span><span class="params">(unittest.TestCase)</span>:</span></span><br><span class="line"></span><br><span class="line">    <span class="comment"># 3.此方法是测试用例执行前调用，初始化，例如连接数据库、登录网址保持session</span></span><br><span class="line">    <span class="comment"># 同时还有setUp()方法，二者区别是前者是所有用例开始前初始化一次，后者是每个test都会初始化一次</span></span><br><span class="line"><span class="meta">    @classmethod</span></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">setUpClass</span><span class="params">(cls)</span>:</span></span><br><span class="line">        print(<span class="string">"excute"</span>)</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">test_Get</span><span class="params">(self)</span>:</span> <span class="comment">#4.测试get发送数据到网址是否成功，返回的数据是包含发送的数据则成功</span></span><br><span class="line">        url = <span class="string">"http://httpbin.org/get"</span></span><br><span class="line">        formdata = &#123;</span><br><span class="line">            <span class="string">"user"</span>: <span class="string">"yu"</span>,</span><br><span class="line">            <span class="string">"method"</span>: <span class="string">"get"</span></span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">try</span>:</span><br><span class="line">            res = requests.get(url, params=formdata) <span class="comment">#这里用params 不要用data</span></span><br><span class="line">            res.encoding = res.apparent_encoding</span><br><span class="line">            <span class="keyword">if</span> res.status_code == <span class="number">200</span>:</span><br><span class="line">                resp = res.json()<span class="comment"># 返回的是字典 若使用res.text需要用json.loads()转成字典</span></span><br><span class="line">        <span class="keyword">except</span> exceptions.RequestException <span class="keyword">as</span> e:</span><br><span class="line">            <span class="keyword">raise</span> <span class="string">"error %s"</span> % e</span><br><span class="line">            sys.exit(<span class="number">1</span>)</span><br><span class="line">        self.assertIn(<span class="string">"user"</span>,  list(resp[<span class="string">"args"</span>].keys()), msg=<span class="string">"user没有返回，实际返回的是&#123;&#125;"</span>.format(resp))<span class="comment">#断言1</span></span><br><span class="line">        self.assertIn(<span class="string">"method"</span>, list(resp[<span class="string">"args"</span>].keys()), msg=<span class="string">"user没有返回，实际返回的是&#123;&#125;"</span>.format(resp))<span class="comment">#断言2</span></span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">test_Post</span><span class="params">(self)</span>:</span><span class="comment">#5.测试post发送数据到网址是否成功，返回的数据是包含发送的数据则成功</span></span><br><span class="line">        url = <span class="string">"http://httpbin.org/post"</span></span><br><span class="line">        formdata = &#123;</span><br><span class="line">            <span class="string">"USER"</span>: <span class="string">"YU"</span>,</span><br><span class="line">            <span class="string">"METHOD"</span>: <span class="string">"GET"</span></span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">try</span>:</span><br><span class="line">            res = requests.post(url, params=formdata) <span class="comment"># params和data</span></span><br><span class="line">            res.encoding = res.apparent_encoding</span><br><span class="line">            <span class="keyword">if</span> res.status_code == <span class="number">200</span>:</span><br><span class="line">                resp = res.json()<span class="comment"># 返回的是字典 若使用res.text需要用json.loads()转成字典</span></span><br><span class="line">        <span class="keyword">except</span> exceptions.RequestException <span class="keyword">as</span> e:</span><br><span class="line">            <span class="keyword">raise</span> <span class="string">"error %s"</span> % e</span><br><span class="line">            sys.exit(<span class="number">1</span>)</span><br><span class="line">        self.assertIn(<span class="string">"USER"</span>,  list(resp[<span class="string">"args"</span>].keys()), msg=<span class="string">"user没有返回，实际返回的是&#123;&#125;"</span>.format(resp))<span class="comment">#断言1</span></span><br><span class="line">        self.assertIn(<span class="string">"METHOD"</span>, list(resp[<span class="string">"args"</span>].keys()), msg=<span class="string">"user没有返回，实际返回的是&#123;&#125;"</span>.format(resp))<span class="comment">#断言2</span></span><br><span class="line"></span><br><span class="line">    <span class="comment"># 6.此方法是测试用用例结束清理环境，例如退出连接数据库、退出登录网址保持session</span></span><br><span class="line">    <span class="comment"># 同时还有tearDown()方法，二者区别是前者是所有用例结束时清理一次，后者是每个test都会清理一次</span></span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">test_Equal</span><span class="params">(self)</span>:</span></span><br><span class="line">        self.assertEqual(<span class="number">3</span>, <span class="number">1</span>+<span class="number">1</span>, msg=<span class="string">"1+1=3？"</span>)</span><br><span class="line"></span><br><span class="line"><span class="meta">    @classmethod</span></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">tearDownClass</span><span class="params">(cls)</span>:</span></span><br><span class="line">        print(<span class="string">"test over"</span>)</span><br><span class="line"></span><br><span class="line"><span class="keyword">if</span> __name__ == <span class="string">"__main__"</span>:</span><br><span class="line">    unittest.main(verbosity=<span class="number">2</span>) <span class="comment">#在unittest.main()中加 verbosity 参数可以控制输出的错误报告的详细程度，默认是 1，如果设为 0，则不输出每一用例的执行结果，即没有上面的结果中的第1行；如果设为 2，则输出详细的执行结果，如下：</span></span><br></pre></td></tr></table></figure>
+</li>
+<li><p>以上程序执行输出：<br><br><img src="http://149.248.3.74/unittest/%e8%be%93%e5%87%ba1.png" alt="输出1"></p>
+</li>
+<li><p>这个输出其实是pytest框架执行测试用例时候的输出端，pycharm默认直接调用了pytest，因为我早就安装了pytest，没装应该是调用unittest的框架输出<br><img src="http://149.248.3.74/unittest/pytest%e8%be%93%e5%87%ba.jpg" alt="输出"></p>
+</li>
+<li><p>修改环境，换成unittest的</p>
+<ul>
+<li>方法一，修改系统默认的测试框架，直接修改(注意：测试文件第一次运行是用什么环境，即使修改了后面还是会用第一次运行的环境)：<br><img src="http://149.248.3.74/unittest/pytest%e7%8e%af%e5%a2%83.jpg" alt="第一步"></li>
+</ul>
+<ul>
+<li><p>方法二，设置运行时候的框架：</p>
+<ul>
+<li>step1:编辑一个要用的测试环境<br><img src="http://149.248.3.74/unittest/%e6%96%b9%e6%b3%952.jpg" alt="step1"></li>
+<li>step2:<br><img src="http://149.248.3.74/unittest/step2%20(2" alt="step2">.jpg)</li>
+<li>step3:这样选<br><img src="http://149.248.3.74/unittest/step3.jpg" alt="step3"></li>
+<li>step4:改名字，选文件<br><img src="http://149.248.3.74/unittest/step4.jpg" alt="step4"></li>
+<li>step5:执行<br><img src="http://149.248.3.74/unittest/step5.jpg" alt="step5"></li>
+<li>step6:查看新的报告<br><img src="http://149.248.3.74/unittest/step6.jpg" alt="step6"></li>
+<li><strong>同样的测试文件的不同输出：</strong><br><img src="http://149.248.3.74/unittest/%e8%be%93%e5%87%ba2.jpg" alt="输出2"></li>
+</ul>
+</li>
+<li><p><strong>注意：按照上述方法，选择普通模式才能生成html报表，选择其他框架模式都不可以</strong></p>
+</li>
+</ul>
+</li>
+<li><p>使用HTMLTestRunner生成报表，修改代码：</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">if</span> __name__ == <span class="string">"__main__"</span>:</span><br><span class="line">    print(<span class="string">"执行了if————namme"</span>)</span><br><span class="line">    <span class="comment"># unittest.main(verbosity=2) #使用套件不要用这执行</span></span><br><span class="line">    f = open(<span class="string">"F:\\pythonFiles\\UnittestTry\\API\\report.html"</span>, <span class="string">"wb"</span>)</span><br><span class="line">    suit = unittest.TestSuite()<span class="comment">#测试套件 一个组的测试用例</span></span><br><span class="line">    suit.addTest(MyTest(<span class="string">"test_Get"</span>))</span><br><span class="line">    suit.addTest(MyTest(<span class="string">"test_Post"</span>))</span><br><span class="line">    suit.addTest(MyTest(<span class="string">"test_Equal"</span>))</span><br><span class="line">    runner = HTMLTestRunner(stream=f, title=<span class="string">"test"</span>,description=<span class="string">"第一个报表"</span>)</span><br><span class="line">    runner.run(suit)</span><br><span class="line">    f.close()</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>执行输出：<br>其中<code>.</code>表示通过，<code>F</code>表示执行不通过<br><img src="http://149.248.3.74/unittest/out.jpg" alt="out"><br></p>
+</li>
+<li>生成报表<br><br><img src="http://149.248.3.74/unittest/report.jpg" alt="报表位置"><br><br><img src="http://149.248.3.74/unittest/html.jpg" alt="报表预览"><br><h2 id="其他扩展或注意事项"><a href="#其他扩展或注意事项" class="headerlink" title="其他扩展或注意事项"></a>其他扩展或注意事项</h2><ul>
+<li>命令行运行</li>
+</ul>
+</li>
+<li><code>python -m unittest test_1.py test_2.py</code> 测试多个模块</li>
+<li><code>python -m unittest test_1.TestClass</code> 测试某个测试类</li>
+<li><code>python -m unittest test_1.TestClass.test_method</code> 测试某个测试方法</li>
+<li><code>python -m unittest -v test_module</code> 显示详细结果</li>
+<li><code>python -m unittest -h</code> 帮助<ul>
+<li>所有测试方法名称需要以<code>test</code>开头，测试类需要<code>Test</code>开头</li>
+<li>常见断言：msg错误说明，自己定义</li>
+</ul>
+</li>
+<li><code>assertEqual(self, first, second, msg=None)</code> 判断两个参数相等</li>
+<li><code>assertNotEqual(self, first, second, msg=None)</code> 判断两个参数不相等</li>
+<li><code>assertIn(self, member, container, msg=None)</code> 判断是字符串是否包含</li>
+<li><code>assertNotIn(self, member, container, msg=None)</code> 判断是字符串是否不包含</li>
+<li><code>assertTrue(self, expr, msg=None)</code> 判断是否为真</li>
+<li><code>assertFalse(self, expr, msg=None)</code> 判断是否为假</li>
+<li><code>assertIsNone(self, obj, msg=None)</code> 判断是否为None</li>
+<li><code>assertIsNotNone(self, obj, msg=None)</code> 判断是否不为None</li>
+<li><a href="https://docs.python.org/2.7/library/unittest.html#unittest.TestCase.debug" target="_blank" rel="noopener">unittest常见断言方法</a><ul>
+<li>Test fixtures：</li>
+</ul>
+</li>
+<li>fixture表示tests运行前需要做的准备工作以及结束后的清理工作。比如，创建临时/代理数据库、目录或启动一个服务器进程<ul>
+<li>Text Suite：</li>
+</ul>
+</li>
+<li>test suite是test case的合集，通常用test suite将test case汇总然后一起执行<ul>
+<li>test runner：</li>
+</ul>
+</li>
+<li>test runner是一个执行器，它可以执行case并提供结果给用户。它可以提供图形界面、文本界面或者返回一个值表示测试结果。<ul>
+<li><a href="https://blog.csdn.net/ljl6158999/article/details/80994979" target="_blank" rel="noopener">更多内容</a></li>
+</ul>
+</li>
+</ul>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://yoursite.com/2019/03/24/unittest框架配置使用/" data-id="cjtmcbgy30007jchzmmze6voq" class="article-share-link">Share</a>
+      
+      
+  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/测试框架/">测试框架</a></li></ul>
+
+    </footer>
+  </div>
+  
+    
+<nav id="article-nav">
+  
+  
+    <a href="/2019/03/22/常见的视频传输协议：RTSP-RTMP-HLS/" id="article-nav-older" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Older</strong>
+      <div class="article-nav-title">常见的视频传输协议：RTSP/RTMP/HLS</div>
+    </a>
+  
+</nav>
+
+  
+</article>
+
+
+
+</section>
+        
+          <aside id="sidebar">
+  
+    <div class="widget-wrap">
+  <h3 class="widget-title"></h3>
+  <div class="widget">
+    <h1 class="blog-title">YuChou</h1>
+    <h2 class="blog-subtitle">Dream of walking the world with techbology</h2>
+    <ul class="blog-link">
+     
+          <a href="/" title="Home">
+            <li>主页</li>
+          </a>
+        
+          <a href="/archives/" title="Archives">
+            <li>归档</li>
+          </a>
+        
+          <a href="/categories/" title="Categories">
+            <li>分类</li>
+          </a>
+        
+          <a href="/tags/" title="Tags">
+            <li>标签</li>
+          </a>
+        
+    </ul>
+  </div>
+</div>
+
+  
+    <div class="widget-wrap">
+  <h3 class="widget-title"></h3>
+  <div class="widget">
+    <img class="avatar" src="http://149.248.3.74/Photos/titleImage/AF359E06C1819F0FA30D32DA9F0E8EB6.png">
+    <h2 class="author">YuChou</h2>
+    <h3 class="description"></h3>
+    <div class="count-box">
+      <a href="/archives"><div><strong>9</strong><br>文章</div></a>
+      <a href="/categories"><div><strong>7</strong><br>分类</div></a>
+      <a href="/tags"><div><strong>10</strong><br>标签</div></a>
+    </div>
+
+
+
+    <div class="social-link">
+      
+        <a class="hvr-bounce-in" href="https://github.com/mrzhouyu" target="_blank" title="Github">
+          Github
+        </a>
+      
+    </div>
+
+    <div class="friend-link">
+      <h2>SomeLink</h2>
+      
+        <a class="hvr-bounce-in" href="https://www.zhihu.com" target="_blank" title="Zhihu">
+          Zhihu
+        </a>
+      
+    </div>
+  </div>
+</div>
+
+  
+</aside>
+        
+      </div>
+      <footer id="footer">
+  
+  <div class="outer">
+    <div id="footer-info" class="inner">
+      &copy;2018 - 2019 YuChou<br>
+      由<a href="http://hexo.io/" target="_blank">Hexo</a>强力驱动 | 
+      主题-<a href="https://github.com/ShanaMaid/hexo-theme-shana">Shana</a>
+      
+    </div>
+    
+  </div>
+</footer>
+    </div>
+    
+
+<script src="//apps.bdimg.com/libs/jquery/2.1.4/jquery.min.js"></script>
+<script src="//apps.bdimg.com/libs/wow/0.1.6/wow.min.js"></script>
+<script>
+new WOW().init();
+</script>   
+
+
+  <link rel="stylesheet" href="/plugin/fancybox/jquery.fancybox.css">
+  <script src="/plugin/fancybox/jquery.fancybox.pack.js"></script>
+
+
+
+  <link rel="stylesheet" href="/plugin/galmenu/GalMenu.css">
+  <script src="/plugin/galmenu/GalMenu.js"></script>
+  <div class="GalMenu GalDropDown">
+      <div class="circle" id="gal">
+        <div class="ring">
+          
+            <a href="/" title="" class="menuItem">首页</a>
+          
+            <a href="/tags" title="" class="menuItem">标签</a>
+          
+            <a href="/categories" title="" class="menuItem">分类</a>
+          
+            <a href="/archives" title="" class="menuItem">归档</a>
+          
+            <a href="/xxxxxxxxx" title="" class="menuItem">xxx</a>
+          
+            <a href="/xxxxxxx" title="" class="menuItem">xxxx</a>
+          
+        </div>
+        
+          <audio id="audio" src="#"></audio>
+        
+      </div> 
+</div>
+<div id="overlay" style="opacity: 1; cursor: pointer;"></div>
+  <script type="text/javascript">var items = document.querySelectorAll('.menuItem');
+    for (var i = 0,
+    l = items.length; i < l; i++) {
+      items[i].style.left = (50 - 35 * Math.cos( - 0.5 * Math.PI - 2 * (1 / l) * i * Math.PI)).toFixed(4) + "%";
+      items[i].style.top = (50 + 35 * Math.sin( - 0.5 * Math.PI - 2 * (1 / l) * i * Math.PI)).toFixed(4) + "%"
+    }</script>
+<script type="text/javascript">
+  $(document).ready(function() {
+    $('body').GalMenu({
+      'menu': 'GalDropDown'
+    })
+  });
+</script>
+
+  <section class="hidden-xs"> 
+  <ul class="cb-slideshow"> 
+    <li><span>苟利</span></li> 
+    <li><span>国家</span></li> 
+    <li><span>生死以</span></li> 
+    <li><span>岂能</span></li> 
+    <li><span>祸福</span></li> 
+    <li><span>趋避之</span></li> 
+  </ul>
+</section>
+<script src="/js/script.js"></script>
+
+
+
+  </div>
+</body>
+</html>
