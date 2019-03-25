@@ -38,9 +38,9 @@
     <h2 class="author">YuChou</h2>
     <h3 class="description"></h3>
     <div class="count-box">
-      <a href="/archives"><div><strong>9</strong><br>文章</div></a>
-      <a href="/categories"><div><strong>7</strong><br>分类</div></a>
-      <a href="/tags"><div><strong>10</strong><br>标签</div></a>
+      <a href="/archives"><div><strong>12</strong><br>文章</div></a>
+      <a href="/categories"><div><strong>8</strong><br>分类</div></a>
+      <a href="/tags"><div><strong>11</strong><br>标签</div></a>
     </div>
     <ul class="blog-link">
      
@@ -65,6 +65,196 @@
 </div>
 
         <section id="main">
+  
+    <article id="post-d" class="wow slideInRight article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2019/03/25/d/" class="article-date">
+  <time class="post-time" datetime="2019-03-25T15:27:49.000Z" itemprop="datePublished">
+    <span class="post-month">3月</span><br/>
+    <span class="post-day">25</span>
+  </time>
+</a>
+   
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2019/03/25/d/">d</a>
+    </h1>
+  
+
+        <div>
+          
+          
+              
+
+          
+        </div>
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://yoursite.com/2019/03/25/d/" data-id="cjtoi9xbu0001kghzoh0jz7i3" class="article-share-link">Share</a>
+      
+      
+    </footer>
+  </div>
+  
+</article>
+
+
+
+
+  
+    <article id="post-g" class="wow slideInRight article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2019/03/25/g/" class="article-date">
+  <time class="post-time" datetime="2019-03-25T15:27:45.000Z" itemprop="datePublished">
+    <span class="post-month">3月</span><br/>
+    <span class="post-day">25</span>
+  </time>
+</a>
+   
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2019/03/25/g/">g</a>
+    </h1>
+  
+
+        <div>
+          
+          
+              
+
+          
+        </div>
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://yoursite.com/2019/03/25/g/" data-id="cjtoi9xc60005kghz3qodao4g" class="article-share-link">Share</a>
+      
+      
+    </footer>
+  </div>
+  
+</article>
+
+
+
+
+  
+    <article id="post-Pycharm-Python3-6-Robotframework3-1-1" class="wow slideInRight article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2019/03/25/Pycharm-Python3-6-Robotframework3-1-1/" class="article-date">
+  <time class="post-time" datetime="2019-03-25T15:25:05.000Z" itemprop="datePublished">
+    <span class="post-month">3月</span><br/>
+    <span class="post-day">25</span>
+  </time>
+</a>
+   
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2019/03/25/Pycharm-Python3-6-Robotframework3-1-1/">Pycharm+Python3.6+Robotframework3.1.1</a>
+    </h1>
+  
+
+        <div>
+          
+  <div class="article-category">
+    <a class="article-category-link" href="/categories/测试框架/">测试框架</a>
+  </div>
+
+          
+              
+
+          
+        </div>
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h2 id="Pycharm结合Robotframework执行自动化测试"><a href="#Pycharm结合Robotframework执行自动化测试" class="headerlink" title="Pycharm结合Robotframework执行自动化测试"></a>Pycharm结合Robotframework执行自动化测试</h2><p>####今天发现pycharm下可以开发robotframework，记录下：<br>1.<strong>安装语法高亮IntelliBot插件：</strong><br><br><img src="http://149.248.3.74/installbot.png" alt="安装插件"><br><br>2.<strong>配置文件类型识别</strong><br><br><img src="http://149.248.3.74/conffiletype.jpg" alt="配置识别"><br><br>3.<strong>suite的运行配置</strong><br></p>
+<ul>
+<li>-d results $FileName$<br></li>
+<li>$FileDir$<br><img src="http://149.248.3.74/suit.jpg" alt="suite运行配置"><br><br>4.<strong>case的运行配置</strong><br></li>
+<li>-d results -t “$SelectedText$” ./<br></li>
+<li>$FileDir$</li>
+</ul>
+<p><img src="http://149.248.3.74/case.jpg" alt="case运行配置"></p>
+<p>5.<strong>简单代码块test.txt</strong><br></p>
+<pre><code>*** Settings ***
+Library           Selenium2Library
+
+*** Test Cases ***
+Chrome测试
+    Open Browser    http://www.baidu.com    chrome
+    Input Text    id=kw    test
+    Click button    id=su
+       Sleep    1.5
+    Capture Page Screenshot    hello.png
+        Close Browser
+</code></pre><p>6.<strong>运行</strong></p>
+<p>suit运行:<br><br><img src="http://149.248.3.74/out1.jpg" alt="out1"><br><br>case运行:<br><br><img src="http://149.248.3.74/out2.jpg" alt="out2"></p>
+<h4 id="f-k，明明公司可以的，还特意检查了"><a href="#f-k，明明公司可以的，还特意检查了" class="headerlink" title="f**k，明明公司可以的，还特意检查了"></a>f**k，明明公司可以的，还特意检查了</h4><blockquote>
+<p>3.1的robotframework开始使用robot解析器 其他pybot，jybot ，ipybot 都不用了</p>
+</blockquote>
+<p>7.<strong>问题排查</strong><br></p>
+<h4 id="选错误了。。。。。。近视比较严重-滑稽"><a href="#选错误了。。。。。。近视比较严重-滑稽" class="headerlink" title="选错误了。。。。。。近视比较严重(滑稽)"></a>选错误了。。。。。。近视比较严重(滑稽)</h4><p><img src="http://149.248.3.74/error.jpg" alt="滑稽"><br>8.<strong>路径也有问题</strong>：<br></p>
+<ol>
+<li>suit: <code>-d results $FileDir$</code><br></li>
+<li>case: <code>-d results $FileName$</code></li>
+</ol>
+<p><br><br>9.<strong>再来一次</strong><br><br></p>
+<h3 id="输出"><a href="#输出" class="headerlink" title="输出"></a>输出</h3><p><img src="http://149.248.3.74/go1.jpg" alt="输出"></p>
+<h3 id="报告"><a href="#报告" class="headerlink" title="报告"></a>报告</h3><p><img src="http://149.248.3.74/file.jpg" alt="报告"></p>
+<h3 id="注意"><a href="#注意" class="headerlink" title="注意"></a>注意</h3><ol>
+<li>安装完插件需要重启pycharm</li>
+<li>如果python环境下或者Anaconda环境下的Scripts文件夹有加入环境变量，可以在系统cmd窗口  <code>robot.exe -h</code> 查看全部命令</li>
+<li>Python版本3.6+Robotframework3.1.1</li>
+<li>遇到了再来补充</li>
+</ol>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://yoursite.com/2019/03/25/Pycharm-Python3-6-Robotframework3-1-1/" data-id="cjtoi9xbo0000kghzw3bn9005" class="article-share-link">Share</a>
+      
+      
+  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/robotframework/">robotframework</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/自动化测试/">自动化测试</a></li></ul>
+
+    </footer>
+  </div>
+  
+</article>
+
+
+
+
   
     <article id="post-unittest框架配置使用" class="wow slideInRight article article-type-post" itemscope itemprop="blogPost">
   <div class="article-meta">
@@ -187,7 +377,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2019/03/24/unittest框架配置使用/" data-id="cjtmcotnh0006yshzmhzikbbq" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2019/03/24/unittest框架配置使用/" data-id="cjtoi9xd6000okghznfnovw2y" class="article-share-link">Share</a>
       
       
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/测试框架/">测试框架</a></li></ul>
@@ -306,7 +496,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2019/03/22/常见的视频传输协议：RTSP-RTMP-HLS/" data-id="cjtmcotnl0008yshzspa5c3ns" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2019/03/22/常见的视频传输协议：RTSP-RTMP-HLS/" data-id="cjtoi9xdh000tkghzkd2205lq" class="article-share-link">Share</a>
       
       
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/视频协议/">视频协议</a></li></ul>
@@ -416,7 +606,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2019/03/18/robotframework学习/" data-id="cjtmcotn30000yshzg6k5jud8" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2019/03/18/robotframework学习/" data-id="cjtoi9xc90009kghz7h7s5ydl" class="article-share-link">Share</a>
       
       
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/robotframework/">robotframework</a></li></ul>
@@ -608,7 +798,7 @@ bash
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2019/03/12/Python虚拟环境和Docker虚拟化技术/" data-id="cjtmcotn90002yshz9cxtt8ip" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2019/03/12/Python虚拟环境和Docker虚拟化技术/" data-id="cjtoi9xc70006kghzlfwamh1q" class="article-share-link">Share</a>
       
       
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/环境/">环境</a></li></ul>
@@ -731,7 +921,7 @@ bash
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2019/03/11/Selenium一些API整理/" data-id="cjtmcotnn000cyshzr65nc3c1" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2019/03/11/Selenium一些API整理/" data-id="cjtoi9xc30004kghzl9gj58tu" class="article-share-link">Share</a>
       
       
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Selenium/">Selenium</a></li></ul>
@@ -797,7 +987,7 @@ bash
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2019/03/11/各种协议/" data-id="cjtmcotnj0007yshz6x3mfhsh" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2019/03/11/各种协议/" data-id="cjtoi9xd3000mkghzzz36aycu" class="article-share-link">Share</a>
       
       
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/协议/">协议</a></li></ul>
@@ -910,7 +1100,7 @@ bash
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2019/03/11/数据结构/" data-id="cjtmcotnp000dyshz287juq0p" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2019/03/11/数据结构/" data-id="cjtoi9xdl000ykghzm74omci6" class="article-share-link">Share</a>
       
       
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/数据结构/">数据结构</a></li></ul>
@@ -924,375 +1114,11 @@ bash
 
 
   
-    <article id="post-软件测试" class="wow slideInRight article article-type-post" itemscope itemprop="blogPost">
-  <div class="article-meta">
-    <a href="/2019/02/24/软件测试/" class="article-date">
-  <time class="post-time" datetime="2019-02-24T05:24:01.000Z" itemprop="datePublished">
-    <span class="post-month">2月</span><br/>
-    <span class="post-day">24</span>
-  </time>
-</a>
-   
-  </div>
-  <div class="article-inner">
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2019/02/24/软件测试/">软件测试</a>
-    </h1>
-  
-
-        <div>
-          
-  <div class="article-category">
-    <a class="article-category-link" href="/categories/测试理论/">测试理论</a>
-  </div>
-
-          
-              
-
-          
-        </div>
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <h2 id="计算机软件分类"><a href="#计算机软件分类" class="headerlink" title="计算机软件分类"></a>计算机软件分类</h2><ul>
-<li>按照层次划分<ul>
-<li>系统软件</li>
-<li>支持软件</li>
-<li>应用软件</li>
-</ul>
-</li>
-<li>按结构划分<ul>
-<li>单机软件</li>
-<li>分布式软件 C/S B/S<h5 id="C-S-客户端–服务器，B-S-浏览器–服务端"><a href="#C-S-客户端–服务器，B-S-浏览器–服务端" class="headerlink" title="C/S: 客户端–服务器，B/S: 浏览器–服务端"></a>C/S: 客户端–服务器，B/S: 浏览器–服务端</h5></li>
-</ul>
-</li>
-<li>按照组织划分<ul>
-<li>开源软件</li>
-<li>商业软件</li>
-</ul>
-</li>
-</ul>
-<p><em>计算方式: 网格计算(地图)、云计算</em></p>
-<h4 id="软件缺陷由来"><a href="#软件缺陷由来" class="headerlink" title="软件缺陷由来"></a>软件缺陷由来</h4><ul>
-<li>bug: 一只虫子的由来 </li>
-<li>defect(缺陷)<h4 id="软件缺陷："><a href="#软件缺陷：" class="headerlink" title="软件缺陷："></a>软件缺陷：</h4></li>
-<li>软件未能实现产品说明书的功能</li>
-<li>软件出现了产品说明书指名的不应该实现的功能</li>
-<li>产品软件实现了产品说明书未能提到的功能</li>
-<li>软件未实现产品说明书虽未明确提及但应该实现的目标</li>
-<li>软件难以理解、不易使用、运行缓慢或者(从测试角度看)用户体验不佳</li>
-</ul>
-<p><strong>所有不满足需求或者超出需求的都是缺陷</strong><br><strong>没有不存在缺陷的产品，只有没有发现的缺陷</strong></p>
-<h4 id="概述-源于上世纪70th"><a href="#概述-源于上世纪70th" class="headerlink" title="概述 源于上世纪70th"></a>概述 源于上世纪70th</h4><ul>
-<li>《测试数据选择的原理》</li>
-<li>《软件测试的艺术》</li>
-<li>软件质量保证部门： QA(质量保证)、QC(质量控制)、SQA<h4 id="软件测试国内外现状"><a href="#软件测试国内外现状" class="headerlink" title="软件测试国内外现状"></a>软件测试国内外现状</h4></li>
-</ul>
-<h4 id="正向思维-开发思维"><a href="#正向思维-开发思维" class="headerlink" title="正向思维(开发思维)"></a>正向思维(开发思维)</h4><h6 id="确信自己产品不存在问题"><a href="#确信自己产品不存在问题" class="headerlink" title="确信自己产品不存在问题"></a>确信自己产品不存在问题</h6><h4 id="逆向思维"><a href="#逆向思维" class="headerlink" title="逆向思维"></a>逆向思维</h4><ul>
-<li>Glenford.j.Myers</li>
-<li>测试是为了发现错误而执行一个程序或者系统的过程<ul>
-<li>测试时证明程序有错，而不是证明程序无措</li>
-<li>一个好的测试用例在于它发现以前未发现的错误</li>
-<li>一个成功的测试是发现了以前未发现的错误的测试</li>
-</ul>
-</li>
-</ul>
-<h3 id="IEEE定义的测试"><a href="#IEEE定义的测试" class="headerlink" title="IEEE定义的测试"></a>IEEE定义的测试</h3><ul>
-<li>在规定条件下运行系统或构建的过程：观察和记录结果，并对系统或者构建的某些方便给予评价</li>
-<li>分析软件项目的过程： 检测现有状况和所需状况之间的不同，并且评估软件项目的特征</li>
-</ul>
-<h3 id="广义软件测试"><a href="#广义软件测试" class="headerlink" title="广义软件测试"></a>广义软件测试</h3><ul>
-<li>软件测试是对软件形成过程中的所有工作产品(包括程序以及相关文档)进行的测试<br>而不仅仅是对程序的运行进行测试<ul>
-<li>验证<br>通过检查和提供客观证据来证实指定的需求是否满足</li>
-<li>确认<br>通过检查和提供客观证据来证实特定目的的功能或者应用是否实现<h3 id="软件测试的目的"><a href="#软件测试的目的" class="headerlink" title="软件测试的目的"></a>软件测试的目的</h3></li>
-</ul>
-</li>
-<li>以最少的人力、物力和时间找出软件中存在的各种错误缺陷，<br>通过修正各种错误和缺陷保证软件质量，避免软件发布后由于潜在各种软件错误和缺陷造成的隐患所带来的<br>商业风险。同时利用测试过程中得到的测试结果和测试信息，作为后续项目开发和测试过程改进的重要输入<br>避免在将来的项目开发和测试中重复同样的错误；采用更高效的测试管理手段，提高软件测试的效率和软件产品的质量</li>
-<li>测试需要保证以下两点: 程序做了它应该做的事以及没做它不应该做的事。</li>
-</ul>
-<ul>
-<li><em>软件测试的目的是尽可能早的找出软件产品中潜藏的缺陷，并确保其得以修复</em></li>
-<li>软件测试仅仅只是软件质量保证的重要手段之一，而真正提高软件产品质量，需要持续不断的过程改进。(开发的事)</li>
-</ul>
-<h3 id="测试和调试的区别"><a href="#测试和调试的区别" class="headerlink" title="测试和调试的区别"></a>测试和调试的区别</h3><ul>
-<li>目标、方法、思路都不同</li>
-<li>测试是从已知的条件开始的，使用预先定义的过程，并且有预期结果；调试是从未知的的条件开始结束过程可能无法预计</li>
-<li>测试可以计划，可以预先制定测试用例和过程，工作进度可以度量；描述调试的过程或者持续时间相对比较困难</li>
-<li>测试对象包括软件开发过程中的文档、数据以及代码、而调试的对象一般来说只是代码。</li>
-</ul>
-<h3 id="软件的定义"><a href="#软件的定义" class="headerlink" title="软件的定义"></a>软件的定义</h3><ul>
-<li>程序</li>
-<li>数据</li>
-<li>结构</li>
-</ul>
-<h3 id="软件工程"><a href="#软件工程" class="headerlink" title="软件工程"></a>软件工程</h3><h5 id="软件工程包括两个方面：-软件开发技术和软件项目管理。其中，软件开发技术包括软件开发方法学、软件工具盒软件工程环境。"><a href="#软件工程包括两个方面：-软件开发技术和软件项目管理。其中，软件开发技术包括软件开发方法学、软件工具盒软件工程环境。" class="headerlink" title="软件工程包括两个方面： 软件开发技术和软件项目管理。其中，软件开发技术包括软件开发方法学、软件工具盒软件工程环境。"></a>软件工程包括两个方面： 软件开发技术和软件项目管理。其中，软件开发技术包括软件开发方法学、软件工具盒软件工程环境。</h5><p>软件项目管理包括软件质量、项目评估、进度控制、人员组织、配置管理、项目计划等。</p>
-<ul>
-<li>引起软件危机的主要问题是软件质量问题。软件工程主要解决的就是软件质量问题。而软件测试是软件质量管理体系中一个非常重要的手段。</li>
-<li>类比: 在软件生产过程中，项目经理、软件开发工程师、软件测试工程师师最基本的三个角色。就像建筑工程里的项目经理、建筑师(含建筑工人)<br>、项目监理之间的关系。</li>
-</ul>
-<h3 id="软件生命周期"><a href="#软件生命周期" class="headerlink" title="软件生命周期"></a>软件生命周期</h3><h6 id="1、立项–需求分析–设计、编码、测试–发布–运行维护–淘汰"><a href="#1、立项–需求分析–设计、编码、测试–发布–运行维护–淘汰" class="headerlink" title="1、立项–需求分析–设计、编码、测试–发布–运行维护–淘汰"></a>1、立项–需求分析–设计、编码、测试–发布–运行维护–淘汰</h6><h6 id="2、详细：软件立项–可行性研究–需求分析–概要设计–详细设计–编码实现–单元测试–集成测试–系统测试–验收测试–运行维护"><a href="#2、详细：软件立项–可行性研究–需求分析–概要设计–详细设计–编码实现–单元测试–集成测试–系统测试–验收测试–运行维护" class="headerlink" title="2、详细：软件立项–可行性研究–需求分析–概要设计–详细设计–编码实现–单元测试–集成测试–系统测试–验收测试–运行维护"></a>2、详细：软件立项–可行性研究–需求分析–概要设计–详细设计–编码实现–单元测试–集成测试–系统测试–验收测试–运行维护</h6><h6 id="3、软件开发过程：需求分析–系统设计–编码-amp-测试–用户验收–上线维护"><a href="#3、软件开发过程：需求分析–系统设计–编码-amp-测试–用户验收–上线维护" class="headerlink" title="3、软件开发过程：需求分析–系统设计–编码&amp;测试–用户验收–上线维护"></a>3、软件开发过程：需求分析–系统设计–编码&amp;测试–用户验收–上线维护</h6><ul>
-<li>瀑布模型: 上一个阶段的工作输出是下一个阶段的工作输入，缺点是测试介入时间太短，不支持迭代</li>
-<li>快速原型模型：迅速建造一个可运行的软件模型，便于理解和澄清，使得开发与客户达成共识。</li>
-<li>增量模型 (常用)：<ul>
-<li>增量模型是把待开发的软件模块化，将每个模块作为一个增量组件，从而分批次的分析、设计、编码和测试这些增量组件</li>
-<li>开放不需要一次性把整个软件产品交给用户，而是可以分批次进行提交</li>
-<li>优点<ul>
-<li>模块化</li>
-<li>降低开发风险</li>
-<li>开发顺序灵活</li>
-</ul>
-</li>
-<li>限制：<ul>
-<li>要求管理人员把握全局水平较高</li>
-</ul>
-</li>
-</ul>
-</li>
-<li>迭代模型：<ul>
-<li>迭代包括产生产品发布(稳定、可执行的版本)的全部开发活动和要使用该发布必须的所有其他外围元素</li>
-<li>某种程度上，开发迭代是一次完整经过所有工作流程的过程: 需求分析、程序设计、实施、测试</li>
-<li>优点<ul>
-<li>降低在一个增量上的开支风险</li>
-<li>降低了产品无法按照既定进度进入市场的风险</li>
-<li>加快整个开发进度</li>
-<li>适应需求变化容易</li>
-</ul>
-</li>
-</ul>
-</li>
-<li>敏捷模型<ul>
-<li>轻文档</li>
-<li>无界限</li>
-</ul>
-</li>
-<li>螺旋模型</li>
-</ul>
-<h3 id="软件测试概述"><a href="#软件测试概述" class="headerlink" title="软件测试概述"></a>软件测试概述</h3><p>标准的测试过程至少包括以下：需求分析–测试计划–测试设计–测试执行–测试总结</p>
-<h4 id="1、V模型"><a href="#1、V模型" class="headerlink" title="1、V模型"></a>1、V模型</h4><ul>
-<li><p>揭示了开发过程与测试过程中各阶段的对应关系，通过开发和测试同时进行的方式来缩短周期，提高开发效率</p>
-<ul>
-<li>缺点与不足<ul>
-<li>仅仅把测试过程作为在需求分析、系统设计以及编码后的一个阶段，忽略了测试对需求分析，系统设计的验证，需求的满足情况一直到后期的验收测试才被验证。</li>
-<li>没有体现 尽早的和不断地进行软件测试 的原则</li>
-<li>不支持迭代</li>
-</ul>
-</li>
-</ul>
-<p><img src="http://149.248.3.74/V%e6%a8%a1%e5%9e%8b.jpg" alt="V模型"><br>上图左右对应</p>
-</li>
-</ul>
-<h4 id="2、W模型"><a href="#2、W模型" class="headerlink" title="2、W模型"></a>2、W模型</h4><ul>
-<li>由两个V组成，分别代表测试与开发过程，明确的表示了测试与开发的并行关系</li>
-<li>测试伴随着整个软件开发周期，而且测试的对象不仅仅是程序，需求、设计等开发输出的文档同样要测试<br><img src="http://149.248.3.74/W%e6%a8%a1%e5%9e%8b.jpg" alt="W模型"><h4 id="3、H模型"><a href="#3、H模型" class="headerlink" title="3、H模型"></a>3、H模型</h4></li>
-<li>相对于V和W模型，H模型将测试活动完全独立出来了，形成一个完全独立的流程，将测试准备活动和测试执行活动清晰的体现出来</li>
-<li>途中标记的其他流程可以是任意开发流程，只要测试条件成熟了，测试准备活动完成了，测试活动就可以进行了。</li>
-<li>支持迭代(好的模型)</li>
-<li>早准备早执行</li>
-<li>为了能够对开发过程进行测试，应当采用的测试过程模型为 W+H<br><img src="http://149.248.3.74/H%e6%a8%a1%e5%9e%8b.jpg" alt="H模型"></li>
-</ul>
-<h3 id="4、X模型"><a href="#4、X模型" class="headerlink" title="4、X模型"></a>4、X模型</h3><p>   <img src="http://149.248.3.74/X%e6%a8%a1%e5%9e%8b.jpg" alt="X模型"></p>
-<h3 id="软件测试管理理念"><a href="#软件测试管理理念" class="headerlink" title="软件测试管理理念"></a>软件测试管理理念</h3><ul>
-<li>尽早测试<ul>
-<li>测试人员早起参加软件项目，及时开展测试的准备工作，包括编写测试计划、制定测试方案以及准备测试用例</li>
-<li>尽早的开展测试执行工作，一旦代码模块完成就应该及时开展单元测试，一旦代码模块被集成成相对独立的子系统，便可以开展集成测试</li>
-<li>旦有BUILD提交，便可以看展系统测试工作</li>
-</ul>
-</li>
-<li>全面测试<ul>
-<li>对软件的所有产品进行全面的测试，包括需求、设计文档、代码，用户文档等。</li>
-<li>软件开发及测试人员(有时包括用户)全面的参与到测试工作中。</li>
-</ul>
-</li>
-<li>全过程测试<ul>
-<li>测试人员要充分关注开发过程，对开发过程的各种变化做出响应。</li>
-<li>测试人员要对测试的全过程进行跟踪。</li>
-</ul>
-</li>
-<li>独立、迭代测试<ul>
-<li>测试活动是迭代的</li>
-<li>应当将测试过程从开发过程中适当的抽象出来，作为一个独立的过程进行管理</li>
-</ul>
-</li>
-</ul>
-<h2 id="测试方法"><a href="#测试方法" class="headerlink" title="测试方法"></a>测试方法</h2><h3 id="单元测试"><a href="#单元测试" class="headerlink" title="单元测试"></a>单元测试</h3><ul>
-<li>说明：单元测试又称模块测试，是针对软件设计的最小单位–程序模块进行正确性验证的测试过程，其目的在于检查每个程序单元是否能够正确实现设计模块中的<br>模块功能、性能、接口和设计约束等要求，发现各模块可能存在的各种错误。单元测试需要从程序内部结构出发设计用例。多个模块可以平行的<br>进行单元测试。</li>
-<li>逻辑结构和代码功能<h3 id="集成测试"><a href="#集成测试" class="headerlink" title="集成测试"></a>集成测试</h3></li>
-<li>说明：集成测试也叫组装测试。通常在单元测试的基础上，将所有的程序模块进行有序的、递增的测试。集成测试是检验程序单元或部件<br>的接口关系，逐步集成为符合概要设计要求的程序部件或整个系统。<h3 id="确认测试"><a href="#确认测试" class="headerlink" title="确认测试"></a>确认测试</h3></li>
-<li>说明：确认测试也叫有效性测试。实在模拟环境下，验证软件的所有功能和性能及其他特征是否与用户预期要求一致。通过了确认测试之后的软件，才具备了进入系统测试阶段的资质<h3 id="系统测试"><a href="#系统测试" class="headerlink" title="系统测试"></a>系统测试</h3></li>
-<li>说明：系统测试实在真实的系统运行环境下，检查完整的程序系统能否和系统(包括硬件、外设、网络和系统软件、支持平台等)正确配置、连接、并最终满足用户的所有需求<h3 id="验收测试"><a href="#验收测试" class="headerlink" title="验收测试"></a>验收测试</h3></li>
-<li>说明： 是软件产品检验的最后一个环节。按照项目任务书或合同、供需双发约定的验收依据文档进行对整个系统的测试与评审，决定收或者拒收系统</li>
-</ul>
-<h3 id="黑盒测试"><a href="#黑盒测试" class="headerlink" title="黑盒测试"></a>黑盒测试</h3><ul>
-<li>说明：通过软件表现来发现缺陷和错误，不关注程序内部结构和处理过程。程序界面处进行测试，他只是检查样序是否按照规格说明书来。只关注输入输出。<h3 id="白盒测试"><a href="#白盒测试" class="headerlink" title="白盒测试"></a>白盒测试</h3></li>
-<li>通过对程序内部结构分析、检测来寻找问题。也称结构测试<h3 id="灰盒测试"><a href="#灰盒测试" class="headerlink" title="灰盒测试"></a>灰盒测试</h3></li>
-<li>介于黑盒白盒之间的测试。关注输出对于输入的正确性；同时也关注内部表现，但是不会很详细，只是通过表象、事件、标志来判断内部运行状态。</li>
-<li>同时考虑了用户端、特定的系统知识和操作系统。它在系统组件的协同性环境中评价应用软件设计<h3 id="静态测试"><a href="#静态测试" class="headerlink" title="静态测试"></a>静态测试</h3></li>
-<li>指不实际运行被测对象，而是只是静态的检查代码、界面或文档中可能存在的错误<ul>
-<li>代码测试：代码是否符合标准和规范</li>
-<li>界面测试： 界面与需求文档是否相符</li>
-<li>文档测试： 测试用户手册和需求说明是否真正符合用户需求<h3 id="动态测试"><a href="#动态测试" class="headerlink" title="动态测试"></a>动态测试</h3></li>
-</ul>
-</li>
-<li>实际运行被测对象，输入相应的测试数据，检查实际的输出结果和预期结果是否相符。判断动态还是静态的标准是看程序是否运行。</li>
-</ul>
-<h3 id="功能测试"><a href="#功能测试" class="headerlink" title="功能测试"></a>功能测试</h3><ul>
-<li>是黑盒测试的一方面，检查实际软件功能是否满足客户需求<ul>
-<li>逻辑功能测试</li>
-<li>界面测试</li>
-<li>易用性测试</li>
-<li>安装测试</li>
-<li>兼容性测试</li>
-<li>。。。<h3 id="性能测试"><a href="#性能测试" class="headerlink" title="性能测试"></a>性能测试</h3></li>
-</ul>
-</li>
-<li>功能的另个一指标，主要关注软件在某一功能在指定的时间、空间条件下，是否正常使用</li>
-<li>性能测试包括很多方面，主要是时间性和空间性。<h3 id="回归测试"><a href="#回归测试" class="headerlink" title="回归测试"></a>回归测试</h3></li>
-<li>指新版本测试前，重复执行之前某一个重要版本的所有测试用例</li>
-<li>目的：<ul>
-<li>验证之前版本的缺陷是否全部被修复</li>
-<li>确认修复缺陷没有引发新的缺陷<h3 id="冒烟测试"><a href="#冒烟测试" class="headerlink" title="冒烟测试"></a>冒烟测试</h3></li>
-</ul>
-</li>
-<li>指一个新版本进行系统大规模的测试之前，先验证一下基本功能是否实现，是否具备可测性。也叫可测性测试。<h3 id="随机测试"><a href="#随机测试" class="headerlink" title="随机测试"></a>随机测试</h3></li>
-<li>随意性测试，指测试人员基于经验和直觉的探索性测试，目的是模拟用户的真实操作，并发现一些边缘性错误</li>
-</ul>
-<h2 id="测试原则"><a href="#测试原则" class="headerlink" title="测试原则"></a>测试原则</h2><ul>
-<li>所有测试标准都建立在用户需求之上</li>
-<li>软件测试必须基于””质量第一”，当时间和质量冲突，时间要服从质量</li>
-<li>实现定义好产品质量标准，只有有了质量标准，才能根据测试结果，对产品质量进行分析评估</li>
-<li>软件项目启动，软件测试开始</li>
-<li>穷举测试时不可能的</li>
-<li>第三方测试更有效，更客观</li>
-<li>软件测试计划是软件测试的前提</li>
-<li>测试用例是设计出来的，不是写出来的，所以要根据测试的目的，采用相应的方法去设计测试用例，从而提高测试效率，<br>更多发现错误，提高程序可靠性</li>
-<li>对发现错误更多的程序段，应该进行更深入的测试，一般来说，一段程序中已经发现的错误数越多，其中存在错误的概率也越大</li>
-<li>重试文档，妥善保存一切测试文档(测试计划、测试用例、测试报告)</li>
-<li>应该把“””尽早和不断测试”作为座右铭</li>
-<li>回归测试的关联性一定要引起充分注意，修改一个错误而引发更多错误现象很常见</li>
-<li>测试应该从小规模到大规模</li>
-<li>不可将测试用例置之度外，排除随意性</li>
-<li>必须彻底检查每一个测试结果</li>
-<li>一定要注意测试中的错误集发生现象，这和程序员的编程水平和习惯有很大关系</li>
-<li>对测试错误结果一定要有一个确认的过程</li>
-</ul>
-<h2 id="测试计划编写-5W1H"><a href="#测试计划编写-5W1H" class="headerlink" title="测试计划编写(5W1H)"></a>测试计划编写(5W1H)</h2><ul>
-<li>what、why、who、where、when、how<h3 id="制定测试目标从以下几个方面着手"><a href="#制定测试目标从以下几个方面着手" class="headerlink" title="制定测试目标从以下几个方面着手"></a>制定测试目标从以下几个方面着手</h3></li>
-<li>理解系统</li>
-<li>及早介入</li>
-<li>理解企业文化和过程</li>
-<li>测试期望</li>
-<li>吸取教训</li>
-<li>工作量大小</li>
-<li>解决方案的类型</li>
-<li>技术选择</li>
-<li>预算</li>
-<li>时间表</li>
-<li>分阶段解决方案</li>
-</ul>
-
-      
-    </div>
-    <footer class="article-footer">
-      <a data-url="http://yoursite.com/2019/02/24/软件测试/" data-id="cjtmcotny000jyshzl4vlmb0e" class="article-share-link">Share</a>
-      
-      
-  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/技术/">技术</a></li></ul>
-
-    </footer>
-  </div>
-  
-</article>
 
 
-
-
-  
-    <article id="post-操作系统详细" class="wow slideInRight article article-type-post" itemscope itemprop="blogPost">
-  <div class="article-meta">
-    <a href="/2019/01/25/操作系统详细/" class="article-date">
-  <time class="post-time" datetime="2019-01-25T07:23:56.000Z" itemprop="datePublished">
-    <span class="post-month">1月</span><br/>
-    <span class="post-day">25</span>
-  </time>
-</a>
-   
-  </div>
-  <div class="article-inner">
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2019/01/25/操作系统详细/">操作系统详细</a>
-    </h1>
-  
-
-        <div>
-          
-  <div class="article-category">
-    <a class="article-category-link" href="/categories/系统/">系统</a>
-  </div>
-
-          
-              
-
-          
-        </div>
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <h3 id="1、什么是操作系统？"><a href="#1、什么是操作系统？" class="headerlink" title="1、什么是操作系统？"></a>1、什么是操作系统？</h3><ul>
-<li>用户角度，操作系统是一个控制软件</li>
-<li>管理应用程序</li>
-<li>为应用程序提高服务</li>
-<li>杀死应用程序</li>
-<li>资源管理</li>
-<li>管理外设、分配资源<h3 id="2、抽象概念"><a href="#2、抽象概念" class="headerlink" title="2、抽象概念"></a>2、抽象概念</h3></li>
-<li>CPU抽象成进程</li>
-<li>磁盘抽象成文件</li>
-<li>内存抽象成地址空间<h3 id="3、操作系统架层次结构"><a href="#3、操作系统架层次结构" class="headerlink" title="3、操作系统架层次结构"></a>3、操作系统架层次结构</h3></li>
-<li>硬件之上</li>
-<li>应用程序之下</li>
-</ul>
-<h3 id="4、kernel组成"><a href="#4、kernel组成" class="headerlink" title="4、kernel组成"></a>4、kernel组成</h3><ul>
-<li>CPU调度器</li>
-<li>物理内存管理</li>
-<li>虚拟内存管理</li>
-<li>文件系统管理</li>
-<li>文件处理与设备驱动(I/O)<h3 id="5、OS-kernel特征"><a href="#5、OS-kernel特征" class="headerlink" title="5、OS kernel特征"></a>5、OS kernel特征</h3></li>
-<li>并发：一段时间内多个程序运行</li>
-<li><strong>并行： 一个时间点有多个程序运行</strong></li>
-<li>共享：”同时“”访问,互斥共享</li>
-<li>虚拟：利用多道程序设计技术，让每个用户觉得都有一个计算机为他服务</li>
-<li>异步： 程序不是一直执行，而是走走停停，速度推进不可知，但是只要运行环境相同，运行结果也要相同</li>
-</ul>
-
-      
-    </div>
-    <footer class="article-footer">
-      <a data-url="http://yoursite.com/2019/01/25/操作系统详细/" data-id="cjtmcotnr000hyshzxn4fs1bz" class="article-share-link">Share</a>
-      
-      
-  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/底层/">底层</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/操作系统/">操作系统</a></li></ul>
-
-    </footer>
-  </div>
-  
-</article>
-
-
-
-
-  
-
+  <nav id="page-nav">
+    <span class="page-number current">1</span><a class="page-number" href="/page/2/">2</a><a class="extend next" rel="next" href="/page/2/">next &raquo;</a>
+  </nav>
 </section>
         
           <aside id="sidebar">
@@ -1332,9 +1158,9 @@ bash
     <h2 class="author">YuChou</h2>
     <h3 class="description"></h3>
     <div class="count-box">
-      <a href="/archives"><div><strong>9</strong><br>文章</div></a>
-      <a href="/categories"><div><strong>7</strong><br>分类</div></a>
-      <a href="/tags"><div><strong>10</strong><br>标签</div></a>
+      <a href="/archives"><div><strong>12</strong><br>文章</div></a>
+      <a href="/categories"><div><strong>8</strong><br>分类</div></a>
+      <a href="/tags"><div><strong>11</strong><br>标签</div></a>
     </div>
 
 
