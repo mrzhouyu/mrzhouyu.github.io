@@ -3,20 +3,20 @@
 <head>
   <meta charset="utf-8">
   
-  <title>操作系统详细 | YuChou</title>
+  <title>window下Redis安装配置 | YuChou</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="1、什么是操作系统？ 用户角度，操作系统是一个控制软件 管理应用程序 为应用程序提高服务 杀死应用程序 资源管理 管理外设、分配资源2、抽象概念 CPU抽象成进程 磁盘抽象成文件 内存抽象成地址空间3、操作系统架层次结构 硬件之上 应用程序之下  4、kernel组成 CPU调度器 物理内存管理 虚拟内存管理 文件系统管理 文件处理与设备驱动(I/O)5、OS kernel特征 并发：一段时间内多">
-<meta name="keywords" content="操作系统,底层">
+  <meta name="description" content="不写分布式爬虫后，差不多两年没接触redis了，公司貌似很多项目都用redis做消息队列，先装上，最近在仔细研究Python并发这块，看看能不能有实例中用得上，好好复习下。 redis优点 支持多种性数据类型：字符串、列表、散列、集合、有序集合 单线程，避免了多线程上下文切换 基于内存，速度快、持久化 分布式，读写分离 …….  1.环境 win10 64位操作系统  2.下载安装包https:/">
+<meta name="keywords" content="Redis">
 <meta property="og:type" content="article">
-<meta property="og:title" content="操作系统详细">
-<meta property="og:url" content="http://yoursite.com/2019/01/25/操作系统详细/index.html">
+<meta property="og:title" content="window下Redis安装配置">
+<meta property="og:url" content="http://yoursite.com/2019/04/05/window下Redis安装配置/index.html">
 <meta property="og:site_name" content="YuChou">
-<meta property="og:description" content="1、什么是操作系统？ 用户角度，操作系统是一个控制软件 管理应用程序 为应用程序提高服务 杀死应用程序 资源管理 管理外设、分配资源2、抽象概念 CPU抽象成进程 磁盘抽象成文件 内存抽象成地址空间3、操作系统架层次结构 硬件之上 应用程序之下  4、kernel组成 CPU调度器 物理内存管理 虚拟内存管理 文件系统管理 文件处理与设备驱动(I/O)5、OS kernel特征 并发：一段时间内多">
+<meta property="og:description" content="不写分布式爬虫后，差不多两年没接触redis了，公司貌似很多项目都用redis做消息队列，先装上，最近在仔细研究Python并发这块，看看能不能有实例中用得上，好好复习下。 redis优点 支持多种性数据类型：字符串、列表、散列、集合、有序集合 单线程，避免了多线程上下文切换 基于内存，速度快、持久化 分布式，读写分离 …….  1.环境 win10 64位操作系统  2.下载安装包https:/">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:updated_time" content="2019-02-24T08:12:22.394Z">
+<meta property="og:updated_time" content="2019-04-05T12:40:03.938Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="操作系统详细">
-<meta name="twitter:description" content="1、什么是操作系统？ 用户角度，操作系统是一个控制软件 管理应用程序 为应用程序提高服务 杀死应用程序 资源管理 管理外设、分配资源2、抽象概念 CPU抽象成进程 磁盘抽象成文件 内存抽象成地址空间3、操作系统架层次结构 硬件之上 应用程序之下  4、kernel组成 CPU调度器 物理内存管理 虚拟内存管理 文件系统管理 文件处理与设备驱动(I/O)5、OS kernel特征 并发：一段时间内多">
+<meta name="twitter:title" content="window下Redis安装配置">
+<meta name="twitter:description" content="不写分布式爬虫后，差不多两年没接触redis了，公司貌似很多项目都用redis做消息队列，先装上，最近在仔细研究Python并发这块，看看能不能有实例中用得上，好好复习下。 redis优点 支持多种性数据类型：字符串、列表、散列、集合、有序集合 单线程，避免了多线程上下文切换 基于内存，速度快、持久化 分布式，读写分离 …….  1.环境 win10 64位操作系统  2.下载安装包https:/">
   
     <link rel="alternate" href="/atom.xml" title="YuChou" type="application/atom+xml">
   
@@ -69,12 +69,12 @@
   </div>
 </div>
 
-        <section id="main"><article id="post-操作系统详细" class="wow slideInRight article article-type-post" itemscope itemprop="blogPost">
+        <section id="main"><article id="post-window下Redis安装配置" class="wow slideInRight article article-type-post" itemscope itemprop="blogPost">
   <div class="article-meta">
-    <a href="/2019/01/25/操作系统详细/" class="article-date">
-  <time class="post-time" datetime="2019-01-25T07:23:56.000Z" itemprop="datePublished">
-    <span class="post-month">1月</span><br/>
-    <span class="post-day">25</span>
+    <a href="/2019/04/05/window下Redis安装配置/" class="article-date">
+  <time class="post-time" datetime="2019-04-05T11:49:40.000Z" itemprop="datePublished">
+    <span class="post-month">4月</span><br/>
+    <span class="post-day">05</span>
   </time>
 </a>
    
@@ -86,14 +86,14 @@
         
   
     <h1 class="article-title" itemprop="name">
-      操作系统详细
+      window下Redis安装配置
     </h1>
   
 
         <div>
           
   <div class="article-category">
-    <a class="article-category-link" href="/categories/系统/">系统</a>
+    <a class="article-category-link" href="/categories/数据库/">数据库</a>
   </div>
 
           
@@ -105,39 +105,39 @@
     
     <div class="article-entry" itemprop="articleBody">
       
-        <h3 id="1、什么是操作系统？"><a href="#1、什么是操作系统？" class="headerlink" title="1、什么是操作系统？"></a>1、什么是操作系统？</h3><ul>
-<li>用户角度，操作系统是一个控制软件</li>
-<li>管理应用程序</li>
-<li>为应用程序提高服务</li>
-<li>杀死应用程序</li>
-<li>资源管理</li>
-<li>管理外设、分配资源<h3 id="2、抽象概念"><a href="#2、抽象概念" class="headerlink" title="2、抽象概念"></a>2、抽象概念</h3></li>
-<li>CPU抽象成进程</li>
-<li>磁盘抽象成文件</li>
-<li>内存抽象成地址空间<h3 id="3、操作系统架层次结构"><a href="#3、操作系统架层次结构" class="headerlink" title="3、操作系统架层次结构"></a>3、操作系统架层次结构</h3></li>
-<li>硬件之上</li>
-<li>应用程序之下</li>
+        <p>不写分布式爬虫后，差不多两年没接触redis了，公司貌似很多项目都用redis做消息队列，先装上，最近在仔细研究Python并发这块，看看能不能有实例中用得上，好好复习下。</p>
+<h3 id="redis优点"><a href="#redis优点" class="headerlink" title="redis优点"></a>redis优点</h3><ul>
+<li>支持多种性数据类型：字符串、列表、散列、集合、有序集合</li>
+<li>单线程，避免了多线程上下文切换</li>
+<li>基于内存，速度快、持久化</li>
+<li>分布式，读写分离</li>
+<li>…….</li>
 </ul>
-<h3 id="4、kernel组成"><a href="#4、kernel组成" class="headerlink" title="4、kernel组成"></a>4、kernel组成</h3><ul>
-<li>CPU调度器</li>
-<li>物理内存管理</li>
-<li>虚拟内存管理</li>
-<li>文件系统管理</li>
-<li>文件处理与设备驱动(I/O)<h3 id="5、OS-kernel特征"><a href="#5、OS-kernel特征" class="headerlink" title="5、OS kernel特征"></a>5、OS kernel特征</h3></li>
-<li>并发：一段时间内多个程序运行</li>
-<li><strong>并行： 一个时间点有多个程序运行</strong></li>
-<li>共享：”同时“”访问,互斥共享</li>
-<li>虚拟：利用多道程序设计技术，让每个用户觉得都有一个计算机为他服务</li>
-<li>异步： 程序不是一直执行，而是走走停停，速度推进不可知，但是只要运行环境相同，运行结果也要相同</li>
+<h4 id="1-环境"><a href="#1-环境" class="headerlink" title="1.环境"></a>1.环境</h4><ul>
+<li>win10 64位操作系统</li>
 </ul>
+<h4 id="2-下载安装包"><a href="#2-下载安装包" class="headerlink" title="2.下载安装包"></a>2.下载安装包</h4><p><a href="https://github.com/MicrosoftArchive/redis/releases/download/win-3.2.100/Redis-x64-3.2.100.msi" target="_blank" rel="noopener">https://github.com/MicrosoftArchive/redis/releases/download/win-3.2.100/Redis-x64-3.2.100.msi</a></p>
+<h4 id="3-点击安装"><a href="#3-点击安装" class="headerlink" title="3.点击安装"></a>3.点击安装</h4><ul>
+<li>打钩：Add the Redis installation folder to the PATH…… </li>
+<li>打钩：Add an exception to the Windows Firewall 允许外部访问</li>
+<li>端口号可以默认</li>
+<li>最大内存（Set the Max Memory limit）: 不是真的生产环境默认100M即可</li>
+</ul>
+<h4 id="4-修改密码"><a href="#4-修改密码" class="headerlink" title="4.修改密码"></a>4.修改密码</h4><p>在安装目录下找到<strong>redis.windows-service.conf</strong>文件，用编辑器打开，在# requirepass foobared下增加密码：requirepass 666666</p>
+<h4 id="5-启动使得密码生效"><a href="#5-启动使得密码生效" class="headerlink" title="5.启动使得密码生效"></a>5.启动使得密码生效</h4><ul>
+<li>访问：由于是刚刚安装的，默认是启动的。win+r 打开命令窗口，输入redis-cli (由于前面安装过程中已经添加了环境变量，这里可以通过redis客户端直接访问)，此时不需要输入密码，就可以使用数据库，例如 <code>set k &quot;Hello World&quot;</code> 确定，再执行  <code>get k</code>确定即可得到 “Hello World”的值。</li>
+<li>使得密码生效：由于一开始服务器是安装时候已经启动的，密码没有生效，所以需要重启redis服务器并且使得密码生效。1.鼠标拉到桌面底部任务栏右键—进入 任务管理器—点击 服务，可以看到Redis正在运行，右键Redis，重新启动。2.重新利用redis-cli访问数据库，，执行<code>set k &quot;Hello World&quot;</code> , 返回 <code>(error) ERR Client sent AUTH</code>, 输入<code>auth 666666</code>确定，再次<code>set k &quot;Hello World&quot;</code>，返回 <code>ok</code>，密码设置成功。</li>
+</ul>
+<hr>
+<p>有机会补充使用会踩得坑。。。</p>
 
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2019/01/25/操作系统详细/" data-id="cju424tzq001eywhzxhhj25wb" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2019/04/05/window下Redis安装配置/" data-id="cju424ty20007ywhz4n4us427" class="article-share-link">Share</a>
       
       
-  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/底层/">底层</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/操作系统/">操作系统</a></li></ul>
+  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Redis/">Redis</a></li></ul>
 
     </footer>
   </div>
@@ -145,15 +145,11 @@
     
 <nav id="article-nav">
   
-    <a href="/2019/02/24/软件测试/" id="article-nav-newer" class="article-nav-link-wrap">
-      <strong class="article-nav-caption">Newer</strong>
-      <div class="article-nav-title">
-        
-          软件测试
-        
-      </div>
-    </a>
   
+    <a href="/2019/04/05/Python多线程/" id="article-nav-older" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Older</strong>
+      <div class="article-nav-title">Python多线程</div>
+    </a>
   
 </nav>
 
