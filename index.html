@@ -40,7 +40,7 @@
     <div class="count-box">
       <a href="/archives"><div><strong>15</strong><br>文章</div></a>
       <a href="/categories"><div><strong>10</strong><br>分类</div></a>
-      <a href="/tags"><div><strong>14</strong><br>标签</div></a>
+      <a href="/tags"><div><strong>15</strong><br>标签</div></a>
     </div>
     <ul class="blog-link">
      
@@ -131,7 +131,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2019/04/05/window下Redis安装配置/" data-id="cju424ty20007ywhz4n4us427" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2019/04/05/window下Redis安装配置/" data-id="cju74b0w0000amghzu44grjui" class="article-share-link">Share</a>
       
       
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Redis/">Redis</a></li></ul>
@@ -168,6 +168,10 @@
 
         <div>
           
+  <div class="article-category">
+    <a class="article-category-link" href="/categories/Python/">Python</a>
+  </div>
+
           
               
 
@@ -177,13 +181,133 @@
     
     <div class="article-entry" itemprop="articleBody">
       
-        
+        <h3 id="关于Python多线程的概述"><a href="#关于Python多线程的概述" class="headerlink" title="关于Python多线程的概述"></a>关于Python多线程的概述</h3><p>由于GIL的存在，Python的多线程在CPU密集型任务并没有多大的优势，任何Python线程执行之前必须先获取GIL锁，然后每执行100条字节码解释器会释放锁，让其他线程有机会执行，阻塞时期的其他线程没有太大机会去占用其他CPU的资源，而是会阻塞等待当前CPU的线程执行完，对于多核并没有什么卵用。但是，对于I/O密集型任务，多线程还是有用的，比如爬虫，很多时候都是等待网站返回、等待网页解析，而这个等待的时间CPU是空闲的，此时可以将CPU的资源供其他I/O任务运行，充分利用单核资源。值得注意的是，Python的GIL并不是Python语言固有的特点，而是因为Python解释器–CPython引入的概念，Python解释器有CPython、PyPy、Psyco，Python本身完全可以不依赖于GIL，因为大部分默认的Python解释器环境是CPython，被误解为GIL是Python本身的缺陷。</p>
+<p>另外多核CPU多线程可能会比单线处理总任务的时间更长，比如，有CPU1, CPU2, 有线程A，B，C，初始时期线程A在CPU1上执行，当A释放锁后，处于CPU2的C线程被唤醒，准备执行，可是由于上一个线程的释放锁到下一个线程的加锁，时间极其短，C准备取锁执行时候，处于CPU1的线程B提前拿到了锁，开始执行，C线程只好继续等待调度，如此反复，浪费时间。</p>
+<h4 id="1-threading介绍"><a href="#1-threading介绍" class="headerlink" title="1.threading介绍"></a>1.threading介绍</h4><blockquote>
+<p><strong>threading</strong>用于提供线程相关的操作，线程是应用程序中工作的最小单元。python当前版本的多线程库没有实现优先级、线程组，线程也不能被停止、暂停、恢复、中断。</p>
+<p><strong>threading模块提供的类：</strong>  　　Thread, Lock, Rlock, Condition, [Bounded]Semaphore, Event, Timer, local。</p>
+<p><strong>threading 模块提供的常用方法：</strong><br>　　threading.currentThread(): 返回当前的线程变量。<br>　　threading.enumerate(): 返回一个包含正在运行的线程的list。正在运行指线程启动后、结束前，不包括启动前和终止后的线程。<br>　　threading.activeCount(): 返回正在运行的线程数量，与len(threading.enumerate())有相同的结果。</p>
+<p><strong>threading 模块提供的常量：</strong></p>
+<p>　　threading.TIMEOUT_MAX 设置threading全局超时时间。</p>
+</blockquote>
+<h4 id="2-Thread类"><a href="#2-Thread类" class="headerlink" title="2.Thread类"></a>2.Thread类</h4><blockquote>
+<p><strong>构造方法：</strong> <em>Thread(group=None, target=None, name=None, args=(), kwargs={})</em> </p>
+<p>　　group: 线程组，目前还没有实现，库引用中提示必须是None；<br>　　target: 要执行的方法；<br>　　name: 线程名；<br>　　args/kwargs: 要传入方法的参数。</p>
+<p><strong>实例方法：</strong> 　　isAlive(): 返回线程是否在运行。正在运行指启动后、终止前。<br>　　get/setName(name): 获取/设置线程名。 </p>
+<p>　　start():  线程准备就绪，等待CPU调度<br>　　is/setDaemon(bool): 获取/设置是后台线程（默认前台线程（False））。（在start之前设置）</p>
+<p>　　　　如果是后台线程，主线程执行过程中，后台线程也在进行，主线程执行完毕后，后台线程不论成功与否，主线程和后台线程均停止<br>       　　如果是前台线程，主线程执行过程中，前台线程也在进行，主线程执行完毕后，等待前台线程也执行完成后，程序停止<br>　　start(): 启动线程。<br>　　join([timeout]): 阻塞当前上下文环境的线程，直到调用此方法的线程终止或到达指定的timeout（可选参数）。</p>
+</blockquote>
+<h4 id="3-Python多线程的两种使用方法"><a href="#3-Python多线程的两种使用方法" class="headerlink" title="3.Python多线程的两种使用方法"></a>3.Python多线程的两种使用方法</h4><h5 id="3-1-重写类方法"><a href="#3-1-重写类方法" class="headerlink" title="3.1 重写类方法"></a>3.1 重写类方法</h5><p>3.1.1 类方法重写代码块：</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> threading</span><br><span class="line"><span class="keyword">import</span> random</span><br><span class="line"><span class="keyword">import</span> time</span><br><span class="line"><span class="keyword">import</span> datetime</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">MyThread</span><span class="params">(threading.Thread)</span>:</span></span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">__init__</span><span class="params">(self, lang)</span>:</span></span><br><span class="line">        super(MyThread, self).__init__()</span><br><span class="line">        self.lang = lang</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">run</span><span class="params">(self)</span>:</span></span><br><span class="line">        <span class="comment"># s = random.randint(1, 3)</span></span><br><span class="line">        time.sleep(<span class="number">2</span>)</span><br><span class="line">        print(<span class="string">"I Love &#123;:&lt;10&#125; Time: &#123;&#125;  ThreadName: &#123;:^&#125;"</span>.format(self.lang, datetime.datetime.now(), threading.Thread().name))</span><br></pre></td></tr></table></figure>
+<p>3.1.2 不设置deamon和join：</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">if</span> __name__ == <span class="string">"__main__"</span>:</span><br><span class="line"></span><br><span class="line">    lang = [<span class="string">"Python"</span>, <span class="string">"Java"</span>, <span class="string">"PHP"</span>, <span class="string">"Golang"</span>, <span class="string">"C++"</span>, <span class="string">"C"</span>, <span class="string">"Julia"</span>]</span><br><span class="line">    <span class="keyword">for</span> l <span class="keyword">in</span> lang:</span><br><span class="line">        T = MyThread(lang=l)</span><br><span class="line">        <span class="comment"># T.setDaemon(True)</span></span><br><span class="line">        T.start()</span><br><span class="line">    <span class="comment"># T.join()</span></span><br><span class="line">    print(<span class="string">"主线程退出，time: %s"</span> % datetime.datetime.now())</span><br></pre></td></tr></table></figure>
+<p>console: 主进程提前于子进程输出</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">主线程退出，time: 2019-04-07 20:37:47.847619</span><br><span class="line">I Love Python     Time: 2019-04-07 20:37:49.846555  ThreadName: Thread-8</span><br><span class="line">I Love C++        Time: 2019-04-07 20:37:49.852451  ThreadName: Thread-9</span><br><span class="line">I Love Java       Time: 2019-04-07 20:37:49.852451  ThreadName: Thread-10</span><br><span class="line">I Love Golang     Time: 2019-04-07 20:37:49.852932  ThreadName: Thread-11</span><br><span class="line">I Love Julia      Time: 2019-04-07 20:37:49.853937  ThreadName: Thread-12</span><br><span class="line">I Love C          Time: 2019-04-07 20:37:49.854098  ThreadName: Thread-13</span><br><span class="line">I Love PHP        Time: 2019-04-07 20:37:49.854098  ThreadName: Thread-14</span><br><span class="line"></span><br><span class="line">Process finished with exit code 0</span><br></pre></td></tr></table></figure>
+<p>3.1.3 设置deamon：</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">if</span> __name__ == <span class="string">"__main__"</span>:</span><br><span class="line"></span><br><span class="line">    lang = [<span class="string">"Python"</span>, <span class="string">"Java"</span>, <span class="string">"PHP"</span>, <span class="string">"Golang"</span>, <span class="string">"C++"</span>, <span class="string">"C"</span>, <span class="string">"Julia"</span>]</span><br><span class="line">    <span class="keyword">for</span> l <span class="keyword">in</span> lang:</span><br><span class="line">        T = MyThread(lang=l)</span><br><span class="line">        T.setDaemon(<span class="keyword">True</span>)</span><br><span class="line">        T.start()</span><br><span class="line">    <span class="comment"># T.join()</span></span><br><span class="line">    print(<span class="string">"主线程退出，time: %s"</span> % datetime.datetime.now())</span><br></pre></td></tr></table></figure>
+<p>console：只要主进程结束，不管子进程如何直接退出</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">主线程退出，time: 2019-04-07 20:39:03.144132</span><br><span class="line"></span><br><span class="line">Process finished with exit code 0</span><br></pre></td></tr></table></figure>
+<p>3.1.4 设置join：</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">if</span> __name__ == <span class="string">"__main__"</span>:</span><br><span class="line"></span><br><span class="line">    threadPool = []</span><br><span class="line">    lang = [<span class="string">"Python"</span>, <span class="string">"Java"</span>, <span class="string">"PHP"</span>, <span class="string">"Golang"</span>, <span class="string">"C++"</span>, <span class="string">"C"</span>, <span class="string">"Julia"</span>]</span><br><span class="line">    <span class="keyword">for</span> l <span class="keyword">in</span> lang:</span><br><span class="line">        T = MyThread(lang=l)</span><br><span class="line">        threadPool.append(T)</span><br><span class="line"></span><br><span class="line">    <span class="keyword">for</span> t <span class="keyword">in</span> threadPool:</span><br><span class="line">        t.start()</span><br><span class="line"></span><br><span class="line">    <span class="keyword">for</span> t <span class="keyword">in</span> threadPool:</span><br><span class="line">        t.join()</span><br><span class="line"></span><br><span class="line">    print(<span class="string">"主线程退出，time: %s"</span> % datetime.datetime.now())</span><br></pre></td></tr></table></figure>
+<p>console：子进程执行完，主进程退出</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">I Love Golang     Time: 2019-04-07 20:46:09.863986  ThreadName: Thread-8</span><br><span class="line">I Love Julia      Time: 2019-04-07 20:46:09.864122  ThreadName: Thread-9</span><br><span class="line">I Love C++        Time: 2019-04-07 20:46:09.864122  ThreadName: Thread-10</span><br><span class="line">I Love Java       Time: 2019-04-07 20:46:09.865120  ThreadName: Thread-11</span><br><span class="line">I Love C          Time: 2019-04-07 20:46:09.865120  ThreadName: Thread-12</span><br><span class="line">I Love Python     Time: 2019-04-07 20:46:09.865120  ThreadName: Thread-13</span><br><span class="line">I Love PHP        Time: 2019-04-07 20:46:09.866113  ThreadName: Thread-14</span><br><span class="line">主线程退出，time: 2019-04-07 20:46:09.866113</span><br><span class="line"></span><br><span class="line">Process finished with exit code 0</span><br></pre></td></tr></table></figure>
+<p>如上所有子进程输出并没有间隔两秒，可见当某一个子进程处于等待时期，其他子进程迅速开启，以此类推。</p>
+<h5 id="3-2-使用Thread类"><a href="#3-2-使用Thread类" class="headerlink" title="3.2 使用Thread类"></a>3.2 使用Thread类</h5><p>3.2.1</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">func</span><span class="params">(language)</span>:</span></span><br><span class="line">    s = random.randint(<span class="number">1</span>, <span class="number">5</span>)</span><br><span class="line">    time.sleep(s)</span><br><span class="line">    print(<span class="string">"I Love &#123;:&lt;10&#125; Time: &#123;&#125;  ThreadName: &#123;:^&#125;"</span>.format(language, datetime.datetime.now(), threading.current_thread().name))</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="keyword">if</span> __name__ == <span class="string">"__main__"</span>:</span><br><span class="line"></span><br><span class="line">    threadPool = []</span><br><span class="line">    lang = [<span class="string">"Python"</span>, <span class="string">"Java"</span>, <span class="string">"PHP"</span>, <span class="string">"Golang"</span>, <span class="string">"C++"</span>, <span class="string">"C"</span>, <span class="string">"Julia"</span>]</span><br><span class="line">    <span class="keyword">for</span> l <span class="keyword">in</span> lang:</span><br><span class="line">        T = threading.Thread(target=func, args=(l, ))</span><br><span class="line">        threadPool.append(T)</span><br><span class="line"></span><br><span class="line">    <span class="keyword">for</span> t <span class="keyword">in</span> threadPool:</span><br><span class="line">        t.start()</span><br><span class="line"></span><br><span class="line">    <span class="keyword">for</span> t <span class="keyword">in</span> threadPool:</span><br><span class="line">        t.join()</span><br><span class="line"></span><br><span class="line">    print(<span class="string">"主线程退出，time: %s"</span> % datetime.datetime.now())</span><br></pre></td></tr></table></figure>
+<p>console: </p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">I Love Python     Time: 2019-04-07 20:59:02.136552  ThreadName: Thread-1</span><br><span class="line">I Love C++        Time: 2019-04-07 20:59:02.142802  ThreadName: Thread-5</span><br><span class="line">I Love Julia      Time: 2019-04-07 20:59:02.142802  ThreadName: Thread-7</span><br><span class="line">I Love PHP        Time: 2019-04-07 20:59:03.139293  ThreadName: Thread-3</span><br><span class="line">I Love C          Time: 2019-04-07 20:59:04.137688  ThreadName: Thread-6</span><br><span class="line">I Love Golang     Time: 2019-04-07 20:59:04.137688  ThreadName: Thread-4</span><br><span class="line">I Love Java       Time: 2019-04-07 20:59:05.139252  ThreadName: Thread-2</span><br><span class="line">主线程退出，time: 2019-04-07 20:59:05.139708</span><br><span class="line"></span><br><span class="line">Process finished with exit code 0</span><br></pre></td></tr></table></figure>
+<p>注意：threading.current_thread().name 和 threading.Thread().name方法的区别</p>
+<h4 id="4-线程锁"><a href="#4-线程锁" class="headerlink" title="4.线程锁"></a>4.线程锁</h4><p>当多个线程访问同一个资源有可能造成混乱，此时就需要锁来规避可能造成的混乱。</p>
+<blockquote>
+<p>Lock（指令锁）是可用的最低级的同步指令。Lock处于锁定状态时，不被特定的线程拥有。Lock包含两种状态——锁定和非锁定，以及两个基本的方法。</p>
+<p>可以认为Lock有一个锁定池，当线程请求锁定时，将线程至于池中，直到获得锁定后出池。池中的线程处于状态图中的同步阻塞状态。</p>
+<p>RLock（可重入锁）是一个可以被同一个线程请求多次的同步指令。RLock使用了“拥有的线程”和“递归等级”的概念，处于锁定状态时，RLock被某个线程拥有。拥有RLock的线程可以再次调用acquire()，释放锁时需要调用release()相同次数。</p>
+<p>可以认为RLock包含一个锁定池和一个初始值为0的计数器，每次成功调用 acquire()/release()，计数器将+1/-1，为0时锁处于未锁定状态。</p>
+<p><strong>简言之：Lock属于全局，Rlock属于线程。</strong></p>
+<p><strong>构造方法：</strong> Lock()，Rlock（）,<strong><em>推荐使用Rlock()</em></strong></p>
+<p><strong>实例方法：</strong> 　　acquire([timeout]): 尝试获得锁定。使线程进入同步阻塞状态。<br>　　release(): 释放锁。使用前线程必须已获得锁定，否则将抛出异常</p>
+</blockquote>
+<h5 id="4-1-实例"><a href="#4-1-实例" class="headerlink" title="4.1 实例"></a>4.1 实例</h5><p>我的想法是新建一个共享文件tets.txt 其中已经写入一行 “a”, 现在实现用多线程访问该文件，每访问一次，在原来的基础上加 “a”。</p>
+<ul>
+<li><p>不加锁代码块</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> threading</span><br><span class="line"><span class="keyword">import</span> time</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">save</span><span class="params">(s)</span>:</span></span><br><span class="line">    <span class="keyword">with</span> open(<span class="string">"test.txt"</span>, <span class="string">"w"</span>) <span class="keyword">as</span> f:</span><br><span class="line">        f.write(s)</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">read</span><span class="params">()</span>:</span></span><br><span class="line">    time.sleep(<span class="number">1</span>)</span><br><span class="line">    <span class="keyword">with</span> open(<span class="string">"test.txt"</span>, <span class="string">"r"</span>) <span class="keyword">as</span> f:</span><br><span class="line">        line = f.readline()</span><br><span class="line">        print(<span class="string">"before : &#123;:&gt;10&#125;  ThreadName: &#123;:^&#125;"</span>.format(line, threading.current_thread().name))</span><br><span class="line">    save(line + <span class="string">"a"</span>)</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="keyword">for</span> _ <span class="keyword">in</span> range(<span class="number">10</span>):</span><br><span class="line">    T = threading.Thread(target=read)</span><br><span class="line">    T.start()</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>console: 可见并没有如我想象的输出 “a” “aa” “aaa”这样的，</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line">before :          a  ThreadName: Thread-2</span><br><span class="line">before :          a  ThreadName: Thread-1</span><br><span class="line">before :         aa  ThreadName: Thread-7</span><br><span class="line">before :         aa  ThreadName: Thread-8</span><br><span class="line">before :         aa  ThreadName: Thread-9</span><br><span class="line">before :             ThreadName: Thread-4</span><br><span class="line">before :             ThreadName: Thread-3</span><br><span class="line">before :             ThreadName: Thread-6</span><br><span class="line">before :             ThreadName: Thread-10</span><br><span class="line">before :             ThreadName: Thread-5</span><br><span class="line"></span><br><span class="line">Process finished with exit code 0</span><br></pre></td></tr></table></figure>
+</li>
+</ul>
+<ul>
+<li><p>加锁代码块：</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> threading</span><br><span class="line"><span class="keyword">import</span> time</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">save</span><span class="params">(s)</span>:</span></span><br><span class="line">    <span class="keyword">with</span> open(<span class="string">"test.txt"</span>, <span class="string">"w"</span>) <span class="keyword">as</span> f:</span><br><span class="line">        f.write(s)</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">read</span><span class="params">(lock)</span>:</span></span><br><span class="line">    time.sleep(<span class="number">1</span>)</span><br><span class="line">    lock.acquire()</span><br><span class="line">    <span class="keyword">with</span> open(<span class="string">"test.txt"</span>, <span class="string">"r"</span>) <span class="keyword">as</span> f:</span><br><span class="line">        line = f.readline()</span><br><span class="line">        print(<span class="string">"before : &#123;:&gt;10&#125;  ThreadName: &#123;:^&#125;"</span>.format(line, threading.current_thread().name))</span><br><span class="line">    save(line + <span class="string">"a"</span>)</span><br><span class="line">    lock.release()</span><br><span class="line"></span><br><span class="line">loc = threading.RLock()</span><br><span class="line"><span class="keyword">for</span> _ <span class="keyword">in</span> range(<span class="number">10</span>):</span><br><span class="line">    T = threading.Thread(target=read, args=(loc, ))</span><br><span class="line">    T.start()</span><br></pre></td></tr></table></figure>
+</li>
+</ul>
+<ul>
+<li><p>console: 实现了预期的功能</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line">before :          a  ThreadName: Thread-1</span><br><span class="line">before :         aa  ThreadName: Thread-9</span><br><span class="line">before :        aaa  ThreadName: Thread-2</span><br><span class="line">before :       aaaa  ThreadName: Thread-5</span><br><span class="line">before :      aaaaa  ThreadName: Thread-3</span><br><span class="line">before :     aaaaaa  ThreadName: Thread-4</span><br><span class="line">before :    aaaaaaa  ThreadName: Thread-8</span><br><span class="line">before :   aaaaaaaa  ThreadName: Thread-10</span><br><span class="line">before :  aaaaaaaaa  ThreadName: Thread-6</span><br><span class="line">before : aaaaaaaaaa  ThreadName: Thread-7</span><br><span class="line"></span><br><span class="line">Process finished with exit code 0</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>Lock和RLock的对比</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> threading</span><br><span class="line">lock = threading.Lock() <span class="comment">#Lock对象</span></span><br><span class="line">lock.acquire()</span><br><span class="line">lock.acquire()  <span class="comment">#产生了死锁。</span></span><br><span class="line">lock.release()</span><br><span class="line">lock.release()</span><br><span class="line"><span class="keyword">print</span> lock.acquire()</span><br><span class="line"> </span><br><span class="line"> </span><br><span class="line"><span class="keyword">import</span> threading</span><br><span class="line">rLock = threading.RLock()  <span class="comment">#RLock对象</span></span><br><span class="line">rLock.acquire()</span><br><span class="line">rLock.acquire() <span class="comment">#在同一线程内，程序不会堵塞。</span></span><br><span class="line">rLock.release()</span><br><span class="line">rLock.release()</span><br></pre></td></tr></table></figure>
+</li>
+</ul>
+<h5 id="4-2-Condition"><a href="#4-2-Condition" class="headerlink" title="4.2 Condition"></a>4.2 Condition</h5><blockquote>
+<p>Condition（条件变量）通常与一个锁关联。需要在多个Contidion中共享一个锁时，可以传递一个Lock/RLock实例给构造方法，否则它将自己生成一个RLock实例。</p>
+<p>　　可以认为，除了Lock带有的锁定池外，Condition还包含一个等待池，池中的线程处于等待阻塞状态，直到另一个线程调用notify()/notifyAll()通知；得到通知后线程进入锁定池等待锁定。</p>
+<p><strong>构造方法：</strong> Condition([lock/rlock])</p>
+<p><strong>实例方法：</strong> 　　acquire([timeout])/release(): 调用关联的锁的相应方法。<br>　　wait([timeout]): 调用这个方法将使线程进入Condition的等待池等待通知，并释放锁。使用前线程必须已获得锁定，否则将抛出异常。<br>　　notify(): 调用这个方法将从等待池挑选一个线程并通知，收到通知的线程将自动调用acquire()尝试获得锁定（进入锁定池）；其他线程仍然在等待池中。调用这个方法不会释放锁定。使用前线程必须已获得锁定，否则将抛出异常。<br>　　notifyAll(): 调用这个方法将通知等待池中所有的线程，这些线程都将进入锁定池尝试获得锁定。调用这个方法不会释放锁定。使用前线程必须已获得锁定，否则将抛出异常</p>
+</blockquote>
+<h4 id="5-Event"><a href="#5-Event" class="headerlink" title="5.Event"></a>5.Event</h4><blockquote>
+<p>Event（事件）是最简单的线程通信机制之一：一个线程通知事件，其他线程等待事件。Event内置了一个初始为False的标志，当调用set()时设为True，调用clear()时重置为 False。wait()将阻塞线程至等待阻塞状态。</p>
+<p>　　Event其实就是一个简化版的 Condition。Event没有锁，无法使线程进入同步阻塞状态。</p>
+<p><strong>构造方法：</strong> Event()</p>
+<p><strong>实例方法：</strong> 　　isSet(): 当内置标志为True时返回True。<br>　　set(): 将标志设为True，并通知所有处于等待阻塞状态的线程恢复运行状态。<br>　　clear(): 将标志设为False。<br>　　wait([timeout]): 如果标志为True将立即返回，否则阻塞线程至等待阻塞状态，等待其他线程调用set()。</p>
+</blockquote>
+<p><em>跟多进程类似</em></p>
+<ul>
+<li><p>代码块：</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> threading</span><br><span class="line"><span class="keyword">import</span> time</span><br><span class="line"></span><br><span class="line">event = threading.Event()</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">func</span><span class="params">()</span>:</span></span><br><span class="line">    print(<span class="string">"输出第一部分，等待子线程设置event为True, event Status: &#123;&#125;"</span>.format(str(event.isSet())))</span><br><span class="line">    event.wait(<span class="number">2</span>) <span class="comment"># 阻塞 如果wait()里面设置了时间，那么等时间到，event也会被设置为True ,就看与.set()相比谁先</span></span><br><span class="line">    print(<span class="string">"等待时间已经到，重置为False"</span>)</span><br><span class="line">    event.clear()</span><br><span class="line">    print(<span class="string">"子线程将event设置为False，等待主线程置True，event Status: &#123;&#125;"</span>.format(str(event.is_set())))</span><br><span class="line">    event.wait()</span><br><span class="line">    print(<span class="string">"主进程已经将event设置为True, event Status: &#123;&#125;"</span>.format(str(event.isSet())))</span><br><span class="line"></span><br><span class="line">t1 = threading.Thread(target=func)</span><br><span class="line">t1.start()</span><br><span class="line"></span><br><span class="line">print(<span class="string">"准备将even设置为True"</span>)</span><br><span class="line">time.sleep(<span class="number">4</span>)</span><br><span class="line">event.set()</span><br></pre></td></tr></table></figure>
+</li>
+</ul>
+<ul>
+<li><p>console:</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">输出第一部分，等待子线程设置event为True, event Status: False</span><br><span class="line">准备将even设置为True</span><br><span class="line">等待时间已经到，重置为False  #两秒后</span><br><span class="line">子线程将event设置为False，等待主线程置True，event Status: False</span><br><span class="line">主进程已经将event设置为True, event Status: True # 又过了两秒</span><br><span class="line"></span><br><span class="line">Process finished with exit code 0</span><br></pre></td></tr></table></figure>
+</li>
+</ul>
+<h4 id="6-timer"><a href="#6-timer" class="headerlink" title="6.timer"></a>6.timer</h4><blockquote>
+<p>　Timer（定时器）是Thread的派生类，用于在指定时间后调用一个方法。</p>
+<p><strong>构造方法：</strong> Timer(interval, function, args=[], kwargs={})<br>　　interval: 指定的时间<br>　　function: 要执行的方法<br>　　args/kwargs: 方法的参数</p>
+<p><strong>实例方法：</strong> Timer从Thread派生，没有增加实例方法。</p>
+</blockquote>
+<ul>
+<li><p>代码块：注意 <strong>type hint</strong></p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># -*- coding: utf-8 -*-</span></span><br><span class="line"><span class="comment"># @Time    : 2019/4/7 22:33</span></span><br><span class="line"><span class="comment"># @Author  : YuChou</span></span><br><span class="line"><span class="comment"># @Site    :</span></span><br><span class="line"><span class="comment"># @File    : _thread.py</span></span><br><span class="line"><span class="comment"># @Software: PyCharm</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">import</span> threading</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">f</span><span class="params">(*args: tuple, **kwargs: dict)</span> -&gt; <span class="keyword">None</span>:</span></span><br><span class="line">    print(<span class="string">"args: &#123;&#125;, kwargs: &#123;&#125;"</span>.format(args, kwargs))</span><br><span class="line"></span><br><span class="line">t = threading.Timer(<span class="number">3</span>, f, args=(<span class="string">"a"</span>, <span class="number">1</span>), kwargs=&#123;<span class="string">'c'</span>: <span class="number">2</span>, <span class="string">'d'</span>: <span class="number">3</span>&#125;)</span><br><span class="line">t.start()</span><br></pre></td></tr></table></figure>
+<p>console：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">args: (&apos;a&apos;, 1), kwargs: &#123;&apos;c&apos;: 2, &apos;d&apos;: 3&#125;</span><br><span class="line"></span><br><span class="line">Process finished with exit code 0</span><br></pre></td></tr></table></figure>
+</li>
+</ul>
+<h4 id="7-local"><a href="#7-local" class="headerlink" title="7.local"></a>7.local</h4><blockquote>
+<p>　　local是一个小写字母开头的类，用于管理 thread-local（线程局部的）数据。对于同一个local，线程无法访问其他线程设置的属性；线程设置的属性不会被其他线程设置的同名属性替换。</p>
+<p>　　可以把local看成是一个“线程-属性字典”的字典，local封装了从自身使用线程作为 key检索对应的属性字典、再使用属性名作为key检索属性值的细节</p>
+</blockquote>
+<ul>
+<li><p>代码块：</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> threading</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">local = threading.local()</span><br><span class="line">local.tname = <span class="string">'Hello'</span></span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">func</span><span class="params">()</span>:</span></span><br><span class="line">    local.tname = <span class="string">'World'</span></span><br><span class="line">    print(local.tname, end=<span class="string">" "</span>)</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">t1 = threading.Thread(target=func)</span><br><span class="line">t1.start()</span><br><span class="line">t1.join()</span><br><span class="line"></span><br><span class="line">print(local.tname)</span><br></pre></td></tr></table></figure>
+</li>
+</ul>
+<p>console：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">World Hello</span><br><span class="line"></span><br><span class="line">Process finished with exit code 0</span><br></pre></td></tr></table></figure>
+<hr>
+<p>参考：<a href="https://www.cnblogs.com/tkqasn/p/5700281.html" target="_blank" rel="noopener"><a href="https://www.cnblogs.com/tkqasn/p/5700281.html" target="_blank" rel="noopener">https://www.cnblogs.com/tkqasn/p/5700281.html</a></a></p>
+<p>​    <a href="https://www.cnblogs.com/bingabcd/p/6671368.html" target="_blank" rel="noopener"><a href="https://www.cnblogs.com/bingabcd/p/6671368.html" target="_blank" rel="noopener">https://www.cnblogs.com/bingabcd/p/6671368.html</a></a></p>
+<p>​    <a href="https://www.python.org/dev/peps/pep-0484/" target="_blank" rel="noopener"><a href="https://www.python.org/dev/peps/pep-0484/" target="_blank" rel="noopener">https://www.python.org/dev/peps/pep-0484/</a></a></p>
+
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2019/04/05/Python多线程/" data-id="cju424txh0000ywhznvm7mif9" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2019/04/05/Python多线程/" data-id="cju74b0vj0001mghz9mh04t6e" class="article-share-link">Share</a>
       
       
+  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/多线程/">多线程</a></li></ul>
+
     </footer>
   </div>
   
@@ -535,7 +659,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2019/03/31/Python多进程/" data-id="cju424tyf000fywhzlf3ij9pn" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2019/03/31/Python多进程/" data-id="cju74b0vj0000mghz7mtmttdc" class="article-share-link">Share</a>
       
       
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/多进程/">多进程</a></li></ul>
@@ -608,7 +732,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2019/03/26/robotframework进阶指南/" data-id="cju424tzo001cywhzc70eagst" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2019/03/26/robotframework进阶指南/" data-id="cju74b0wh000mmghzvno139mw" class="article-share-link">Share</a>
       
       
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/robotframework/">robotframework</a></li></ul>
@@ -702,7 +826,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2019/03/26/pytest-allure搭建/" data-id="cju424txz0006ywhzkzumig0o" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2019/03/26/pytest-allure搭建/" data-id="cju74b0vj0006mghzjhnvxl4u" class="article-share-link">Share</a>
       
       
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/pytest/">pytest</a></li></ul>
@@ -796,7 +920,7 @@ Chrome测试
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2019/03/25/Pycharm-Python3-6-Robotframework3-1-1/" data-id="cju424txo0001ywhzgqpdns1i" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2019/03/25/Pycharm-Python3-6-Robotframework3-1-1/" data-id="cju74b0vj0004mghz1yctezg8" class="article-share-link">Share</a>
       
       
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/robotframework/">robotframework</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/自动化测试/">自动化测试</a></li></ul>
@@ -931,7 +1055,7 @@ Chrome测试
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2019/03/24/unittest框架配置使用/" data-id="cju424tyj000hywhz51426tsw" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2019/03/24/unittest框架配置使用/" data-id="cju74b0w5000fmghzdxnic866" class="article-share-link">Share</a>
       
       
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/测试框架/">测试框架</a></li></ul>
@@ -1050,7 +1174,7 @@ Chrome测试
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2019/03/22/常见的视频传输协议：RTSP-RTMP-HLS/" data-id="cju424tzv001kywhzpcowguil" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2019/03/22/常见的视频传输协议：RTSP-RTMP-HLS/" data-id="cju74b0wh000smghztyq8i8wf" class="article-share-link">Share</a>
       
       
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/视频协议/">视频协议</a></li></ul>
@@ -1160,7 +1284,7 @@ Chrome测试
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2019/03/18/robotframework学习/" data-id="cju424txy0005ywhzceu8so95" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2019/03/18/robotframework学习/" data-id="cju74b0w2000bmghzf70renog" class="article-share-link">Share</a>
       
       
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/robotframework/">robotframework</a></li></ul>
@@ -1352,7 +1476,7 @@ bash
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2019/03/12/Python虚拟环境和Docker虚拟化技术/" data-id="cju424txq0002ywhzjub8114j" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2019/03/12/Python虚拟环境和Docker虚拟化技术/" data-id="cju74b0wd000hmghzl3keah96" class="article-share-link">Share</a>
       
       
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/环境/">环境</a></li></ul>
@@ -1412,7 +1536,7 @@ bash
     <div class="count-box">
       <a href="/archives"><div><strong>15</strong><br>文章</div></a>
       <a href="/categories"><div><strong>10</strong><br>分类</div></a>
-      <a href="/tags"><div><strong>14</strong><br>标签</div></a>
+      <a href="/tags"><div><strong>15</strong><br>标签</div></a>
     </div>
 
 
