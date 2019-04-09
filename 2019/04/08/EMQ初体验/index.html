@@ -1,0 +1,373 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  
+  <title>EMQ初体验 | YuChou</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  <meta name="description" content="想走IOT哪有不了解EMQ的道理，EMQ (Erlang/Enterprise/Elastic MQTT Broker) 是基于 Erlang/OTP 平台开发的开源物联网 MQTT 消息服务器。 MQTT(消息队列遥测传输)是ISO 标准(ISO/IEC PRF 20922)下基于发布/订阅范式的消息协议。它工作在 TCP/IP协议族上，是为硬件性能低下的远程设备以及网络状况糟糕的情况下而设计的">
+<meta name="keywords" content="MQTT、EMQ">
+<meta property="og:type" content="article">
+<meta property="og:title" content="EMQ初体验">
+<meta property="og:url" content="http://yoursite.com/2019/04/08/EMQ初体验/index.html">
+<meta property="og:site_name" content="YuChou">
+<meta property="og:description" content="想走IOT哪有不了解EMQ的道理，EMQ (Erlang/Enterprise/Elastic MQTT Broker) 是基于 Erlang/OTP 平台开发的开源物联网 MQTT 消息服务器。 MQTT(消息队列遥测传输)是ISO 标准(ISO/IEC PRF 20922)下基于发布/订阅范式的消息协议。它工作在 TCP/IP协议族上，是为硬件性能低下的远程设备以及网络状况糟糕的情况下而设计的">
+<meta property="og:locale" content="zh-Hans">
+<meta property="og:image" content="http://149.248.3.74/EMQ/%e4%b8%8b%e8%bd%bd.jpg">
+<meta property="og:image" content="http://149.248.3.74/EMQ/%e8%a7%a3%e5%8e%8b%e5%ae%89%e8%a3%85.jpg">
+<meta property="og:image" content="http://149.248.3.74/EMQ/%e5%90%af%e5%8a%a8%e6%9c%8d%e5%8a%a1%e5%99%a8.jpg">
+<meta property="og:image" content="http://149.248.3.74/EMQ/%e6%9f%a5%e7%9c%8b%e8%ae%be%e5%a4%87%e5%85%81%e8%ae%b8%e7%8a%b6%e6%80%81.jpg">
+<meta property="og:image" content="http://149.248.3.74/EMQ/%e6%89%93%e5%bc%80%e8%99%9a%e6%8b%9f%e6%9c%ba%e9%98%b2%e7%81%ab%e5%a2%99%e5%85%81%e8%ae%b8%e4%b8%bb%e6%9c%ba%e8%ae%bf%e9%97%ae.jpg">
+<meta property="og:image" content="http://149.248.3.74/EMQ/%e9%a6%96%e6%ac%a1%e7%99%bb%e9%99%86%e7%95%8c%e9%9d%a2.jpg">
+<meta property="og:image" content="http://149.248.3.74/EMQ/%e7%ae%a1%e7%90%86%e7%95%8c%e9%9d%a2.jpg">
+<meta property="og:image" content="http://149.248.3.74/EMQ/%e5%88%9b%e5%bb%ba%e4%b8%80%e4%b8%aa%e8%ae%a2%e9%98%85%e5%86%85%e5%ae%b9.jpg">
+<meta property="og:image" content="http://149.248.3.74/EMQ/%e5%ae%9e%e7%8e%b0%e8%bf%87%e7%a8%8b.jpg">
+<meta property="og:image" content="http://149.248.3.74/EMQ/%e6%8a%95%e9%80%92%e6%b6%88%e6%81%af%e8%ae%b0%e5%bd%95.jpg">
+<meta property="og:updated_time" content="2019-04-09T13:40:01.389Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="EMQ初体验">
+<meta name="twitter:description" content="想走IOT哪有不了解EMQ的道理，EMQ (Erlang/Enterprise/Elastic MQTT Broker) 是基于 Erlang/OTP 平台开发的开源物联网 MQTT 消息服务器。 MQTT(消息队列遥测传输)是ISO 标准(ISO/IEC PRF 20922)下基于发布/订阅范式的消息协议。它工作在 TCP/IP协议族上，是为硬件性能低下的远程设备以及网络状况糟糕的情况下而设计的">
+<meta name="twitter:image" content="http://149.248.3.74/EMQ/%e4%b8%8b%e8%bd%bd.jpg">
+  
+    <link rel="alternate" href="/atom.xml" title="YuChou" type="application/atom+xml">
+  
+  
+    <link rel="icon" href="/favicon.png">
+  
+  
+    <link href="//fonts.googleapis.com/css?family=Source+Code+Pro" rel="stylesheet" type="text/css">
+  
+  <link rel="stylesheet" href="/css/style.css">
+  <link rel="stylesheet" href="/plugin/bganimation/bg.css">
+  
+
+</head>
+
+<body>
+  <div id="container">
+    <div id="wrap">
+      <div class="outer">
+        <div class="widget-wrap mobile-header">
+  <h3 class="widget-title"></h3>
+  <div class="widget">
+    <img class="avatar" src="http://149.248.3.74/Photos/titleImage/AF359E06C1819F0FA30D32DA9F0E8EB6.png">
+    <h2 class="author">YuChou</h2>
+    <h3 class="description"></h3>
+    <div class="count-box">
+      <a href="/archives"><div><strong>17</strong><br>文章</div></a>
+      <a href="/categories"><div><strong>11</strong><br>分类</div></a>
+      <a href="/tags"><div><strong>16</strong><br>标签</div></a>
+    </div>
+    <ul class="blog-link">
+     
+          <a href="/" title="Home">
+            <li>主页</li>
+          </a>
+        
+          <a href="/archives/" title="Archives">
+            <li>归档</li>
+          </a>
+        
+          <a href="/categories/" title="Categories">
+            <li>分类</li>
+          </a>
+        
+          <a href="/tags/" title="Tags">
+            <li>标签</li>
+          </a>
+        
+    </ul>
+  </div>
+</div>
+
+        <section id="main"><article id="post-EMQ初体验" class="wow slideInRight article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2019/04/08/EMQ初体验/" class="article-date">
+  <time class="post-time" datetime="2019-04-08T14:33:00.000Z" itemprop="datePublished">
+    <span class="post-month">4月</span><br/>
+    <span class="post-day">08</span>
+  </time>
+</a>
+   
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 class="article-title" itemprop="name">
+      EMQ初体验
+    </h1>
+  
+
+        <div>
+          
+  <div class="article-category">
+    <a class="article-category-link" href="/categories/消息队列/">消息队列</a>
+  </div>
+
+          
+              
+
+          
+        </div>
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p>想走IOT哪有不了解EMQ的道理，EMQ (Erlang/Enterprise/Elastic MQTT Broker) 是基于 Erlang/OTP 平台开发的开源物联网 MQTT 消息服务器。</p>
+<p><em>MQTT<strong>(</strong>消息队列遥测传输)是ISO 标准(ISO/IEC PRF 20922)下基于发布/订阅范式的消息协议。它工作在 <a href="https://baike.baidu.com/item/TCP%2FIP%E5%8D%8F%E8%AE%AE%E6%97%8F" target="_blank" rel="noopener">TCP/IP协议族</a>上，是为硬件性能低下的远程设备以及网络状况糟糕的情况下而设计的发布/订阅型消息协议，为此，它需要一个<a href="https://baike.baidu.com/item/%E6%B6%88%E6%81%AF%E4%B8%AD%E9%97%B4%E4%BB%B6" target="_blank" rel="noopener">消息中间件</a> 。</em></p>
+<p>所以，这岂不是非常符合物联网需要降低硬件成本又需要应对复杂的多维网络环境的要求。目前公司项目有这方面的要求。对接安卓设备需要通过消息订阅，在这里记录下EMQ的初次体验，后面自己在详细理解MQTT协议本身和更上层的RabbitMQ。</p>
+<h4 id="1-安装环境"><a href="#1-安装环境" class="headerlink" title="1.安装环境"></a>1.安装环境</h4><p>虚拟机，ubuntu16.04</p>
+<h4 id="2-安装"><a href="#2-安装" class="headerlink" title="2.安装"></a>2.安装</h4><ul>
+<li>下载链接：wget <a href="http://emqtt.com/static/brokers/emqttd-ubuntu16.04-v2.3.9_amd64.deb" target="_blank" rel="noopener">http://emqtt.com/static/brokers/emqttd-ubuntu16.04-v2.3.9_amd64.deb</a></li>
+</ul>
+<p><img src="http://149.248.3.74/EMQ/%e4%b8%8b%e8%bd%bd.jpg" alt="下载"></p>
+<ul>
+<li>安装：sudo dpkg -i emqttd-ubuntu16.04_v2.0_amd64.deb</li>
+</ul>
+<p><img src="http://149.248.3.74/EMQ/%e8%a7%a3%e5%8e%8b%e5%ae%89%e8%a3%85.jpg" alt="解压安装"></p>
+<ul>
+<li>启动：sudo service emqttd start</li>
+</ul>
+<p><img src="http://149.248.3.74/EMQ/%e5%90%af%e5%8a%a8%e6%9c%8d%e5%8a%a1%e5%99%a8.jpg" alt="启动"></p>
+<ul>
+<li>查看状态：sudo service emqttd status</li>
+</ul>
+<p><img src="http://149.248.3.74/EMQ/%e6%9f%a5%e7%9c%8b%e8%ae%be%e5%a4%87%e5%85%81%e8%ae%b8%e7%8a%b6%e6%80%81.jpg" alt="查看设备状态"></p>
+<ul>
+<li>打开默认端口防火墙</li>
+</ul>
+<p><img src="http://149.248.3.74/EMQ/%e6%89%93%e5%bc%80%e8%99%9a%e6%8b%9f%e6%9c%ba%e9%98%b2%e7%81%ab%e5%a2%99%e5%85%81%e8%ae%b8%e4%b8%bb%e6%9c%ba%e8%ae%bf%e9%97%ae.jpg" alt="允许端口访问"></p>
+<h4 id="3-仪表盘登陆界面"><a href="#3-仪表盘登陆界面" class="headerlink" title="3.仪表盘登陆界面"></a>3.仪表盘登陆界面</h4><ul>
+<li>登录界面</li>
+</ul>
+<p><img src="http://149.248.3.74/EMQ/%e9%a6%96%e6%ac%a1%e7%99%bb%e9%99%86%e7%95%8c%e9%9d%a2.jpg" alt="登录界面"></p>
+<ul>
+<li>进入主界面</li>
+</ul>
+<p><img src="http://149.248.3.74/EMQ/%e7%ae%a1%e7%90%86%e7%95%8c%e9%9d%a2.jpg" alt="主界面"></p>
+<h4 id="4-初体验"><a href="#4-初体验" class="headerlink" title="4.初体验"></a>4.初体验</h4><ul>
+<li>科学上网下载谷歌商城插件<a href="https://chrome.google.com/webstore/detail/mqttbox/kaajoficamnjijhkeomgfljpicifbkaf?hl=zh-CN" target="_blank" rel="noopener">MQTTBox</a> ,安装完成</li>
+<li>打开插件，建立MQTT连接，指定连接相关信息，包括连接名称（可以随意输入）、协议（选择mqtt/tcp）和主机地址（安装在本地，MQTT缺省端口为1883，所以输入127.0.0.1:1883），然后单击“Save”保存。连接中一些别的选项先保持缺省值，读者对MQTT协议比较熟悉之后，就可以了解这些选项的意义。：</li>
+</ul>
+<p><img src="http://149.248.3.74/EMQ/%e5%88%9b%e5%bb%ba%e4%b8%80%e4%b8%aa%e8%ae%a2%e9%98%85%e5%86%85%e5%ae%b9.jpg" alt="创建连接"></p>
+<ul>
+<li>保存成功后进入如下的界面，接下来可以开始测试消息发布和订阅。如下图所示，绿色“Connected”按钮表明当前MQTT连接已经成功。首先我们开启一个订阅，如下图所示。“Topic to subscribe”里填入要订阅的主题“windows”；“QoS”字段选择“0 - Almost Once”；然后点击“Subscribe”按钮。设置好订阅的主题后，在发布这边输入如下的信息。“Topic to publish”中输入“windows”，这里输入的主题的名字必须和订阅那里的输入相同；“QoS”中选择“0 - Almost Once”；“Payload”中输入任何内容都可以，如下图所示输入了一组JSON字符。在订阅端就会收到由服务器端转发的消息内容</li>
+</ul>
+<p><img src="http://149.248.3.74/EMQ/%e5%ae%9e%e7%8e%b0%e8%bf%87%e7%a8%8b.jpg" alt="实现过程"></p>
+<ul>
+<li>查看仪表盘消息记录：</li>
+</ul>
+<p><img src="http://149.248.3.74/EMQ/%e6%8a%95%e9%80%92%e6%b6%88%e6%81%af%e8%ae%b0%e5%bd%95.jpg" alt=""></p>
+<h4 id="5-EMQ默认占用端口"><a href="#5-EMQ默认占用端口" class="headerlink" title="5.EMQ默认占用端口"></a>5.EMQ默认占用端口</h4><table>
+<thead>
+<tr>
+<th>1883</th>
+<th>MQTT 协议端口</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>8883</td>
+<td>MQTT/SSL 端口</td>
+</tr>
+<tr>
+<td>8083</td>
+<td>MQTT/WebSocket 端口</td>
+</tr>
+<tr>
+<td>8080</td>
+<td>HTTP API 端口</td>
+</tr>
+<tr>
+<td>18083</td>
+<td>Dashboard 管理控制台端口</td>
+</tr>
+</tbody>
+</table>
+<hr>
+<p>参考地址：<a href="https://www.jianshu.com/p/e5cf0c1fd55c" target="_blank" rel="noopener">https://www.jianshu.com/p/e5cf0c1fd55c</a></p>
+<p><a href="http://www.cnblogs.com/sxkgeek/p/9140180.html" target="_blank" rel="noopener">http://www.cnblogs.com/sxkgeek/p/9140180.html</a></p>
+<p><a href="https://developer.emqx.io/docs/emq/v3/cn/" target="_blank" rel="noopener">https://developer.emqx.io/docs/emq/v3/cn/</a></p>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://yoursite.com/2019/04/08/EMQ初体验/" data-id="cju9u14tq0000uohzehbp9pfw" class="article-share-link">Share</a>
+      
+      
+  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/MQTT、EMQ/">MQTT、EMQ</a></li></ul>
+
+    </footer>
+  </div>
+  
+    
+<nav id="article-nav">
+  
+  
+    <a href="/2019/04/08/python协程/" id="article-nav-older" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Older</strong>
+      <div class="article-nav-title">python协程</div>
+    </a>
+  
+</nav>
+
+  
+</article>
+
+
+
+</section>
+        
+          <aside id="sidebar">
+  
+    <div class="widget-wrap">
+  <h3 class="widget-title"></h3>
+  <div class="widget">
+    <h1 class="blog-title">YuChou</h1>
+    <h2 class="blog-subtitle">Dream of walking the world with techbology</h2>
+    <ul class="blog-link">
+     
+          <a href="/" title="Home">
+            <li>主页</li>
+          </a>
+        
+          <a href="/archives/" title="Archives">
+            <li>归档</li>
+          </a>
+        
+          <a href="/categories/" title="Categories">
+            <li>分类</li>
+          </a>
+        
+          <a href="/tags/" title="Tags">
+            <li>标签</li>
+          </a>
+        
+    </ul>
+  </div>
+</div>
+
+  
+    <div class="widget-wrap">
+  <h3 class="widget-title"></h3>
+  <div class="widget">
+    <img class="avatar" src="http://149.248.3.74/Photos/titleImage/AF359E06C1819F0FA30D32DA9F0E8EB6.png">
+    <h2 class="author">YuChou</h2>
+    <h3 class="description"></h3>
+    <div class="count-box">
+      <a href="/archives"><div><strong>17</strong><br>文章</div></a>
+      <a href="/categories"><div><strong>11</strong><br>分类</div></a>
+      <a href="/tags"><div><strong>16</strong><br>标签</div></a>
+    </div>
+
+
+
+    <div class="social-link">
+      
+        <a class="hvr-bounce-in" href="https://github.com/mrzhouyu" target="_blank" title="Github">
+          Github
+        </a>
+      
+    </div>
+
+    <div class="friend-link">
+      <h2>SomeLink</h2>
+      
+        <a class="hvr-bounce-in" href="https://www.zhihu.com" target="_blank" title="Zhihu">
+          Zhihu
+        </a>
+      
+    </div>
+  </div>
+</div>
+
+  
+</aside>
+        
+      </div>
+      <footer id="footer">
+  
+  <div class="outer">
+    <div id="footer-info" class="inner">
+      &copy;2018 - 2019 YuChou<br>
+      由<a href="http://hexo.io/" target="_blank">Hexo</a>强力驱动 | 
+      主题-<a href="https://github.com/ShanaMaid/hexo-theme-shana">Shana</a>
+      
+    </div>
+    
+  </div>
+</footer>
+    </div>
+    
+
+<script src="//apps.bdimg.com/libs/jquery/2.1.4/jquery.min.js"></script>
+<script src="//apps.bdimg.com/libs/wow/0.1.6/wow.min.js"></script>
+<script>
+new WOW().init();
+</script>   
+
+
+  <link rel="stylesheet" href="/plugin/fancybox/jquery.fancybox.css">
+  <script src="/plugin/fancybox/jquery.fancybox.pack.js"></script>
+
+
+
+  <link rel="stylesheet" href="/plugin/galmenu/GalMenu.css">
+  <script src="/plugin/galmenu/GalMenu.js"></script>
+  <div class="GalMenu GalDropDown">
+      <div class="circle" id="gal">
+        <div class="ring">
+          
+            <a href="/" title="" class="menuItem">首页</a>
+          
+            <a href="/tags" title="" class="menuItem">标签</a>
+          
+            <a href="/categories" title="" class="menuItem">分类</a>
+          
+            <a href="/archives" title="" class="menuItem">归档</a>
+          
+            <a href="/xxxxxxxxx" title="" class="menuItem">xxx</a>
+          
+            <a href="/xxxxxxx" title="" class="menuItem">xxxx</a>
+          
+        </div>
+        
+          <audio id="audio" src="#"></audio>
+        
+      </div> 
+</div>
+<div id="overlay" style="opacity: 1; cursor: pointer;"></div>
+  <script type="text/javascript">var items = document.querySelectorAll('.menuItem');
+    for (var i = 0,
+    l = items.length; i < l; i++) {
+      items[i].style.left = (50 - 35 * Math.cos( - 0.5 * Math.PI - 2 * (1 / l) * i * Math.PI)).toFixed(4) + "%";
+      items[i].style.top = (50 + 35 * Math.sin( - 0.5 * Math.PI - 2 * (1 / l) * i * Math.PI)).toFixed(4) + "%"
+    }</script>
+<script type="text/javascript">
+  $(document).ready(function() {
+    $('body').GalMenu({
+      'menu': 'GalDropDown'
+    })
+  });
+</script>
+
+  <section class="hidden-xs"> 
+  <ul class="cb-slideshow"> 
+    <li><span>苟利</span></li> 
+    <li><span>国家</span></li> 
+    <li><span>生死以</span></li> 
+    <li><span>岂能</span></li> 
+    <li><span>祸福</span></li> 
+    <li><span>趋避之</span></li> 
+  </ul>
+</section>
+<script src="/js/script.js"></script>
+
+
+
+  </div>
+</body>
+</html>

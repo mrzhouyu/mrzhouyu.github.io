@@ -38,9 +38,9 @@
     <h2 class="author">YuChou</h2>
     <h3 class="description"></h3>
     <div class="count-box">
-      <a href="/archives"><div><strong>15</strong><br>文章</div></a>
-      <a href="/categories"><div><strong>10</strong><br>分类</div></a>
-      <a href="/tags"><div><strong>15</strong><br>标签</div></a>
+      <a href="/archives"><div><strong>17</strong><br>文章</div></a>
+      <a href="/categories"><div><strong>11</strong><br>分类</div></a>
+      <a href="/tags"><div><strong>16</strong><br>标签</div></a>
     </div>
     <ul class="blog-link">
      
@@ -65,6 +65,308 @@
 </div>
 
         <section id="main">
+  
+    <article id="post-robotframework学习" class="wow slideInRight article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2019/03/18/robotframework学习/" class="article-date">
+  <time class="post-time" datetime="2019-03-18T14:38:07.000Z" itemprop="datePublished">
+    <span class="post-month">3月</span><br/>
+    <span class="post-day">18</span>
+  </time>
+</a>
+   
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2019/03/18/robotframework学习/">robotframework初窥</a>
+    </h1>
+  
+
+        <div>
+          
+  <div class="article-category">
+    <a class="article-category-link" href="/categories/自动化测试/">自动化测试</a>
+  </div>
+
+          
+              
+
+          
+        </div>
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h2 id="1-环境准备"><a href="#1-环境准备" class="headerlink" title="1.环境准备"></a>1.环境准备</h2><p>###</p>
+<ol>
+<li>Python环境，利用Anaconda安装集成环境(pip、conda等也一并安装)我这里用默认的Python3.7,确保Scripts、lib、Anaconda等等文件夹加到了环境变量下。 <a href="https://mirrors.tuna.tsinghua.edu.cn/" target="_blank" rel="noopener">下载地址</a></li>
+<li>安装robotframwork，<code>python -m pip install -U robotframework</code></li>
+<li>安装图形界面：<code>pip install robotframework-ride</code></li>
+<li>由于ride是基于用wxPython库开发，这里安装该库 <code>pip install wxPython</code></li>
+<li>安装完成，启动：到Anaconda安装目录下的Scripts找到ride.py文件，在此打开cmd控制台，运行<code>python ride.py</code>就可以开启图形界面</li>
+<li>步骤5方法启动比较麻烦，可以用一个.bat脚本来减少步骤：任意目录下创建脚本文件夹，该目录下创建两个脚本：rideStart.bat, ride.bat。其中ride.bat内容：<code>python ride.py_path\Scripts\ride.py</code>,rideStart.bat内容：<code>start ride.bat_path\ride.bat</code>。如果是填的是绝对路径，两个脚本随便放哪里都可以。执行rideStart.bat脚本就可以启动。</li>
+<li>也可以直接建一个runride.bat到桌面: <code>python -c &quot;from robotide import main; main()&quot;</code>,点击运行即可。</li>
+<li>Library安装，因为测试需要用到许多的其他模块，这里需要安装一些库：<code>robotframework-selenium2library</code>、<a href="https://github.com/bulkan/robotframework-requests" target="_blank" rel="noopener">robotframework-requests</a>、<a href="https://github.com/serhatbolsu/robotframework-appiumlibrary" target="_blank" rel="noopener">robotframework-appiumlibrary</a>、<a href="https://github.com/peritus/robotframework-httplibrary" target="_blank" rel="noopener">robotframework-httplibrary</a>、<a href="https://github.com/franz-see/Robotframework-Database-Library" target="_blank" rel="noopener">Robotframework-Database-Library</a>。  pip安装即可，更多参考<a href="https://blog.csdn.net/u013961875/article/details/78670249" target="_blank" rel="noopener">Robot Framework 常用的第三方库</a></li>
+<li>浏览器驱动：常见的谷歌、火狐、IE。参考 <a href="https://www.zhoujiayu.top/2019/03/11/Selenium%E4%B8%80%E4%BA%9BAPI%E6%95%B4%E7%90%86/" target="_blank" rel="noopener">Selenium一些API整理</a></li>
+</ol>
+<h2 id="2-初窥"><a href="#2-初窥" class="headerlink" title="2.初窥"></a>2.初窥</h2><ol>
+<li><strong>运行开启脚本创建工程</strong><br><img src="http://149.248.3.74/robotframework/1.png" alt="1"><br></li>
+<li><strong>创建测试套件</strong> <br><br><img src="http://149.248.3.74/robotframework/2.png" alt="2"><br><br><img src="http://149.248.3.74/robotframework/3.png" alt="3"><br></li>
+<li><strong>创建测试用例</strong><br><br><img src="http://149.248.3.74/robotframework/4.png" alt="4"><br><br>4.<strong>导入需要用到的库</strong><br><br><img src="http://149.248.3.74/robotframework/5.png" alt="5"><br>5.<strong>f5查看关键词</strong><br><br><img src="http://149.248.3.74/robotframework/6.png" alt="6"> </li>
+<li><strong>怎么写测试用例</strong>  蓝色部分为关键字，可以ctr+shift+空格提示补全，如果某个cell显示红色，表示必填选项没有填写。主要流程：打开了浏览器–找到输入框输入”测试”–点击提交–等待2s–截屏并取名到当前目录(library需要导入Sreenshot包)–关闭浏览器–设置变量–调用并打印变量<br><br><img src="http://149.248.3.74/robotframework/7.png" alt="7"><br>7.<strong>脚本形式</strong> <br><br><img src="http://149.248.3.74/robotframework/8.png" alt="8"><br><br>8.<strong>执行过程</strong> <br><br><img src="http://149.248.3.74/robotframework/9.png" alt="9"><br><br>9.<strong>生成目录</strong><br><br><img src="http://149.248.3.74/robotframework/10.png" alt="10"></li>
+</ol>
+<h2 id="3-快捷键"><a href="#3-快捷键" class="headerlink" title="3.快捷键"></a>3.快捷键</h2><ul>
+<li>重命名——》F2</li>
+<li>搜索关键字——》F5</li>
+<li>执行用例——》F8</li>
+<li>创建新工程——》ctrl+n</li>
+<li>创建新测试套——》ctrl+shift+f</li>
+<li>创建新用例——》ctrl+shift+t</li>
+<li>创建新关键字——》ctrl+shift+k</li>
+<li>向上移动用例——》ctrl+↑</li>
+<li>向下移动用例——》ctrl+↓</li>
+<li>显示关键字信息——》 ctrl+鼠标悬浮（鼠标悬浮于关键字上</li>
+<li>自动补全关键字——》ctrl+shift+空格</li>
+<li>删除行——》ctrl+d</li>
+<li>删除单元格——》ctrl+shift+d</li>
+<li>插入单元格——》ctrl+shift+i</li>
+<li>插入行——》ctrl+i</li>
+<li>屏蔽代码——》ctrl+#</li>
+<li>取消屏蔽——》ctrl+$</li>
+<li>保存整个工程——》ctrl+shit+s</li>
+<li>局部保存，保存鼠标点击的部分——》ctrl+s</li>
+<li>查看log——》ctrl+L</li>
+<li>查看report——》ctrl+r</li>
+</ul>
+<h2 id="4-其他支持"><a href="#4-其他支持" class="headerlink" title="4.其他支持"></a>4.其他支持</h2><ol>
+<li>支持生产HTML类型文件</li>
+<li>支持自定义全局变量和变量</li>
+<li>支持选择不同的执行方式：pybot、robot、jybot等等</li>
+<li>支持自定义关封装键字 <strong>TestLib</strong></li>
+<li>Suite Teardown：每个Test Suite结束的时候执行的动作，用法同测试用例中的关键字</li>
+<li>Test Setup：每个Test Case启动时执行的动作，用法同测试用例中的关键字。如果在某个具体的Test case中指定了Setup则执行case里的setup而不执行setting里的Test Setup</li>
+<li>Test Teardown：每个Test Case结束的时候执行的动作，用法同测试用例中的关键字。同样case里的Teardown会将setting里Test Teardown覆写。</li>
+<li>Test Timeout：用例超时时间，超过该时间还未执行完毕的用例将被强制退出</li>
+<li>Tags：Tags作为用例的标记，在robot中是非常常用的。在setting中可配置Force Tags和Default Tags，也可在用例中配置Tag，Tag的作用在后面描述</li>
+<li>Library：指定TestLib，系统自带的或者已经安装的TestLib可直接输入名字，自己编写的TestLib就需要加入路径，相对路径绝对路径均可，相对的是该html文件的路径</li>
+<li>Resource：引入一个资源文件。通常一份比较好的robot用例中包含就是跟该用例相关的关键字，用例和一些基本配置等等，如果需要用到很多公共的模块，公共的关键字，这些公共资源通常会编辑成一个独立的html，这样业务相关的html便可引用</li>
+<li>支持if和for循环</li>
+<li>支持自定义脚本编写</li>
+</ol>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://yoursite.com/2019/03/18/robotframework学习/" data-id="cju9u14v10014uohzwgstukyc" class="article-share-link">Share</a>
+      
+      
+  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/robotframework/">robotframework</a></li></ul>
+
+    </footer>
+  </div>
+  
+</article>
+
+
+
+
+  
+    <article id="post-Python虚拟环境和Docker虚拟化技术" class="wow slideInRight article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2019/03/12/Python虚拟环境和Docker虚拟化技术/" class="article-date">
+  <time class="post-time" datetime="2019-03-12T13:49:12.000Z" itemprop="datePublished">
+    <span class="post-month">3月</span><br/>
+    <span class="post-day">12</span>
+  </time>
+</a>
+   
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2019/03/12/Python虚拟环境和Docker虚拟化技术/">Python虚拟环境和Docker虚拟化技术</a>
+    </h1>
+  
+
+        <div>
+          
+  <div class="article-category">
+    <a class="article-category-link" href="/categories/技术/">技术</a>
+  </div>
+
+          
+              
+
+          
+        </div>
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h2 id="一、Python虚拟环境搭建"><a href="#一、Python虚拟环境搭建" class="headerlink" title="一、Python虚拟环境搭建"></a>一、Python虚拟环境搭建</h2><p>注意： <strong><em>pip freeze &gt; requirements.txt</em></strong>将环境里的依赖包写入文件，<strong><em>pip install -r requirements.txt</em></strong>将文件里的依赖包统一安装<br>确保部署环境包版本一致</p>
+<h3 id="1-virtualenv"><a href="#1-virtualenv" class="headerlink" title="1.virtualenv"></a>1.virtualenv</h3><h4 id="window下搭建"><a href="#window下搭建" class="headerlink" title="window下搭建"></a>window下搭建</h4><ul>
+<li>安装python环境，将bin文件夹加入到系统环境变量，确保命令行下能显示pip版本 <code>pip -V</code></li>
+<li>安装virtualenv: <br><br><img src="http://149.248.3.74/bg/3.12/%e5%ae%89%e8%a3%85virtualenv.jpg" alt="安装"></li>
+<li>查看是否安装成功: <code>virtualenv --version</code><br><br><img src="http://149.248.3.74/bg/3.12/1552400124.png" alt="1552400124"></li>
+<li><p>创建第一个虚拟环境：</p>
+<ul>
+<li>切换到需要的目录下</li>
+<li>执行创建命令 <code>virtualenv DemEnv</code></li>
+<li>指定目录下生成虚拟环境目录<br><img src="http://149.248.3.74/bg/3.12/1552400421.png" alt="1552400421"></li>
+</ul>
+</li>
+<li><p>进入虚拟环境:</p>
+<ul>
+<li>进入Scripts文件夹命令行执行<code>activate.bat</code>文件进入虚拟环境</li>
+<li>有图可见pip list是干净的，没有太多库</li>
+<li>至此就可以安装需要在开发项目用到的库了如: <code>pip install -U django</code>来开发单独的django项目</li>
+<li>注意进入虚拟环境可以看到前面括号的内容</li>
+<li>退出虚拟环境只需要命令行执行<code>deactivate.bat</code> 注意退出后使用的环境是系统环境</li>
+</ul>
+</li>
+</ul>
+<p><img src="http://149.248.3.74/bg/3.12/1552400853.png" alt="1552400853"></p>
+<h4 id="ubuntu16-04下搭建"><a href="#ubuntu16-04下搭建" class="headerlink" title="ubuntu16.04下搭建"></a>ubuntu16.04下搭建</h4><h4 id="类似于window"><a href="#类似于window" class="headerlink" title="类似于window"></a>类似于window</h4><p><img src="http://149.248.3.74/bg/3.12/1552402101.png" alt="1552402101"></p>
+<h2 id="另外还有开发requests库大神的另一库Pipenv也是一类环境搭建-https-www-jianshu-com-p-00af447f0005"><a href="#另外还有开发requests库大神的另一库Pipenv也是一类环境搭建-https-www-jianshu-com-p-00af447f0005" class="headerlink" title="另外还有开发requests库大神的另一库Pipenv也是一类环境搭建 https://www.jianshu.com/p/00af447f0005"></a>另外还有开发requests库大神的另一库Pipenv也是一类环境搭建 <a href="https://www.jianshu.com/p/00af447f0005" target="_blank" rel="noopener">https://www.jianshu.com/p/00af447f0005</a></h2><h2 id="一、Docker安装配置"><a href="#一、Docker安装配置" class="headerlink" title="一、Docker安装配置"></a>一、Docker安装配置</h2><h4 id="1-docker支持以下版本"><a href="#1-docker支持以下版本" class="headerlink" title="1.docker支持以下版本"></a>1.docker支持以下版本</h4><ul>
+<li>Ubuntu Xenial 16.04[LTS] </li>
+<li>Ubuntu Trusty 14.04[LTS]</li>
+<li>Ubuntu Precise 12.04[LTS]</li>
+</ul>
+<h4 id="2-内核版本"><a href="#2-内核版本" class="headerlink" title="2.内核版本"></a>2.内核版本</h4><ul>
+<li>Docker需要64位操作系统，kernel版本需要3.10以上 查看系统内核版本 <code>uname -r</code></li>
+</ul>
+<h4 id="3-安装方式-ubuntu16-04"><a href="#3-安装方式-ubuntu16-04" class="headerlink" title="3.安装方式 ubuntu16.04"></a>3.安装方式 ubuntu16.04</h4><ul>
+<li>安装之前先卸载旧版本: <code>sudo apt-get remove docker docker-engine dockre.io containerd runc</code></li>
+<li><p>安装方法一：使用脚本安装</p>
+<ul>
+<li><code>sudo apt install curl</code></li>
+<li><code>curl -fsSL get.docker.com -o get-docker.sh</code></li>
+<li><code>sudo sh get-docker.sh --mirror Aliyun</code></li>
+<li>至此所有工作准备好，Docker CE 的Edge版本也安装在系统中</li>
+</ul>
+</li>
+<li><p>安装方法二：使用APT安装</p>
+<ul>
+<li>由于 apt 源使用 HTTPS 以确保软件下载过程中不被篡改。因此，我们首先需要添加使用 HTTPS 传输的软件包以及 CA 证书。<br>`sudo apt-get install <pre><code>apt-transport-https 
+ca-certificates 
+curl 
+software-properties-common`
+</code></pre></li>
+<li>使用国内源：需要添加软件源的 GPG 密钥。<br><br><code>curl -fsSL https://mirrors.ustc.edu.cn/docker-ce/linux/ubuntu/gpg | sudo apt-key add -</code><br><code>curl -fsSL https://download.docker.com/linux/ubuntu/gpg | sudo apt-key add -</code></li>
+<li>向souece.list添加docke软件源<br><br><br><code>sudo add-apt-repository 
+  &quot;deb [arch=amd64] https://mirrors.ustc.edu.cn/docker-ce/linux/ubuntu $(lsb_release -cs) 
+  stable&quot;</code><br><br><strong>以上命令会添加稳定版本的 Docker CE APT 镜像源，如果需要测试或每日构建版本的 Docker CE 请将 stable 改为 test 或者 nightly</strong></li>
+<li>安装Docker CE<br><code>sudo apt-get update</code>   <code>sudo apt-get install docker-ce</code></li>
+<li>参考<a href="https://yeasy.gitbooks.io/docker_practice/install/ubuntu.html" target="_blank" rel="noopener">https://yeasy.gitbooks.io/docker_practice/install/ubuntu=.html</a></li>
+</ul>
+</li>
+<li>启动Docker CE<ul>
+<li><code>sudo systemctl enable docker</code> ,<code>sudo systemctl start docker</code></li>
+<li>ubuntu14.04使用  <code>sudo service docker start</code>启动<h4 id="4-建立-docker-用户组"><a href="#4-建立-docker-用户组" class="headerlink" title="4.建立 docker 用户组"></a>4.建立 docker 用户组</h4></li>
+</ul>
+</li>
+<li>默认情况下，docker 命令会使用 Unix socket 与 Docker 引擎通讯。而只有 root 用户和 docker 组的用户才可以访问 Docker 引擎的 Unix socket。出于安全考虑，一般 Linux 系统上不会直接使用 root 用户。因此，更好地做法是将需要使用 docker 的用户加入 docker 用户组。</li>
+<li>建立docker组：<code>sudo groupadd docker</code></li>
+<li>当前用户加入docker组：<code>sudo usermod -aG docker $USER</code><h4 id="5-测试docker是否安装正确"><a href="#5-测试docker是否安装正确" class="headerlink" title="5.测试docker是否安装正确"></a>5.测试docker是否安装正确</h4></li>
+<li><code>docker run hello-world</code><h4 id="6-镜像加速"><a href="#6-镜像加速" class="headerlink" title="6.镜像加速"></a>6.镜像加速</h4></li>
+<li><a href="https://registry.docker-cn.com" target="_blank" rel="noopener">Dokcer官方中国镜像地址</a></li>
+<li><a href="https://cr.console.aliyun.com/cn-hangzhou/mirrors" target="_blank" rel="noopener">阿里云加速器</a></li>
+<li><a href="[https://kirk-enterprise.github.io/hub-docs/#/user-guide/mirror">七牛云加速器</a></li>
+<li><p>添加：对于使用 systemd 的系统，请在 /etc/docker/daemon.json 中写入如下内容（如果文件不存在请新建该文件<br><br> <strong>注意保证json规范</strong></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">&#123;</span><br><span class="line">  &quot;registry-mirrors&quot;: [</span><br><span class="line">    &quot;https://registry.docker-cn.com&quot;</span><br><span class="line">  ]</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>重启服务：<code>sudo systemctl daemon-reload</code> <code>sudo systemctl restart docker</code></p>
+</li>
+<li>检查加速器是否生效：<code>docker info</code>出现如下：<br><br><br><code>Registry Mirrors:
+https://registry.docker-cn.com/</code><h4 id="7-下载运行"><a href="#7-下载运行" class="headerlink" title="7.下载运行"></a>7.下载运行</h4></li>
+<li>默认下载地址  Docker Hub</li>
+<li>下载 <code>docker pull [选项] [Docker Registry 地址[:端口号]/]仓库名[:标签]</code><ul>
+<li>Docker 镜像仓库地址：地址的格式一般是 &lt;域名/IP&gt;[:端口号]。默认地址是 Docker Hub。<br>仓库名：如之前所说，这里的仓库名是两段式名称，即 &lt;用户名&gt;/&lt;软件名&gt;。对于 Docker Hub，如果不给出用户名，则默认为 library，也就是官方镜像</li>
+</ul>
+</li>
+<li>运行某个镜像：<br>`<br>docker run -it –rm \<pre><code>ubuntu:18.04 \
+bash
+</code></pre>`</li>
+<li>-it：这是两个参数，一个是 -i：交互式操作，一个是 -t 终端。我们这里打算进入 bash 执行一些命令并查看返回结果，因此我们需要交互式终端。<br>–rm：这个参数是说容器退出后随之将其删除。默认情况下，为了排障需求，退出的容器并不会立即删除，除非手动 docker rm。我们这里只是随便执行个命令，看看结果，不需要排障和保留结果，因此使用 –rm 可以避免浪费空间。<br>ubuntu:18.04：这是指用 ubuntu:18.04 镜像为基础来启动容器。<br>bash：放在镜像名后的是命令，这里我们希望有个交互式 Shell，因此用的是 bash</li>
+<li>一般的命令提示可以 <code>docker command --help</code> 来查看帮助使用<h4 id="8-列出与删除"><a href="#8-列出与删除" class="headerlink" title="8.列出与删除"></a>8.列出与删除</h4></li>
+<li>列出：<code>docker image ls</code></li>
+<li>便捷的查看镜像、容器、数据卷所占用的空间：<code>docker system df</code></li>
+<li>虚悬镜像(dangling image)：镜像既没有仓库名，也没有标签，均为 <none>，可以使用<code>docker image ls -f dangling=true</code>列出 ， 使用<code>docker image prune</code>删除</none></li>
+<li>中间层镜像查看：<code>docker image ls -a</code></li>
+<li>支持查询过滤：<code>docker image ls -f since=ubuntu</code>表示查询该镜像创建以来的所有镜像。其他的过滤规则：before、label。。。</li>
+<li>安装id列出：<code>docker image ls -q</code></li>
+<li>go模板语法：<code>docker image ls --format &quot;: &quot;</code></li>
+<li>删除:<code>docker image rm [选项] &lt;镜像1&gt; [&lt;镜像2&gt; ...]</code><br><br><em>其中，&lt;镜像&gt; 可以是 镜像短 ID、镜像长 ID、镜像名 或者 镜像摘要</em></li>
+<li>显示镜像摘要：<code>docker image ls --digests</code></li>
+<li>所以并非所有的 docker image rm 都会产生删除镜像的行为，有可能仅仅是取消了某个标签而已</li>
+<li>当该镜像所有的标签都被取消了，该镜像很可能会失去了存在的意义，因此会触发删除行为</li>
+<li>命令的配合使用：如：<code>docker image rm $(docker image ls -q redis)</code><h4 id="9-利用-commit-理解镜像构成"><a href="#9-利用-commit-理解镜像构成" class="headerlink" title="9.利用 commit 理解镜像构成"></a>9.利用 commit 理解镜像构成</h4></li>
+<li>docker commit 命令除了学习之外，还有一些特殊的应用场合，比如被入侵后保存现场等。但是，不要使用 docker commit 定制镜像，定制镜像应该使用 Dockerfile 来完成</li>
+<li>镜像是多层存储，每一层是在前一层的基础上进行的修改；而容器同样也是多层存储，是在以镜像为基础层，在其基础上加一层作为容器运行时的存储层<br></li>
+<li><code>docker run --name webserver -d -p 80:80 nginx</code> 这条命令会用 nginx 镜像启动一个容器，命名为 webserver，并且映射了 80 端口，这样我们可以用浏览器去访问这个 nginx 服务器<br><strong>不建议使用commit来提交在原有镜像基础上构造出来的新的镜像，而是用Dockerfile来build来构建</strong><h4 id="10-使用Dockerfile定制自己的镜像"><a href="#10-使用Dockerfile定制自己的镜像" class="headerlink" title="10.使用Dockerfile定制自己的镜像"></a>10.使用Dockerfile定制自己的镜像</h4></li>
+<li>大概就是通过一个类似写一个”脚本”(dockerfile)来通过已有容器上创建或者定制新的镜像，并且保存记录</li>
+<li>准备：<ul>
+<li>当前环境下创建空目录 <code>mkdir nginx_dockerfile</code></li>
+<li>进入目录 <code>nginx_dockerfile</code></li>
+<li>创建文件 <code>touch Dockerfile</code>这一行必须一模一样，大写</li>
+<li>编辑 <code>vim Dockerfile</code> 可以按照Dockerfile的 “语法来写”(FROM、RUN…)<ul>
+<li>FROM: 必不可少的命令，从某个镜像作为基。如 <code>FROM &lt;image_name&gt;</code> ，或者 <code>FROM &lt;image_name&gt;:&lt;tag&gt;.</code> 如果不加tag，默认为latest。先从本地镜像仓库去搜索基镜像，如过本地没有，在去网上docker registry去寻找。</li>
+<li>MAINTAINER：标明该Dockerfile作者及联系方式，可忽略不写</li>
+<li>RUN：建立新的镜像时，可以执行在系统里的命令，如安装特定的软件以及设置环境变量</li>
+<li>ENV：设置系统环境变量（注意：写在/etc/profile里的命令在dockerfile这里会不生效，所以为改成ENV的方式）</li>
+<li>开放容器内的端口，但不和宿主机进行映射。方便在宿主机上进行开发测试。（如需映射到宿主机端口，可在运行容器时使用 -p host_port:container_port）</li>
+<li>CMD：设置执行的命令，经常用于容器启动时指定的某个操作。如执行自定义脚本服务，或者是执行系统命令。CMD 只能存在一条，如在Dockerfile中有多条CMD的话，只有最后一条CMD生效</li>
+<li>。。。。。。</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>创建镜像：在当前目录下执行<code>docker build -t new_image_name .</code>，注意后面的<code>.</code>表示当前目录，因为当前工作环境就在这个目录下，也可以指定Dockerfile所在的目录</li>
+<li>可以在已经创建的镜像上创建新的容器：<code>docker run -d -it --name new_image_name2 new_image_name</code></li>
+</ul>
+<h4 id="11-容器操作"><a href="#11-容器操作" class="headerlink" title="11.容器操作"></a>11.容器操作</h4><ul>
+<li>创建容器：<code>docker run -dit ubuntu</code> ，d参数：守护运行(后台),i参数：分配一个伪终端（pseudo-tty）并绑定到容器的标准输入上，-i 则让容器的标准输入保持打开。</li>
+<li>列出容器：<code>docker container ls</code></li>
+<li>进入容器1：<code>docker attach ID</code>  退出：<code>exit</code>容器终止</li>
+<li>进入容器2：<code>docker exec -it ID bash</code> 退出： <code>exit</code> 容器不会终止  帮助：<code>docker exec --help</code></li>
+<li>启动已经停止的容器： <code>docker container start</code></li>
+<li>导出容器：<code>docker export ID &gt; name.tar</code></li>
+<li>导入容器：<code>cat name.tar | docker import - test/ubuntu:v10</code>。  也可以通过url或者路径导入：<code>docker import http://example.com/exampleimage.tgz example/imagerepo</code></li>
+<li>删除终止状态容器：<code>docker container rm  trusting_newton</code> 。删除运行中的容器：加 -f 参数</li>
+<li>清理所有终止状态的容器： <code>docker container prune</code><h4 id="12-访问远程仓库"><a href="#12-访问远程仓库" class="headerlink" title="12.访问远程仓库"></a>12.访问远程仓库</h4></li>
+<li><a href="https://hub.docker.com/" target="_blank" rel="noopener">注册</a></li>
+<li>宿主机登录: <code>docker login</code></li>
+<li>宿主机退出登录：<code>logout</code></li>
+<li>搜索： <code>docker search YouImageName</code></li>
+</ul>
+<hr>
+<p>2019/3/17 15:53:53 </p>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://yoursite.com/2019/03/12/Python虚拟环境和Docker虚拟化技术/" data-id="cju9u14ul000huohzf3q0te5s" class="article-share-link">Share</a>
+      
+      
+  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/环境/">环境</a></li></ul>
+
+    </footer>
+  </div>
+  
+</article>
+
+
+
+
   
     <article id="title-Selenium一些API整理" class="wow slideInRight article article-type-title" itemscope itemprop="blogPost">
   <div class="article-meta">
@@ -175,7 +477,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2019/03/11/Selenium一些API整理/" data-id="cju74b0vj0005mghzh91pcj0c" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2019/03/11/Selenium一些API整理/" data-id="cju9u14ul000ouohz5mg614rz" class="article-share-link">Share</a>
       
       
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Selenium/">Selenium</a></li></ul>
@@ -241,7 +543,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2019/03/11/各种协议/" data-id="cju74b0wf000lmghzxbfwyn0c" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2019/03/11/各种协议/" data-id="cju9u14v1001guohzbsdma3zc" class="article-share-link">Share</a>
       
       
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/协议/">协议</a></li></ul>
@@ -354,7 +656,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2019/03/11/数据结构/" data-id="cju74b0wp000wmghz09kkxm3w" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2019/03/11/数据结构/" data-id="cju9u14v1001iuohz0eqcp7j7" class="article-share-link">Share</a>
       
       
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/数据结构/">数据结构</a></li></ul>
@@ -643,7 +945,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2019/02/24/软件测试/" data-id="cju74b0xn0021mghzpok41n1e" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2019/02/24/软件测试/" data-id="cju9u14v1001cuohzb0ukdf87" class="article-share-link">Share</a>
       
       
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/技术/">技术</a></li></ul>
@@ -722,7 +1024,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2019/01/25/操作系统详细/" data-id="cju74b0wh000qmghzldj054qx" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2019/01/25/操作系统详细/" data-id="cju9u14ul000uuohzfpth472a" class="article-share-link">Share</a>
       
       
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/底层/">底层</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/操作系统/">操作系统</a></li></ul>
@@ -780,9 +1082,9 @@
     <h2 class="author">YuChou</h2>
     <h3 class="description"></h3>
     <div class="count-box">
-      <a href="/archives"><div><strong>15</strong><br>文章</div></a>
-      <a href="/categories"><div><strong>10</strong><br>分类</div></a>
-      <a href="/tags"><div><strong>15</strong><br>标签</div></a>
+      <a href="/archives"><div><strong>17</strong><br>文章</div></a>
+      <a href="/categories"><div><strong>11</strong><br>分类</div></a>
+      <a href="/tags"><div><strong>16</strong><br>标签</div></a>
     </div>
 
 
