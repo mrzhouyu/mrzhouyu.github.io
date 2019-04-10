@@ -13,7 +13,7 @@
 <meta property="og:site_name" content="YuChou">
 <meta property="og:description" content="Python多进程使用与总结1.概要​    众所周知，由于GIL锁的存在，Python多线程并不是真正意义上的多线程，不能很好的利用多核CPU，为了充分的利用系统资源，py提供了multiprocessing多进程库，其支持子进程、通信和数据共享、执行不同形式的同步，提供了Process、Queue、Pipe、Lock等组件。[参考]（https://www.cnblogs.com/tkqasn">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:updated_time" content="2019-04-01T14:26:52.559Z">
+<meta property="og:updated_time" content="2019-04-10T15:11:43.625Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Python多进程">
 <meta name="twitter:description" content="Python多进程使用与总结1.概要​    众所周知，由于GIL锁的存在，Python多线程并不是真正意义上的多线程，不能很好的利用多核CPU，为了充分的利用系统资源，py提供了multiprocessing多进程库，其支持子进程、通信和数据共享、执行不同形式的同步，提供了Process、Queue、Pipe、Lock等组件。[参考]（https://www.cnblogs.com/tkqasn">
@@ -43,9 +43,9 @@
     <h2 class="author">YuChou</h2>
     <h3 class="description"></h3>
     <div class="count-box">
-      <a href="/archives"><div><strong>17</strong><br>文章</div></a>
+      <a href="/archives"><div><strong>18</strong><br>文章</div></a>
       <a href="/categories"><div><strong>11</strong><br>分类</div></a>
-      <a href="/tags"><div><strong>16</strong><br>标签</div></a>
+      <a href="/tags"><div><strong>17</strong><br>标签</div></a>
     </div>
     <ul class="blog-link">
      
@@ -407,11 +407,14 @@
 <p><a href="https://blog.51cto.com/286577399/2051155" target="_blank" rel="noopener"><a href="https://blog.51cto.com/286577399/2051155" target="_blank" rel="noopener">https://blog.51cto.com/286577399/2051155</a></a></p>
 <hr>
 <p>2019/04/01 22:26</p>
+<p>补充：多进程的map使用：</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> multiprocessing</span><br><span class="line"><span class="keyword">import</span> requests</span><br><span class="line"><span class="keyword">import</span> time</span><br><span class="line"><span class="keyword">import</span> random</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">get</span><span class="params">(_)</span>:</span></span><br><span class="line">    time.sleep(random.randint(<span class="number">0</span>, <span class="number">5</span>))</span><br><span class="line">    url = <span class="string">"http://www.baidu.com"</span></span><br><span class="line">    r = requests.get(url)</span><br><span class="line">    print(r.status_code)</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="keyword">if</span> __name__ == <span class="string">"__main__"</span>:</span><br><span class="line">    pool = multiprocessing.Pool(multiprocessing.cpu_count())</span><br><span class="line">    pool.map(get, range(<span class="number">20</span>))</span><br></pre></td></tr></table></figure>
+<p>2019/04/10 22:58</p>
 
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2019/03/31/Python多进程/" data-id="cju9u14ul000juohzsb9menkc" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2019/03/31/Python多进程/" data-id="cjubd0zmv000fa8hzkxawvoff" class="article-share-link">Share</a>
       
       
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/多进程/">多进程</a></li></ul>
@@ -483,9 +486,9 @@
     <h2 class="author">YuChou</h2>
     <h3 class="description"></h3>
     <div class="count-box">
-      <a href="/archives"><div><strong>17</strong><br>文章</div></a>
+      <a href="/archives"><div><strong>18</strong><br>文章</div></a>
       <a href="/categories"><div><strong>11</strong><br>分类</div></a>
-      <a href="/tags"><div><strong>16</strong><br>标签</div></a>
+      <a href="/tags"><div><strong>17</strong><br>标签</div></a>
     </div>
 
 
